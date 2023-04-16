@@ -88,7 +88,7 @@ export default function AverageChart({items}) {
 
 
   return (
-    <div className="averageChart">
+    <section className="averageChart">
       <h2>Precio Promedio (FOB) </h2>
 
       {data.map((item, index) => (
@@ -120,7 +120,7 @@ export default function AverageChart({items}) {
         </div>
       ))}
 
-    </div>
+    </section>
 
   );
 }

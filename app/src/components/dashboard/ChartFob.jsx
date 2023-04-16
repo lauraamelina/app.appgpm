@@ -43,13 +43,12 @@ export default function ChartFob() {
 
 
     return (
-        <div>
+        <section>
             <AverageChart items={dataFob} />
             <InfoMonthChart items={dataPerMonth} />
             <InfoStats items={dataStats} />
             <WorldMapChart itemsContinents={dataContinents} itemsCountries={dataCountries}/>
-
-        </div>
+        </section>
 
     )
 }

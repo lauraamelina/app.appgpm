@@ -8,6 +8,7 @@ import PageTransaction from "../../pages/PageTransaction"
 import PageProducts from "../../pages/PageProducts"
 import PageNews from "../../pages/PageNews"
 import PageServices from "../../pages/PageServices"
+import Footer from "../layouts/Footer";
 
 
 
@@ -26,6 +27,7 @@ function RouteDashboard() {
                 <Route path="/news/list" element={<PageNews />} />
                 <Route path="/services/list" element={<PageServices />} />
             </Routes>
+            <Footer/>
         </>
 
 

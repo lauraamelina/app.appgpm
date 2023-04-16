@@ -9,7 +9,6 @@ export default function InfoStats({ items }) {
     const [nameProducts, setNameProducts] = useState(0)
 
     useEffect(() => {
-        // si items tiene info...
         if (items?.data) {
             setUsers(items?.data[0]?.value)
             setProducts(items?.data[1]?.value)
@@ -22,7 +21,7 @@ export default function InfoStats({ items }) {
     }, [items])
 
     return (
-        <div className="container infoStats">
+        <section className="container infoStats">
             <div className="row">
                 <div className="col-md-3 col-12">
                     <PeopleAltIcon />
@@ -37,12 +36,12 @@ export default function InfoStats({ items }) {
 
                 </div>
                 <div className="col-md-3 col-12">
-                    <LayersIcon/>
+                    <LayersIcon />
                     <h3 className="h5">Nombre de Productos</h3>
                     <p>{nameProducts}</p>
 
                 </div>
             </div>
-        </div>
+        </section>
     );
 }

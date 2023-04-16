@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
-import { BarChart, Bar,XAxis,YAxis,CartesianGrid,Tooltip} from "recharts";
+import React, { useEffect, useState } from "react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 
 
 
-export default function InfoMonthChart({items}) {
+export default function InfoMonthChart({ items }) {
     const [toneladas, setToneladas] = useState([]);
     const [usd, setUsd] = useState([]);
     const [operaciones, setOperaciones] = useState([]);
@@ -60,7 +60,7 @@ export default function InfoMonthChart({items}) {
                     pv: items['grafica1'][0].data[11]
                 }
 
-            
+
             ])
 
             setUsd([
@@ -113,7 +113,7 @@ export default function InfoMonthChart({items}) {
                     pv: items['grafica2'][0].data[11]
                 }
 
-            
+
             ])
 
             setOperaciones([
@@ -166,76 +166,76 @@ export default function InfoMonthChart({items}) {
                     pv: items['grafica3'][0].data[11]
                 }
 
-            
+
             ])
         }
         //eslint-disable-next-line
     }, [items])
 
 
-     return (
-            <div className="container infoMonthChart">
-                <div className="row">
-                    <div className="col-md-3 col-12 ton">
-                        <h3 className="h5">Toneladas por mes</h3>
-                        <BarChart
-                            width={230}
-                            height={230}
-                            data={toneladas}
-                            margin={{
-                                top: 5,
-                                bottom: 5,
-                                left: -10,
-                            }}
+    return (
+        <section className="container infoMonthChart">
+            <div className="row">
+                <div className="col-md-3 col-12 ton">
+                    <h3 className="h5">Toneladas por mes</h3>
+                    <BarChart
+                        width={230}
+                        height={230}
+                        data={toneladas}
+                        margin={{
+                            top: 5,
+                            bottom: 5,
+                            left: -10,
+                        }}
 
-                        >
-                            <CartesianGrid strokeDasharray="1 1" stroke="white"/>
-                            
-                            <XAxis dataKey="name" fontSize={".6em"} stroke='white'/>
-                            <YAxis fontSize={".7em"} stroke='white'/>
-                            <Tooltip content={"name"}  />
-                            <Bar dataKey="pv" barSize={10} fill="white" />
-                        </BarChart>
-                    </div>
-                    <div className="col-md-3 col-12 usd">
-                        <h3 className="h5">Usd por mes</h3>
-                        <BarChart
-                            width={230}
-                            height={230}
-                            data={usd}
-                            margin={{
-                                top: 5,
-                                bottom: 5,
-                                left: -10,
-                            }}
-                        >
-                           <CartesianGrid strokeDasharray="1 1" stroke='white'/>
-                            <XAxis dataKey="name" fontSize={".6em"} stroke='white'/>
-                            <YAxis fontSize={".7em"} stroke='white' />
-                            <Tooltip content={"name: pv"} fill='#6A6A6A' />
-                            <Bar dataKey="pv" barSize={10} fill="white" />
-                        </BarChart>
-                    </div>
-                    <div className="col-md-3 col-12 ope">
-                        <h3 className="h5">Operaciones por mes</h3>
-                        <BarChart
-                            width={230}
-                            height={230}
-                            data={operaciones}
-                            margin={{
-                                top: 5,
-                                bottom: 5,
-                                left: -10,
-                            }}
-                        >
-                            <CartesianGrid strokeDasharray="1 1" stroke='white' />
-                            <XAxis dataKey="name" fontSize={".6em"} stroke='white'/>
-                            <YAxis fontSize={".7em"} stroke='white'/>
-                            <Tooltip content={"name"}  />
-                            <Bar dataKey="pv" barSize={10} fill="white" />
-                        </BarChart>
-                    </div>
+                    >
+                        <CartesianGrid strokeDasharray="1 1" stroke="white" />
+
+                        <XAxis dataKey="name" fontSize={".6em"} stroke='white' />
+                        <YAxis fontSize={".7em"} stroke='white' />
+                        <Tooltip content={"name"} />
+                        <Bar dataKey="pv" barSize={10} fill="white" />
+                    </BarChart>
+                </div>
+                <div className="col-md-3 col-12 usd">
+                    <h3 className="h5">Usd por mes</h3>
+                    <BarChart
+                        width={230}
+                        height={230}
+                        data={usd}
+                        margin={{
+                            top: 5,
+                            bottom: 5,
+                            left: -10,
+                        }}
+                    >
+                        <CartesianGrid strokeDasharray="1 1" stroke='white' />
+                        <XAxis dataKey="name" fontSize={".6em"} stroke='white' />
+                        <YAxis fontSize={".7em"} stroke='white' />
+                        <Tooltip content={"name: pv"} fill='#6A6A6A' />
+                        <Bar dataKey="pv" barSize={10} fill="white" />
+                    </BarChart>
+                </div>
+                <div className="col-md-3 col-12 ope">
+                    <h3 className="h5">Operaciones por mes</h3>
+                    <BarChart
+                        width={230}
+                        height={230}
+                        data={operaciones}
+                        margin={{
+                            top: 5,
+                            bottom: 5,
+                            left: -10,
+                        }}
+                    >
+                        <CartesianGrid strokeDasharray="1 1" stroke='white' />
+                        <XAxis dataKey="name" fontSize={".6em"} stroke='white' />
+                        <YAxis fontSize={".7em"} stroke='white' />
+                        <Tooltip content={"name"} />
+                        <Bar dataKey="pv" barSize={10} fill="white" />
+                    </BarChart>
                 </div>
             </div>
-  );
+        </section>
+    );
 }
