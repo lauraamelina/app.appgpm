@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import * as DashboardService from "../../services/dashboard.service";
 import AverageChart from './charts/AverageChart'
 import InfoMonthChart from "./charts/InfoMonthChart";
@@ -37,17 +37,22 @@ export default function ChartFob() {
 
 
 
-    }, [setDataFob,setDataPerMonth, setDataStats, setDataContinents ]);
+    }, [setDataFob, setDataPerMonth, setDataStats, setDataContinents]);
 
 
 
 
     return (
-        <section>
-            <AverageChart items={dataFob} />
-            <InfoMonthChart items={dataPerMonth} />
-            <InfoStats items={dataStats} />
-            <WorldMapChart itemsContinents={dataContinents} itemsCountries={dataCountries}/>
+        <section className="chartFOB container-fluid">
+            <div className="row">
+                <div className="col-md-10">
+                    <AverageChart items={dataFob} />
+                    <InfoMonthChart items={dataPerMonth} />
+                    <InfoStats items={dataStats} />
+                    <WorldMapChart itemsContinents={dataContinents} itemsCountries={dataCountries} />
+                </div>
+
+            </div>
         </section>
 
     )

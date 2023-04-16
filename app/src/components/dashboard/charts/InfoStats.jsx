@@ -21,24 +21,30 @@ export default function InfoStats({ items }) {
     }, [items])
 
     return (
-        <section className="container infoStats">
+        <section className="infoStats">
             <div className="row">
-                <div className="col-md-3 col-12">
-                    <PeopleAltIcon />
-                    <h3 className="h5">Usuarios</h3>
-                    <p>{users}</p>
+                <div className="col-md-4 col-12">
+                    <div>
+                        <PeopleAltIcon />
+                        <h3 className="h5">Usuarios</h3>
+                        <p>{users}</p>
+
+                    </div>
+                </div>
+                <div className="col-md-4 col-12">
+                    <div>
+                        <LayersIcon />
+                        <h3 className="h5">Productos</h3>
+                        <p>{products}</p>
+                    </div>
 
                 </div>
-                <div className="col-md-3 col-12">
-                    <LayersIcon />
-                    <h3 className="h5">Productos</h3>
-                    <p>{products}</p>
-
-                </div>
-                <div className="col-md-3 col-12">
-                    <LayersIcon />
-                    <h3 className="h5">Nombre de Productos</h3>
-                    <p>{nameProducts}</p>
+                <div className="col-md-4 col-12">
+                    <div>
+                        <LayersIcon />
+                        <h3 className="h5">Nombre de Productos</h3>
+                        <p>{nameProducts}</p>
+                    </div>
 
                 </div>
             </div>
