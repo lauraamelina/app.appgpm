@@ -1,36 +1,51 @@
 import React , {useState}from "react";
 import { Link } from "react-router-dom";
-import * as authService from '../components/services/auth.service'
+import * as authService from '../../services/auth.service'
 
 // import {useNavigate} from "react-router-dom";
 
-import login from '../assets/img/index.png'
-import logo from '../assets/img/logo-color.png'
+import login from '../../assets/img/index.png'
+import logo from  '../../assets/img/logo-color.png'
 
-function Login() {
+function Login({onLogin}) {
     // let navigate = useNavigate();
 
     const [email, setEmail] = useState([]);
     const [password, setPassword] = useState([])
-    const [error, setError] = useState([])
+    const [error, setError] = useState('')
 
     function handleSubmit(e) {
         e.preventDefault()
         authService.login(email, password)
-        .then(res => console.log(res))
-        .catch(res => console.log(res.error))
+
+        .then((response) => {
+            if(response.status === 200) {
+                setError("")
+                onLogin(response.data, response.token)
+                
+            } else if (response.status === 500) {
+                setError("Usuario o contraseña incorrectos")
+            }
+        })
+
     }
 
 
     return (
-       <main className="login">
+       <section className="login">
             <section className="row">
                 <div className="col-md-6">
                     <img src={login} alt="" />
                 </div>
+
                 <div className="col-md-6 start">
                     <img src={logo} alt="" />
                     <form onSubmit={handleSubmit}>
+                        {error !== "" && 
+                            <div className="alert alert-danger text-center" role="alert">
+                                {error}
+                            </div>
+                        }
                         <div className="mb-3">
                             <label htmlFor="email" className="visually-hidden" required>Nombre</label>
                             <input placeholder="Ingrese su correo electronico" type="text" className="form-control" id="email" value={email} onChange={e=> setEmail(e.target.value)} required/>
@@ -49,7 +64,7 @@ function Login() {
                     </form>
                 </div>
             </section>
-       </main>
+       </section>
     );
 }
 
