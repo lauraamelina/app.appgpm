@@ -5,6 +5,7 @@ import logo from '../../assets/img/logo-color.png'
 export default function Register() {
     const [email, setEmail] = useState([]);
     const [password, setPassword] = useState([])
+    //eslint-disable-next-line
     const [error, setError] = useState('')
 
 

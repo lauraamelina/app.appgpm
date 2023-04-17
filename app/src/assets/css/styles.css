@@ -444,7 +444,165 @@ main {
     .market div {
         max-width: 100% !important;
     }
+}
 
+/* MIS PRODUCTOS */
+
+.productsByUser .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.productsByUser .product {
+    background-color: white;
+    border-radius: 1em;
+    margin-bottom: 2em;
+    width: 99%;
+    position: relative;
+}
+
+.productsByUser .product h2 {
+    color: #3A3A3A;
+    font-weight: bolder;
+    text-align: center;
+    padding: 1em 0 .5em 0;
+}
+
+
+.productsByUser .product ul li {
+    font-size: .8em;
+    padding: 1em 0;
+    border-top: 1px solid #dee2e6;
+    padding: 1em;
+    color: #3A3A3A;
+ 
+}
+
+.productsByUser .product ul li span {
+    font-weight: 700;
+}
+
+.productsByUser .product .precio {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #145388;
+    color: white;
+    padding: .5em 1em;
+    border-radius: 10px;
+    font-weight: bolder;
+}
+
+.productsByUser .product img {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 8em;
+    border-radius: 1em 1em 0 0;
+}
+
+
+/* PRODUCTOS BY ID */
+
+.productId {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.productId .product {
+    background-color: white;
+    border-radius: 1em;
+    width: 100%;
+    position: relative;
+}
+
+.productId .product h2 {
+    color: #3A3A3A;
+    font-weight: bolder;
+    text-align: center;
+    padding: 1em 0 .5em 0;
+}
+
+
+.productId .product ul li {
+    font-size: .8em;
+    padding: 1em 0;
+    border-top: 1px solid #dee2e6;
+    padding: 1em;
+    color: #3A3A3A;
+    text-align: center;
+ 
+}
+
+.productId .product ul li span {
+    font-weight: 700;
+}
+
+.productId .images {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 70%;
+    margin-left: 2em;
+    position: relative;
+}
+
+.productId .images img {
+    width: 100%;
+    height: 24em;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1em;
+}
+
+.productId .images .images_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 99%;
+    margin-left: 1em;
+}
+
+.productId .images .images_list img {
+    width: 70%;
+    height: 8em;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1em;
+    margin-bottom: 1em;
+}
+
+.productId .buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.productId .precio {
+    position: absolute;
+    top: -.3em;
+    left: -.3em;
+    background-color: #145388;
+    color: white;
+    padding: .5em 1em;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 1.5em;
+}
+.not-exist {
+    text-align: center;
+    margin: 5em 0 10em 0;
+
+
+}
+
+.not-exist p{
+    font-size: 2em;
+    font-weight: bolder;
+    text-align: center;
 }
 
 /* FOOTER */

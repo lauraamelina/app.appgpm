@@ -5,14 +5,11 @@ import Dashboard from "../../pages/PageDashboard"
 import SideBar from "../layouts/SideBar";
 import PageMarket from "../../pages/PageMarket"
 import PageTransaction from "../../pages/PageTransaction"
-import PageProducts from "../../pages/PageProducts"
+import PageProductsByUser from "../../pages/products/PageProductsByUser"
+import PageProductById from "../../pages/products/PageProductById"
 import PageNews from "../../pages/PageNews"
 import PageServices from "../../pages/PageServices"
 import Footer from "../layouts/Footer";
-
-
-
-
 
 function RouteDashboard() {
     return (
@@ -23,7 +20,8 @@ function RouteDashboard() {
                 <Route path="/" element={<Dashboard/>}/>
                 <Route path="/operations/market" element={<PageMarket/>}/>
                 <Route path="/transactions/list" element={<PageTransaction/>}/>
-                <Route path="/products/list" element={<PageProducts />} />
+                <Route path="/products/list" element={<PageProductsByUser />} />
+                <Route path='/products/:id' element={<PageProductById />} />
                 <Route path="/news/list" element={<PageNews />} />
                 <Route path="/services/list" element={<PageServices />} />
             </Routes>

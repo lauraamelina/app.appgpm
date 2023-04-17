@@ -3,8 +3,8 @@ import * as authService from '../src/services/auth.service'
 
 import React,{useEffect} from 'react';
 
-import Login from './pages/auth/Login'
-import Register from './pages/auth/Register'
+import Login from './pages/auth/PageLogin'
+import Register from './pages/auth/PageRegister'
 import RouteDashboard from '../src/components/routes/RouteDashboard'
 
 
@@ -14,22 +14,11 @@ function App() {
   let navigate = useNavigate()
   const user = authService.getUser()
 
-  const checkUser = () => {
-    if(user) {
-      if(user.rol === 1) {
-        navigate('/dashboard/admin')
-      } else if(user.rol === 2) {
-        navigate('/dashboard')
-      }
-    } else {
+  useEffect(() => {
+    if(!user) {
       navigate('/login')
     }
-  }
-
-  useEffect(() => {
-    checkUser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [user, navigate])
 
 
     function onLogin(data, token) {

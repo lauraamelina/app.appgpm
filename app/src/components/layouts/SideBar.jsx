@@ -67,6 +67,7 @@ const Sidebar = () => {
 
   useEffect (() => {
     handleMainStyle();
+    localStorage.setItem("isCollapsed", isCollapsed);
     // eslint-disable-next-line
   }, [isCollapsed]);
 
@@ -82,6 +83,11 @@ const Sidebar = () => {
     }
     // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    setIsCollapsed(true);
+    // eslint-disable-next-line
+  }, [selected]);
 
 
   return (
