@@ -1,15 +1,20 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+
+// LAYOUT
 import Header from "../layouts/Header";
-import Dashboard from "../../pages/PageDashboard"
 import SideBar from "../layouts/SideBar";
+import Footer from "../layouts/Footer";
+
+//PAGES
+import Dashboard from "../../pages/PageDashboard"
 import PageMarket from "../../pages/PageMarket"
-import PageTransaction from "../../pages/PageTransaction"
-import PageProductsByUser from "../../pages/products/PageProductsByUser"
-import PageProductById from "../../pages/products/PageProductById"
 import PageNews from "../../pages/PageNews"
 import PageServices from "../../pages/PageServices"
-import Footer from "../layouts/Footer";
+
+//ROUTES
+import RouteProducts from "./RouteProducts"
+import RouteTransactions from "./RouteTransactions"
 
 function RouteDashboard() {
     return (
@@ -19,9 +24,8 @@ function RouteDashboard() {
             <Routes>
                 <Route path="/" element={<Dashboard/>}/>
                 <Route path="/operations/market" element={<PageMarket/>}/>
-                <Route path="/transactions/list" element={<PageTransaction/>}/>
-                <Route path="/products/list" element={<PageProductsByUser />} />
-                <Route path='/products/:id' element={<PageProductById />} />
+                <Route path="/transactions/*" element={<RouteTransactions/>}/>
+                <Route path="/products/*" element={<RouteProducts/>}/>
                 <Route path="/news/list" element={<PageNews />} />
                 <Route path="/services/list" element={<PageServices />} />
             </Routes>

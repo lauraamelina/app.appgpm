@@ -10,7 +10,6 @@ export default function PageProducts() {
     useEffect(() => {
         ProductsService.getProductsByUser()
             .then((data) => {
-                console.log(data)
                 if (data?.data?.length !== 0) {
                     setProducts(data);
                 } else {
@@ -26,7 +25,7 @@ export default function PageProducts() {
         <main className="container productsByUser">
             <div className="header">
                 <h1>Mis productos</h1>
-                <button className="btn btn-primary">Agregar productos</button>
+                <Link to='/dashboard/products/new' className="btn btn-primary">Agregar productos</Link>
             </div>
 
             {products.length !== 0 ?
@@ -34,7 +33,7 @@ export default function PageProducts() {
                 :
                 <div className='not-exist'>
                     <p>No has publicado productos...</p>
-                    <Link to='/dashboard' className="btn btn-primary">Agregar Productos</Link>
+                    <Link to='/dashboard/products/new' className="btn btn-primary">Agregar Productos</Link>
                 </div>
             }
         </main>

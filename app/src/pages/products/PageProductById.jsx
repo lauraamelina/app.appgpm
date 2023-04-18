@@ -15,6 +15,7 @@ export default function PageProductById() {
         ProductsService.getProductById(id)
             .then((res) => {
                 setProduct(res.data)
+                console.log(res.data)
                 if (res.data.vendedor_id === idUser) {
                     setIsUserProduct(true)
                 } else {

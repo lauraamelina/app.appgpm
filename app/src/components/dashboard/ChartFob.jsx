@@ -33,10 +33,6 @@ export default function ChartFob() {
         DashboardService.getCountries().then((data) => {
             setDataCountries(data);
         });
-
-
-
-
     }, [setDataFob, setDataPerMonth, setDataStats, setDataContinents]);
 
 

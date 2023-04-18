@@ -19,8 +19,54 @@ async function getProductById(id) {
     }).then(response => response.json())
 }
 
+async function getProductsName() {
+    return fetch(`${URL}/products_name`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken()
+        },
+    }).then(response => response.json())
+}
+
+async function getCountries() {
+    return fetch(`${URL}/countries`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken()
+        },
+    }).then(response => response.json())
+}
+
+async function getIncoterms() {
+    return fetch(`${URL}/incoterms`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken()
+        },
+    }).then(response => response.json())
+}
+
+async function addProduct(formData) {
+    console.log(formData)
+
+    return fetch(`${URL}/products`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+            'Content-Type': 'multipart/form-data;',
+            'Content-Disposition': 'form-data; name="name"'
+
+        },
+        body: formData
+    }).then(response => response.json())
+}
+
 
 export {
     getProductsByUser,
-    getProductById
+    getProductById,
+    getProductsName,
+    getCountries,
+    getIncoterms,
+    addProduct,
 }
