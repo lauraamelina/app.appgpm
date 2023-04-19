@@ -8,13 +8,13 @@ import Footer from "../layouts/Footer";
 
 //PAGES
 import Dashboard from "../../pages/PageDashboard"
-import PageMarket from "../../pages/PageMarket"
 import PageNews from "../../pages/PageNews"
 import PageServices from "../../pages/PageServices"
 
 //ROUTES
 import RouteProducts from "./RouteProducts"
 import RouteTransactions from "./RouteTransactions"
+import RouteOperations from "./RouteOperations";
 
 function RouteDashboard() {
     return (
@@ -23,7 +23,7 @@ function RouteDashboard() {
             <Header/>
             <Routes>
                 <Route path="/" element={<Dashboard/>}/>
-                <Route path="/operations/market" element={<PageMarket/>}/>
+                <Route path="/operations/*" element={<RouteOperations/>}/>
                 <Route path="/transactions/*" element={<RouteTransactions/>}/>
                 <Route path="/products/*" element={<RouteProducts/>}/>
                 <Route path="/news/list" element={<PageNews />} />

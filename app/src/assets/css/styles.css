@@ -423,16 +423,16 @@ main {
     align-items: center;
     align-content: center;
     max-height: 15em;
-    margin-top: 4em;
+    margin: 4em 0;
 }
 
 .market-publicar .btn {
-    border: 1px solid white;
+    border: 1px solid white !important;
 }
 
 .market-publicar .btn:hover {
-    background-color: white;
-    color: #145388;
+    background-color: white !important;
+    color: #145388 !important;
 }
 
 .market-publicar img {
@@ -545,6 +545,7 @@ main {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    max-width: 70%;
     width: 70%;
     margin-left: 2em;
     position: relative;
@@ -552,6 +553,7 @@ main {
 
 .productId .images img {
     width: 100%;
+    max-width: 100%;
     height: 24em;
     object-fit: cover;
     object-position: center;
@@ -603,7 +605,7 @@ main {
     font-weight: bolder;
     text-align: center;
 }
-    
+
 
 /* NEW PRODUCT */
 .formNewProduct {

@@ -4,16 +4,18 @@ import * as ProductsService from '../../services/products.service'
 import * as AuthService from '../../services/auth.service'
 import Product from '../../components/products/Product'
 import Swal from 'sweetalert2'
-
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function PageProductById() {
     let navigate = useNavigate();
     const { id } = useParams();
     const [product, setProduct] = useState([])
+    const [loading, setLoading] = useState(true)
     const [isUserProduct, setIsUserProduct] = useState(false)
     const idUser = AuthService.getUserId();
 
     useEffect(() => {
+        setLoading(true)
         ProductsService.getProductById(id)
             .then((res) => {
                 setProduct(res.data)
@@ -22,9 +24,11 @@ export default function PageProductById() {
                 } else {
                     setIsUserProduct(false)
                 }
+                setLoading(false)
             })
             .catch((err) => {
                 setProduct([])
+                setLoading(false)
             })
     }, [id, idUser])
 
@@ -37,17 +41,17 @@ export default function PageProductById() {
                         title: 'El producto fue eliminado correctamente.',
                         showConfirmButton: false,
                         color: '#145388'
-                      })
-                      navigate('/dashboard/products/list')
+                    })
+                    navigate('/dashboard/products/list')
 
-                } 
+                }
                 else if (res.status === 404) {
                     Swal.fire({
                         icon: 'error',
                         title: 'El producto no existe.',
                         showConfirmButton: false,
-                      })
-                      navigate('/dashboard/products/list')
+                    })
+                    navigate('/dashboard/products/list')
                 }
 
             })
@@ -66,14 +70,20 @@ export default function PageProductById() {
     return (
         <main>
             <h1 className='visually-hidden'>Producto</h1>
-            {product.length !== 0  ?
-                <Product product={product} isUserProduct={isUserProduct} deleteProduct={deleteProduct}/>
-                :
-                <div className='not-exist'>
-                    <p>El producto no existe</p>
-                    <Link to='/dashboard' className="btn btn-primary">Volver al Inicio</Link>
+            {loading &&
+                <div className="text-center">
+                    <CircularProgress />
                 </div>
             }
+            {!loading && product.length !== 0 && (
+                <Product product={product} isUserProduct={isUserProduct} deleteProduct={deleteProduct} />
+            )}
+            {!loading && product.length === 0 && (
+                <div className='not-exist'>
+                    <p>El producto no existe</p>
+                    <Link to='/dashboard/products/new' className="btn btn-primary">Agregar Productos</Link>
+                </div>
+            )}
         </main>
     )
 }

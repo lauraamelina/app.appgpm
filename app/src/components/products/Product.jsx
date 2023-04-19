@@ -91,7 +91,7 @@ export default function ProductUser({ product, isUserProduct, deleteProduct }) {
                 <div className="product">
                     <h2>{product?.nombre_producto?.nombre}</h2>
                     <ul>
-                        <li> <span>Vendedor: </span>{product?.vendedor_id}</li>
+                        <li> <span>Vendedor: </span>{product?.seller?.slug}</li>
                         <li> <span>Tipo de producto: </span>{getTypes()}</li>
                         <li> <span>Año de Producción: </span>{product?.ano_produccion}</li>
                         <li> <span>Volumen: </span>{product?.volumen}</li>

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import CircularProgress from '@mui/material/CircularProgress';
 
-export default function ProductNewForm({ dataNombreProductos, dataCountries, dataIncoterms, onSubmit }) {
+export default function ProductNewForm({ dataNombreProductos, dataCountries, dataIncoterms, onSubmit, loading }) {
     const [isValidCountry, setIsValidCountry] = useState(false)
     const [thumbnail, setThumbnail] = useState([])
     const [video, setVideo] = useState([])
@@ -152,7 +153,7 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
     function handleSubmit(e) {
         e.preventDefault()
         if (nombre_producto !== "" && tipo1 !== "" && tipo2 !== "" && tipo3 !== "" && clasificacion !== "" && danos_totales !== "" && blanqueados !== "" && granos_fuera_tipo !== "" && granos_partidos !== "" && materias_extranos !== "" && insectos_vivos !== "" && humedad !== "" && granos_decolorados !== "" && anos_produccion !== "" && country !== "" && plazo_carga !== "" && mercaderia !== "" && estado !== "" && peso !== "" && volumen !== "" && incoterm !== "" && puerto !== "" && precio !== "" && thumbnail !== []) {
-           
+
             const fd = new FormData();
             fd.append('nombre_producto', nombre_producto);
             fd.append('tipo1', tipo1);
@@ -363,7 +364,7 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                         <div className="row">
                             <div className="col-2 mt-3">
                                 <label htmlFor="tam_mil_menor_4 "> Menos de 4mm</label>
-                                <input type="number" className="form-control" id="tam_mil_menor_4" name="tam_mil_menor_4"  value={tam_mil_menor_4} onChange={(e) => setMilMenor4mm(e.target.value)} />
+                                <input type="number" className="form-control" id="tam_mil_menor_4" name="tam_mil_menor_4" value={tam_mil_menor_4} onChange={(e) => setMilMenor4mm(e.target.value)} />
                             </div>
 
                             <div className="col-2 mt-3">
@@ -707,6 +708,12 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                     </div>
                 </div>
             </div>
+
+            {loading &&
+                <div className="text-center">
+                    <CircularProgress />
+                </div>
+            }
 
         </form>
 

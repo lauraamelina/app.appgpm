@@ -56,9 +56,18 @@ async function addProduct(formData) {
     }).then(response => response.json())
 }
 
-async function deleteProduct(id) {  
+async function deleteProduct(id) {
     return fetch(`${URL}/products/${id}`, {
         method: 'DELETE',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+        },
+    }).then(response => response.json())
+}
+
+async function getAllProducts() {
+    return fetch(`${URL}/products/all`, {
+        method: 'GET',
         headers: {
             'Authorization': 'Bearer ' + authService.getToken(),
         },
@@ -73,4 +82,5 @@ export {
     getIncoterms,
     addProduct,
     deleteProduct,
+    getAllProducts,
 }

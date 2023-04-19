@@ -3,13 +3,15 @@ import ProductNewForm from '../../components/products/ProductNewForm'
 import * as ProductService from '../../services/products.service'
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-
+    
 export default function PageNewProduct() {
     const navigate = useNavigate();
 
     const [dataNombreProductos, setDataNombreProductos] = useState("");
     const [dataCountries, setDataCountries] = useState("");
     const [dataIncoterms, setDataIncoterms] = useState("");
+    const [loading, setLoading] = useState(false)
+
 
     useEffect(() => {
         ProductService.getProductsName().then((data) => {
@@ -26,8 +28,10 @@ export default function PageNewProduct() {
     }, [setDataNombreProductos, setDataCountries, setDataIncoterms])
 
     function onSubmit(fd) {
+        setLoading(true)
         ProductService.addProduct(fd)
             .then((data) => {
+                setLoading(false)
                 if (data?.status === 200) {
                     navigate('/dashboard/products/list');
                 } else {
@@ -45,7 +49,7 @@ export default function PageNewProduct() {
     return (
         <main>
             <h1>Agregar nuevo</h1>
-            <ProductNewForm dataNombreProductos={dataNombreProductos} dataCountries={dataCountries} dataIncoterms={dataIncoterms} onSubmit={onSubmit} />
+            <ProductNewForm dataNombreProductos={dataNombreProductos} dataCountries={dataCountries} dataIncoterms={dataIncoterms} onSubmit={onSubmit} loading={loading} />
 
         </main>
     )
