@@ -11,7 +11,6 @@ export default function PageAllProducts() {
         setLoading(true)
         ProductService.getAllProducts()
             .then((res) => {
-                console.log(res)
                 setProducts(res.data)
                 setLoading(false)
             })

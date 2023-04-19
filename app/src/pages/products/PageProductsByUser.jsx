@@ -16,7 +16,7 @@ export default function PageProducts() {
             .then((data) => {
                 setLoading(false);
                 if (data?.data?.length !== 0) {
-                    setProducts(data);
+                    setProducts(data?.data);
                 } else {
                     setProducts([]);
                 }

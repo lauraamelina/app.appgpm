@@ -454,7 +454,7 @@ main {
     align-items: center;
 }
 
-.productsByUser .product {
+.product {
     background-color: white;
     border-radius: 1em;
     margin-bottom: 2em;
@@ -462,7 +462,7 @@ main {
     position: relative;
 }
 
-.productsByUser .product h2 {
+.product h2 {
     color: #3A3A3A;
     font-weight: bolder;
     text-align: center;
@@ -470,7 +470,7 @@ main {
 }
 
 
-.productsByUser .product ul li {
+.product ul li {
     font-size: .8em;
     padding: 1em 0;
     border-top: 1px solid #dee2e6;
@@ -479,11 +479,11 @@ main {
 
 }
 
-.productsByUser .product ul li span {
+.product ul li span {
     font-weight: 700;
 }
 
-.productsByUser .product .precio {
+.product .precio {
     position: absolute;
     top: 0;
     right: 0;
@@ -494,7 +494,7 @@ main {
     font-weight: bolder;
 }
 
-.productsByUser .product img {
+.product img {
     object-fit: cover;
     object-position: center;
     width: 100%;
@@ -771,12 +771,12 @@ main {
 }
 
 
-.table-transactions .pagination {
+.pagination {
     display: flex;
     justify-content: center;
 }
 
-.table-transactions .pagination button {
+.pagination button {
     margin: 0 1em;
 }
 
@@ -784,6 +784,16 @@ main {
     text-align: center;
     margin: 5em 0 10em 0;
     font-size: 1.5em;
+}
+
+/* ALL PRODUCTS */
+.allProducts .header {
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 1em;
+    padding: 1em;
+    margin-bottom: 2em;
 }
 
 
