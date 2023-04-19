@@ -1,9 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import {AreaChart,Area,XAxis,YAxis,CartesianGrid,Tooltip} from "recharts";
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 import ImgProducts from "./ImgProducts";
+import CircularProgress from '@mui/material/CircularProgress';
 
-export default function AverageChart({items}) {
+export default function AverageChart({ items, loading }) {
   const [data, setData] = useState([]);
 
   const getIntroOfPage = (label) => {
@@ -54,36 +55,36 @@ export default function AverageChart({items}) {
         </div>
       );
     }
-  
+
     return null;
   };
 
   useEffect(() => {
-      if (Object.keys(items).length > 0) {
-          for (let i = 0; i < Object.keys(items?.promedio).length; i++) {
-            let promedios = []
-            for (let j = 0; j < Object.keys(items?.promedio[i].promedios_venta).length; j++) {
-              promedios = [
-                ...promedios,
-                {
-                  name: items?.promedio[i].promedios_venta[j].month,
-                  uv: items?.promedio[i].promedios_venta[j].price
-                }
-              ]
+    if (Object.keys(items).length > 0) {
+      for (let i = 0; i < Object.keys(items?.promedio).length; i++) {
+        let promedios = []
+        for (let j = 0; j < Object.keys(items?.promedio[i].promedios_venta).length; j++) {
+          promedios = [
+            ...promedios,
+            {
+              name: items?.promedio[i].promedios_venta[j].month,
+              uv: items?.promedio[i].promedios_venta[j].price
             }
+          ]
+        }
 
-            setData(data => [
-              ...data, 
-              {
-                nombre: items?.promedio[i].nombre, 
-                id: items?.promedio[i].id,
-                promedios: promedios
+        setData(data => [
+          ...data,
+          {
+            nombre: items?.promedio[i].nombre,
+            id: items?.promedio[i].id,
+            promedios: promedios
 
-              }
-            ])
           }
+        ])
       }
-      //eslint-disable-next-line
+    }
+    //eslint-disable-next-line
   }, [items])
 
 
@@ -91,7 +92,13 @@ export default function AverageChart({items}) {
     <section className="averageChart">
       <h2>Precio Promedio (FOB) </h2>
 
-      {data.map((item, index) => (
+      {loading &&
+        <div className="text-center">
+          <CircularProgress />
+        </div>
+      }
+
+      {!loading && data.map((item, index) => (
         <div key={index}>
           <div>
             <h3>{item.nombre}</h3>
@@ -107,15 +114,15 @@ export default function AverageChart({items}) {
               left: 0,
               bottom: 0
             }}
-            
+
           >
-            
+
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
-            <Tooltip content={<CustomTooltip />}  />
+            <Tooltip content={<CustomTooltip />} />
 
-            <Area type="monotone" dataKey="uv" fill="#28a745" stroke="#28a745"/>
+            <Area type="monotone" dataKey="uv" fill="#28a745" stroke="#28a745" />
           </AreaChart>
         </div>
       ))}

@@ -11,27 +11,34 @@ export default function ChartFob() {
     const [dataStats, setDataStats] = useState([])
     const [dataContinents, setDataContinents] = useState([])
     const [dataCountries, setDataCountries] = useState([])
+    const [loading, setLoading] = useState(true)
 
 
     useEffect(() => {
+        setLoading(true);
         DashboardService.getFobData().then((data) => {
             setDataFob(data);
+            setLoading(false);
         });
 
         DashboardService.getInfoPerMonth().then((data) => {
             setDataPerMonth(data);
+            setLoading(false);
         });
 
         DashboardService.getStats().then((data) => {
             setDataStats(data);
+            setLoading(false);
         });
 
         DashboardService.getContinents().then((data) => {
             setDataContinents(data);
+            setLoading(false);
         });
 
         DashboardService.getCountries().then((data) => {
             setDataCountries(data);
+            setLoading(false);
         });
     }, [setDataFob, setDataPerMonth, setDataStats, setDataContinents]);
 
@@ -42,7 +49,7 @@ export default function ChartFob() {
         <section className="chartFOB container-fluid">
             <div className="row">
                 <div className="col-md-10">
-                    <AverageChart items={dataFob} />
+                    <AverageChart items={dataFob} loading={loading}/>
                     <InfoMonthChart items={dataPerMonth} />
                     <InfoStats items={dataStats} />
                     <WorldMapChart itemsContinents={dataContinents} itemsCountries={dataCountries} />
