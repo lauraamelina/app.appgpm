@@ -47,20 +47,23 @@ async function getIncoterms() {
 }
 
 async function addProduct(formData) {
-    console.log(formData)
-
-    return fetch(`${URL}/products`, {
+    return fetch(`${URL}/products/`, {
         method: 'POST',
         headers: {
             'Authorization': 'Bearer ' + authService.getToken(),
-            'Content-Type': 'multipart/form-data;',
-            'Content-Disposition': 'form-data; name="name"'
-
         },
         body: formData
     }).then(response => response.json())
 }
 
+async function deleteProduct(id) {  
+    return fetch(`${URL}/products/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+        },
+    }).then(response => response.json())
+}
 
 export {
     getProductsByUser,
@@ -69,4 +72,5 @@ export {
     getCountries,
     getIncoterms,
     addProduct,
+    deleteProduct,
 }

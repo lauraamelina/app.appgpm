@@ -25,8 +25,8 @@ export default function PageNewProduct() {
         });
     }, [setDataNombreProductos, setDataCountries, setDataIncoterms])
 
-    function onSubmit(formData) {
-        ProductService.addProduct(formData)
+    function onSubmit(fd) {
+        ProductService.addProduct(fd)
             .then((data) => {
                 if (data?.status === 200) {
                     navigate('/dashboard/products/list');

@@ -5,7 +5,8 @@ import UploadIcon from '@mui/icons-material/Upload';
 import EmailIcon from '@mui/icons-material/Email';
 import SummarizeIcon from '@mui/icons-material/Summarize';
 
-export default function BtnTransactions({ }) {
+
+export default function BtnTransactions() {
     return (
         <div className="btns-transactions">
             <button className='btn btn-primary'>
