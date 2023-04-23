@@ -22,5 +22,5 @@ async function getTransactionById(id) {
 
 export {
     getTransactionsByUser,
-    getTransactionById
+    getTransactionById,
 }

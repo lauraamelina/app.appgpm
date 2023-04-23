@@ -53,7 +53,6 @@ export default function PageProfileUser() {
     const [loading, setLoading] = useState(true)
     const [value, setValue] = useState(0)
 
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -118,10 +117,10 @@ export default function PageProfileUser() {
                             </Box>
 
                             <TabPanel value={value} index={0}>
-                                <MarketByUser productsByUser={productsByUser} />
+                                <MarketByUser productsByUser={productsByUser} isProduct={true} />
                             </TabPanel>
                             <TabPanel value={value} index={1}>
-                                <MarketByUser productsByUser={demandsByUser} />
+                                <MarketByUser productsByUser={demandsByUser} isProduct={false} />
                             </TabPanel>
                             <TabPanel value={value} index={2}>
                             </TabPanel>

@@ -27,9 +27,15 @@ export default function CardProduct({ product }) {
         } else if (product?.image) {
             setLink(`/dashboard/demands/${product?.id}`)
             setImg(`https://api.appgpm.com/files/demands/${product?.image}`)
+        } else if (!product?.seller){
+            setLink(`/dashboard/demands/${product?.id}`)
         } else {
             setImg(Img)
+            setLink(`/dashboard/products/${product?.id}`)
         }
+
+
+
 
     }, [product])
 

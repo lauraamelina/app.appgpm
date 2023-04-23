@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import GppBadIcon from '@mui/icons-material/GppBad';
 
 export default function InfoByUser({ user }) {
     const [isUserVerified, setIsUserVerified] = useState(user?.verificado === 1 ? true : false)
+
+    useEffect(() => {
+        setIsUserVerified(user?.verificado === 1 ? true : false)
+    }, [user])
 
     function getImage() {
         if (user?.avatar) {

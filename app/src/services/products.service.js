@@ -74,6 +74,16 @@ async function getAllProducts() {
     }).then(response => response.json())
 }
 
+async function buyProduct(id, volumen) {
+    return fetch(`${URL}/products/${id}/buy`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+        },
+        body: JSON.stringify({ volumen })
+    }).then(response => response.json())
+}
+
 export {
     getProductsByUser,
     getProductById,
@@ -83,4 +93,5 @@ export {
     addProduct,
     deleteProduct,
     getAllProducts,
+    buyProduct,
 }

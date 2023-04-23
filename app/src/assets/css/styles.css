@@ -1001,8 +1001,8 @@ main {
 }
 
 .userProfile .card svg {
-    width: 1.3em;
-    height: 1.3em;
+    width: 1em;
+    height: 1em;
 }
 
 [data-testid="GppBadIcon"] {
@@ -1019,6 +1019,7 @@ main {
     padding: 1em;
     position: relative;
     color: #3a3a3a;
+    margin: 1em 0;
 }
 
 .marketByUser .card .img-user img {
@@ -1070,6 +1071,15 @@ main {
 .css-19kzrtu {
     padding: 1.5em 0 !important;
 }
+
+
+
+
+
+
+
+
+
 
 
 

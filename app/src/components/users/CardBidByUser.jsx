@@ -29,23 +29,21 @@ export default function CardMarketByUser({ product }) {
     }
 
     useEffect(() => {
-        if (product?.image?.imagen) {
-            setImg(`https://api.appgpm.com/files/products/${product?.image?.imagen}`)
-        } 
-        else {
+        if (product?.image) {
+            setImg(`https://api.appgpm.com/files/demands/${product?.image}`)
+        } else {
             setImg(Img)
         }
 
-        if (product?.seller?.avatar) {
-            setImgUser(`https://api.appgpm.com/files/img/${product?.seller?.avatar}`)
+        if (product?.user?.avatar) {
+            setImgUser(`https://api.appgpm.com/files/img/${product?.user?.avatar}`)
         } else {
             setImgUser(Img)
         }
     }, [product])
 
-
     return (
-        <Link to={`/dashboard/products/${product?.id}`}>
+        <Link to={`/dashboard/demands/${product?.id}`}>
             <div className='card'>
                 <div className="img-user">
                     <img src={imgUser} alt='Imagen del usuario' />

@@ -2,6 +2,7 @@ import React from 'react';
 import Img from '../../assets/img/img_generica.png'
 import Swal from 'sweetalert2'
 import '@sweetalert2/theme-bootstrap-4/bootstrap-4.scss';
+import { Link } from 'react-router-dom';
 
 export default function ProductById({ product, isUserProduct, deleteProduct }) {
     function getTypes() {
@@ -17,7 +18,6 @@ export default function ProductById({ product, isUserProduct, deleteProduct }) {
         }
         return types.join(', ')
     }
-
     function getImage(image) {
         if (image) {
             return `https://api.appgpm.com/files/products/${image}`
@@ -91,7 +91,8 @@ export default function ProductById({ product, isUserProduct, deleteProduct }) {
                 <div className="product">
                     <h2>{product?.nombre_producto?.nombre}</h2>
                     <ul>
-                        <li> <span>Vendedor: </span>{product?.seller?.slug}</li>
+                        <li> <span>Vendedor: </span> 
+                            <Link to={`/dashboard/users/profile/${product?.seller?.id}`}>{product?.seller?.slug}</Link> </li>
                         <li> <span>Tipo de producto: </span>{getTypes()}</li>
                         <li> <span>Año de Producción: </span>{product?.ano_produccion}</li>
                         <li> <span>Volumen: </span>{product?.volumen}</li>
