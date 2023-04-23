@@ -272,6 +272,11 @@ main {
     margin-bottom: 0 !important;
 }
 
+.averageChart > .text-center {
+    display: block;
+    margin: 3em auto;
+}
+
 .infoStats {
     margin: 4em 0;
     color: #145388;
@@ -888,6 +893,183 @@ main {
     font-weight: bolder;
 }
 
+
+/* DEMAND BY ID */
+
+
+.demandId .row {
+    justify-content: space-between;
+}
+
+.demandId .product {
+    background-color: white;
+    border-radius: 1em;
+    position: relative;
+}
+
+.demandId .product h2 {
+    color: #3A3A3A;
+    font-weight: bolder;
+    text-align: center;
+    padding: 1em 0 .5em 0;
+}
+
+
+.demandId .product ul li {
+    font-size: .8em;
+    padding: 1em 0;
+    border-top: 1px solid #dee2e6;
+    padding: 1em;
+    color: #3A3A3A;
+    text-align: center;
+
+}
+
+.demandId .product ul li span {
+    font-weight: 700;
+}
+
+.demandId .images {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+}
+
+.demandId .images img {
+    width: 100%;
+    max-width: 100%;
+    height: 22em;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1em;
+}
+
+
+.demandId .buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.demandId .precio {
+    position: absolute;
+    top: -.3em;
+    left: -.3em;
+    background-color: #145388;
+    color: white;
+    padding: .5em 1em;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 1.5em;
+}
+
+/* USER PROFILE */
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+    font-family: 'Nunito', sans-serif !important;
+}
+
+.userProfile .row {
+    margin-top: 3em;
+}
+
+.userProfile .card {
+    background-color: white;
+    border-radius: 1em;
+    padding: 1em;
+    position: relative;
+}
+
+.userProfile .card h2 {
+    margin: 3.5em 0 1em 0;
+    text-align: center;
+    font-weight: bolder;
+}
+
+
+.userProfile .card .img img {
+    width: 8em;
+    height: 8em;
+    object-fit: cover;  
+    object-position: center;
+    border-radius: 50%;
+    position: absolute;
+    top: -4em;
+    left: calc(50% - 4em);
+}
+
+.userProfile .card svg {
+    width: 1.3em;
+    height: 1.3em;
+}
+
+[data-testid="GppBadIcon"] {
+    color: #DC3545;
+}
+
+[data-testid="VerifiedUserIcon"] {
+    color: #28A745;
+}
+
+.marketByUser .card {
+    background-color: white;
+    border-radius: 1em;
+    padding: 1em;
+    position: relative;
+    color: #3a3a3a;
+}
+
+.marketByUser .card .img-user img {
+    width: 3em;
+    height: 3em;
+    object-fit: cover;  
+    object-position: center;
+    border-radius: 50%;
+    position: absolute;
+    top: .5em;
+    left: .5em;
+}
+
+.marketByUser .card h2 {
+    margin: 0em 0 .5em 3em;
+    text-align: left;
+    font-size: 1em;
+}
+
+.marketByUser .card .date {
+    position: absolute;
+    top: 3em;
+    left: 5em;
+    font-size: .8em;
+    color: #909090;
+}
+
+.marketByUser .card h3 {
+    margin: 1em 0 .4em 0em;
+    text-align: left;
+    font-weight: bolder;
+}
+
+.marketByUser .card .img-product img {
+    width: 10em;
+    height: 100%;
+    object-fit: cover;  
+    object-position: center;
+    border-radius: 1em;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.marketByUser .card p {
+    margin-bottom: 0;
+}
+
+.css-19kzrtu {
+    padding: 1.5em 0 !important;
+}
 
 
 

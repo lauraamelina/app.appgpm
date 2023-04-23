@@ -3,7 +3,7 @@ import Img from '../../assets/img/img_generica.png'
 import Swal from 'sweetalert2'
 import '@sweetalert2/theme-bootstrap-4/bootstrap-4.scss';
 
-export default function ProductUser({ product, isUserProduct, deleteProduct }) {
+export default function ProductById({ product, isUserProduct, deleteProduct }) {
     function getTypes() {
         let types = [];
         if (product?.tipo1) {

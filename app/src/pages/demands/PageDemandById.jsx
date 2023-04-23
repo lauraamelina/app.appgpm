@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import * as ProductsService from '../../services/products.service'
-import * as AuthService from '../../services/auth.service'
-import ProductById from '../../components/products/ProductById'
-import Swal from 'sweetalert2'
+import * as DemandService from '../../services/demands.service'
+import * as AuthService from '../../services/auth.service';
+import Swal from 'sweetalert2';
 import CircularProgress from '@mui/material/CircularProgress';
+import DemandById from '../../components/demands/DemandById';
 
-export default function PageProductById() {
+export default function PageDemandById() {
     let navigate = useNavigate();
     const { id } = useParams();
     const [product, setProduct] = useState([])
@@ -16,10 +16,10 @@ export default function PageProductById() {
 
     useEffect(() => {
         setLoading(true)
-        ProductsService.getProductById(id)
+        DemandService.getDemandById(id)
             .then((res) => {
                 setProduct(res.data)
-                if (res.data.vendedor_id === idUser) {
+                if (res.data.user_id === idUser) {
                     setIsUserProduct(true)
                 } else {
                     setIsUserProduct(false)
@@ -33,25 +33,32 @@ export default function PageProductById() {
     }, [id, idUser])
 
     const deleteProduct = () => {
-        ProductsService.deleteProduct(id)
+        DemandService.deleteDemand(id)
             .then((res) => {
                 if (res.status === 200) {
                     Swal.fire({
                         icon: 'success',
-                        title: 'El producto fue eliminado correctamente.',
+                        title: 'El bid fue eliminado correctamente.',
                         showConfirmButton: false,
                         color: '#145388'
                     })
-                    navigate('/dashboard/products/list')
+                    navigate('/dashboard/operations/bids')
 
                 }
                 else if (res.status === 404) {
                     Swal.fire({
                         icon: 'error',
-                        title: 'El producto no existe.',
+                        title: 'El bid no existe.',
                         showConfirmButton: false,
                     })
-                    navigate('/dashboard/products/list')
+                    navigate('/dashboard/operations/bids')
+                } else if (res.status === 500) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Hubo un error al eliminar el bid.',
+                        showConfirmButton: false,
+                    })
+                    navigate('/dashboard/operations/bids')
                 }
 
             })
@@ -59,29 +66,29 @@ export default function PageProductById() {
                 console.log(err)
                 Swal.fire({
                     icon: 'error',
-                    title: 'Hubo un error al eliminar el producto.',
+                    title: 'Hubo un error al eliminar el bid.',
                     showConfirmButton: false,
                 })
-                navigate('/dashboard/products/list')
+                navigate('/dashboard/operations/bids')
             })
     }
 
 
     return (
         <main>
-            <h1 className='visually-hidden'>Producto</h1>
+            <h1 className='visually-hidden'>Bid</h1>
             {loading &&
                 <div className="text-center">
                     <CircularProgress />
                 </div>
             }
             {!loading && product.length !== 0 && (
-                <ProductById product={product} isUserProduct={isUserProduct} deleteProduct={deleteProduct} />
+                <DemandById product={product} isUserProduct={isUserProduct} deleteProduct={deleteProduct} />
             )}
             {!loading && product.length === 0 && (
                 <div className='not-exist'>
-                    <p>El producto no existe</p>
-                    <Link to='/dashboard/products/new' className="btn btn-primary">Agregar Productos</Link>
+                    <p>El bid no existe</p>
+                    <Link to='/dashboard/demands/new' className="btn btn-primary">Agregar Bid</Link>
                 </div>
             )}
         </main>
