@@ -5,16 +5,39 @@ async function login(email, password) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({email, password})
+        body: JSON.stringify({ email, password })
     })
-    .then(async res => {
-        if(res.status === 200) {
-            return res.json()
-        } else if (res.status === 500) {
-            return res.json('Error de autenticación: el correo o la contraseña son incorrectos')
-        }
-    })
+        .then(async res => {
+            if (res.status === 200) {
+                return res.json()
+            } else if (res.status === 500) {
+                return res.json('Error de autenticación: el correo o la contraseña son incorrectos')
+            }
+        })
 }
+
+async function freeEmailRegister(email) {
+    return fetch('https://api.appgpm.com/free', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email })
+    }).then(response => response.json())
+}
+
+async function register(email, password, type, name, nit, country) {
+    return fetch('https://api.appgpm.com/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password, type, name, nit, country })
+    }).then(response => response.json())
+}
+
+
+
 
 function logout() {
     deleteUser()
@@ -59,5 +82,7 @@ export {
     getToken,
     setToken,
     deleteUser,
-    deleteToken
+    deleteToken,
+    freeEmailRegister,
+    register
 }

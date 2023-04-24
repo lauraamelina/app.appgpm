@@ -1,5 +1,8 @@
-import React  from "react";
-import { Routes, Route } from "react-router-dom";
+import React, {useEffect} from "react";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
+
+// SERVICES
+import * as AuthService from "../../services/auth.service"
 
 // LAYOUT
 import Header from "../layouts/Header";
@@ -19,7 +22,18 @@ import RouteDemands from './RouteDemands'
 import RouteUsers from "./RouteUsers";
 
 
+
+
 function RouteDashboard() {
+    let navigate = useNavigate()
+    const user = AuthService.getUser();
+
+    useEffect(() => {
+        if (!user) {
+            navigate('/login')
+        }
+    }, [user, navigate])
+
     return (
         <>
             <SideBar />
@@ -33,6 +47,7 @@ function RouteDashboard() {
                 <Route path="/users/*" element={<RouteUsers />} />
                 <Route path="/news/list" element={<PageNews />} />
                 <Route path="/services/list" element={<PageServices />} />
+                <Route path="*" element={<Navigate to="/dashboard" />} />
             </Routes>
             <Footer />
         </>

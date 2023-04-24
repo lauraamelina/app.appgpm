@@ -28,15 +28,6 @@ async function getProductsName() {
     }).then(response => response.json())
 }
 
-async function getCountries() {
-    return fetch(`${URL}/countries`, {
-        method: 'GET',
-        headers: {
-            'Authorization': 'Bearer ' + authService.getToken()
-        },
-    }).then(response => response.json())
-}
-
 async function getIncoterms() {
     return fetch(`${URL}/incoterms`, {
         method: 'GET',
@@ -89,7 +80,6 @@ export {
     getProductsByUser,
     getProductById,
     getProductsName,
-    getCountries,
     getIncoterms,
     addProduct,
     deleteProduct,

@@ -47,7 +47,7 @@ function Login({onLogin}) {
                             </div>
                         }
                         <div className="mb-3">
-                            <label htmlFor="email" className="visually-hidden" required>Nombre</label>
+                            <label htmlFor="email" className="visually-hidden" required>Email</label>
                             <input placeholder="Ingrese su correo electronico" type="text" className="form-control" id="email" value={email} onChange={e=> setEmail(e.target.value)} required/>
                         </div>
 
@@ -59,7 +59,7 @@ function Login({onLogin}) {
                         <div className="text-center mt-0 botones-login">
                             <button className="btn btn-primary" type="submit">Ingresar</button>
                             <Link className="btn-default fw-bold fs-6 mb-2" to={'/recuperacion'}> ¿Olvidaste tu contraseña?</Link>
-                            <Link className="btn btn-secondary" to={'/registro'}> Registrate</Link>
+                            <Link className="btn btn-secondary" to={'/register'}> Registrate</Link>
                         </div>
                     </form>
                 </div>

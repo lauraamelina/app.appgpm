@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Img from '../../assets/img/img_generica.png'
 import Swal from 'sweetalert2'
 import '@sweetalert2/theme-bootstrap-4/bootstrap-4.scss';
-import * as ProductService from '../../services/products.service'
+import * as CountriesService from '../../services/countries.service'
 
 export default function DemandById({ product, isUserProduct, deleteProduct, sellProduct }) {
     const [country, setCountry] = useState([])
 
     useEffect(() => {
-        ProductService.getCountries()
+        CountriesService.getCountries()
             .then((res) => {
                 //eslint-disable-next-line
                 res.data.map((country) => {

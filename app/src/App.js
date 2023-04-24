@@ -1,8 +1,6 @@
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
-import * as authService from '../src/services/auth.service'
-
 import React, { useEffect } from 'react';
-
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import * as authService from '../src/services/auth.service'
 import Login from './pages/auth/PageLogin'
 import Register from './pages/auth/PageRegister'
 import RouteDashboard from '../src/components/routes/RouteDashboard'
@@ -10,13 +8,6 @@ import RouteDashboard from '../src/components/routes/RouteDashboard'
 function App() {
   let navigate = useNavigate()
   const user = authService.getUser();
-
-  useEffect(() => {
-    if (!user) {
-      navigate('/login')
-    }
-  }, [user, navigate])
-
   function onLogin(data, token) {
     authService.setUser(data)
     authService.setToken(token)
@@ -28,6 +19,21 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    if (user) {
+      if (window.location.pathname === '/') {
+        if (user.rol === 1) {
+          navigate('/dashboard/admin')
+        } else if (user.rol === 2) {
+          navigate('/dashboard')
+        }
+      }
+    } else {
+      if (window.location.pathname === '/dashboard') {
+        navigate('/login')
+      }
+    }
+  }, [user, navigate])
 
 
 
@@ -37,9 +43,6 @@ function App() {
         <Route path='/login' element={<Login onLogin={onLogin} />} />
         <Route path='/register' element={<Register />} />
         <Route path='/dashboard/*' element={<RouteDashboard />} />
-        <Route path="/" element={<Navigate to="/dashboard" />} />
-        <Route path="*" element={<Navigate to="/dashboard" />} />
-
       </Routes>
     </>
   );

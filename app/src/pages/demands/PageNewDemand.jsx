@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import DemandNewForm from '../../components/demands/DemandNewForm'
 import * as ProductService from '../../services/products.service'
 import * as DemandsService from '../../services/demands.service'
+import * as CountriesService from '../../services/countries.service'
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
     
@@ -18,7 +19,7 @@ export default function PageNewDemand() {
             setDataNombreProductos(data);
         });
 
-        ProductService.getCountries().then((data) => {
+        CountriesService.getCountries().then((data) => {
             setDataCountries(data);
         });
 
