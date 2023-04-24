@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box, IconButton } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/img/logo.png";
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import SellIcon from '@mui/icons-material/Sell';
@@ -15,6 +15,7 @@ import * as AuthService from '../../services/auth.service'
 
 
 const Topbar = () => {
+  let navigate = useNavigate();
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [user, setUser] = useState(AuthService.getUser() || null)
 
@@ -49,8 +50,13 @@ const Topbar = () => {
     { name: 'Mi perfil', link: `/dashboard/users/profile/${user?.id}` },
     { name: 'Editar perfil', link: '/dashboard/users/profile/edit' },
     { name: 'Cambiar contraseña', link: '/dashboard/users/password' },
-    { name: 'Cerrar sesión', link: '/logout' }
   ]
+
+  const onLogout = () => {
+    AuthService.logout()
+    navigate('/login')
+  }
+
 
   return (
     <header>
@@ -111,6 +117,14 @@ const Topbar = () => {
                   </Link>
                 </MenuItem>
               ))}
+
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Link onClick={onLogout}>
+                  <Typography variant="body2" sx={{ color: '#3A3A3A' }} fontFamily={'Nunito, sans-serif '}>
+                    Cerrar sesión
+                  </Typography>
+                </Link>
+              </MenuItem>
             </Menu>
           </Box>
 
