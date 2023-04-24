@@ -49,6 +49,21 @@ async function updateAvatar(avatar) {
     }).then(response => response.json())
 }
 
+async function changePassword(antPassword, password, repeatPassword) {
+    return fetch(`${URL}/users/password`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            antPassword,
+            password,
+            repeatPassword
+        })
+    }).then(response => response.json())
+}
+
 
 
 export {
@@ -56,6 +71,7 @@ export {
     getProductsByUser,
     getDemandsByUser,
     updateUser,
-    updateAvatar
+    updateAvatar,
+    changePassword
 
 }

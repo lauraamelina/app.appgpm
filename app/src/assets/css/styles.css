@@ -1130,7 +1130,16 @@ main {
 }
 
 
+/* PASSWORD EDIT */
 
+.editPassword {
+    width: 70%;
+}
+.editPassword form {
+    background-color: white;
+    border-radius: 1em;
+    padding: 1em;
+}
 
 
 

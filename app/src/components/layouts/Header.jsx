@@ -48,7 +48,7 @@ const Topbar = () => {
   const settings = [
     { name: 'Mi perfil', link: `/dashboard/users/profile/${user?.id}` },
     { name: 'Editar perfil', link: '/dashboard/users/profile/edit' },
-    { name: 'Cambiar contraseña', link: '/dashboard/account' },
+    { name: 'Cambiar contraseña', link: '/dashboard/users/password' },
     { name: 'Cerrar sesión', link: '/logout' }
   ]
 
