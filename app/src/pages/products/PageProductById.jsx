@@ -66,7 +66,34 @@ export default function PageProductById() {
             })
     }
 
-
+    const buyProduct = (id, volumen) => {
+        setLoading(true)
+        ProductsService.buyProduct(id, volumen)
+            .then((res) => {
+                setLoading(false)
+                if (res.status === 200) {
+                    console.log(res)
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'El producto fue comprado correctamente.',
+                        showConfirmButton: false,
+                        color: '#145388'
+                    })
+                    navigate(`/dashboard/transactions/${res?.data?.id}`)
+                }
+                else if (res.status === 500) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Hubo un error al comprar el producto.',
+                        showConfirmButton: false,
+                    })
+                }  
+            })
+            .catch((err) => {
+                setLoading(false)
+                console.log(err)
+            })
+    }
     return (
         <main>
             <h1 className='visually-hidden'>Producto</h1>
@@ -76,7 +103,7 @@ export default function PageProductById() {
                 </div>
             }
             {!loading && product.length !== 0 && (
-                <ProductById product={product} isUserProduct={isUserProduct} deleteProduct={deleteProduct} />
+                <ProductById product={product} isUserProduct={isUserProduct} deleteProduct={deleteProduct} buyProduct={buyProduct} />
             )}
             {!loading && product.length === 0 && (
                 <div className='not-exist'>

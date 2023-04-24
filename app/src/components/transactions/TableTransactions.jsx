@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import * as AuthService from '../../services/auth.service'
 
 export default function TableTransactions({ transactions }) {
+    console.log(transactions)
     const [searchYear, setSearchYear] = useState("");
     const [searchProduct, setSearchProduct] = useState("");
-    const [filtered, setFiltered] = useState(transactions)
+    const [filtered, setFiltered] = useState(transactions);
+    const user = AuthService.getUserId();
 
     const [currentPage, setCurrentPage] = useState(1);
     const [transactionsPerPage] = useState(10);
     const indexOfLastTransaction = currentPage * transactionsPerPage;
     const indexOfFirstTransaction = indexOfLastTransaction - transactionsPerPage;
-    const currentTransactions = filtered?.sort((a, b) => a.id - b.id).slice(indexOfFirstTransaction, indexOfLastTransaction);
+    const currentTransactions = filtered?.sort((a, b) => a.created_at - b.created_at).slice(indexOfFirstTransaction, indexOfLastTransaction);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     function getYears() {
@@ -36,14 +39,6 @@ export default function TableTransactions({ transactions }) {
         return products;
     }
 
-    function getType() {
-        if (transactions?.solictud_enviada_por === transactions?.comprador_id) {
-            return 'Compra'
-        } else {
-            return 'Venta'
-        }
-    }
-
     function formatedDate(date) {
         const dateFormated = new Date(date);
         const day = dateFormated.getDate();
@@ -52,9 +47,17 @@ export default function TableTransactions({ transactions }) {
         return `${day}/${month}/${year}`
     }
 
-
     useEffect(() => {
+        transactions?.forEach((transaction) => {
+            if (transaction?.vendedor_id === user) {
+                transaction.type = "Venta";
+            }
+            else if (transaction?.comprador_id === user) {
+                transaction.type = "Compra";
+            }
+        });
         setFiltered(transactions);
+
     }, [transactions]);
 
     useEffect(() => {
@@ -156,12 +159,20 @@ export default function TableTransactions({ transactions }) {
                             {currentTransactions?.map((transaction) => (
                                 <tr key={transaction?.id}>
                                     <td>{transaction?.id}</td>
-                                    <td className="red"> <span>{getType()}</span></td>
+                                    {transaction?.type === "Venta" ? (
+                                        <td className="green"><span>{transaction?.type}</span></td>
+                                    ) : (
+                                        <td className="red"><span>{transaction?.type}</span></td>
+                                    )}
                                     <td>{transaction?.seller?.email}</td>
                                     <td>{transaction?.buyer?.email}</td>
                                     <td>{transaction?.nombre_producto?.nombre}</td>
                                     <td>{formatedDate(transaction?.created_at)}</td>
-                                    <td className="red"><span>{transaction?.valor_total}</span></td>
+                                    {transaction?.type === "Venta" ? (
+                                         <td className="green"><span>{transaction?.valor_total}</span></td>
+                                    ) : (
+                                        <td className="red"><span>{transaction?.valor_total}</span></td>
+                                    )}
                                     <td>
                                         <Link to={`/dashboard/transactions/${transaction?.id}`} className='btn btn-primary'>Ver</Link>
                                     </td>
@@ -171,11 +182,12 @@ export default function TableTransactions({ transactions }) {
                     </table>
                     <p>Pagina {currentPage} de {Math.ceil(filtered?.length / transactionsPerPage)}</p>
 
-
-                    <div className="pagination">
-                        <button className='btn btn-primary' onClick={prevPaginate}>Anterior</button>
-                        <button className='btn btn-primary' onClick={nextPaginate}>Siguiente</button>
-                    </div>
+                    {filtered?.length > transactionsPerPage && (
+                        <div className="pagination">
+                            <button className='btn btn-primary' onClick={prevPaginate}>Anterior</button>
+                            <button className='btn btn-primary' onClick={nextPaginate}>Siguiente</button>
+                        </div>
+                    )}
                 </>
             )}
 

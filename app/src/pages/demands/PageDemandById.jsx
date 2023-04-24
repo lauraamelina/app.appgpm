@@ -73,6 +73,28 @@ export default function PageDemandById() {
             })
     }
 
+    const sellProduct = (id, volumen, price) => {
+        setLoading(true)
+        DemandService.sellDemand(id, volumen, price)
+            .then((res) => {
+                setLoading(false)
+                if (res.status === 200) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'El bid fue vendido correctamente.',
+                        showConfirmButton: false,
+                        color: '#145388'
+                    })
+                    navigate(`/dashboard/transactions/${res?.data?.id}`)
+                } else if (res.status === 500) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Hubo un error al vender el bid.',
+                        showConfirmButton: false,
+                    })
+                }
+            })
+    }
 
     return (
         <main>
@@ -83,7 +105,7 @@ export default function PageDemandById() {
                 </div>
             }
             {!loading && product.length !== 0 && (
-                <DemandById product={product} isUserProduct={isUserProduct} deleteProduct={deleteProduct} />
+                <DemandById product={product} isUserProduct={isUserProduct} deleteProduct={deleteProduct} sellProduct={sellProduct} />
             )}
             {!loading && product.length === 0 && (
                 <div className='not-exist'>

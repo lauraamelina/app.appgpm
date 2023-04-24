@@ -16,24 +16,28 @@
 .btn-primary {
     background-color: var(--azul) !important;
     border-color: var(--azul) !important;
+    color: white !important;
 }
 
 .btn-primary:active,
 .btn-primary:hover {
     background-color: var(--azul-f);
     border-color: var(--azul-f);
+    color: white !important;
 }
 
 
 .btn-secondary {
     background-color: var(--naranja);
     border-color: var(--naranja);
+    color: white !important;
 }
 
 .btn-secondary:active,
 .btn-secondary:hover {
     background-color: var(--naranja-f);
     border-color: var(--naranja-f);
+    color: white !important;
 }
 
 /* GENERALES */
@@ -72,6 +76,7 @@ ul {
 
 a {
     text-decoration: none;
+    color: var(--azul) !important;
 }
 
 
@@ -150,6 +155,10 @@ header {
     top: 90px;
     left: 0;
     color: white;
+}
+
+.pro-sidebar a {
+    color: white !important; 
 }
 
 main {
@@ -775,6 +784,14 @@ main {
     padding: .5em;
 }
 
+.table-transactions .table tbody .green span {
+    background-color: #28A745;
+    color: white;
+    border-radius: 1em;
+    padding: .5em;
+}
+
+
 
 .pagination {
     display: flex;
@@ -863,9 +880,8 @@ main {
 
 .btns-transactions {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    padding: 1em;
 }
 
 .btns-transactions .btn {
@@ -876,7 +892,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 0 1em 0;
+    margin: 1em 2em;
     width: 100%;
     padding: 0.5rem 0 !important;
 }
@@ -891,6 +907,13 @@ main {
     color: #145388;
     text-transform: uppercase;
     font-weight: bolder;
+}
+
+.transaction.btn-primary {
+    display: block !important;
+    width: fit-content !important;
+    margin: 2em auto !important;
+
 }
 
 

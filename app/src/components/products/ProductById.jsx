@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 import '@sweetalert2/theme-bootstrap-4/bootstrap-4.scss';
 import { Link } from 'react-router-dom';
 
-export default function ProductById({ product, isUserProduct, deleteProduct }) {
+export default function ProductById({ product, isUserProduct, deleteProduct, buyProduct }) {
     function getTypes() {
         let types = [];
         if (product?.tipo1) {
@@ -18,6 +18,7 @@ export default function ProductById({ product, isUserProduct, deleteProduct }) {
         }
         return types.join(', ')
     }
+
     function getImage(image) {
         if (image) {
             return `https://api.appgpm.com/files/products/${image}`
@@ -84,6 +85,53 @@ export default function ProductById({ product, isUserProduct, deleteProduct }) {
         })
     }
 
+    function handleBuy() {
+        let volumen = 0
+        Swal.fire({
+            title: '¿Qué cantidad desea comprar?',
+            input: 'number',
+            inputPlaceholder: 'Ingrese el volumen',
+            inputAttributes: {
+                min: 1,
+                max: parseInt(product?.volumen),
+                step: 1
+            },
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'Debes ingresar un volumen'
+                }
+                if (value > parseInt(product?.volumen)) {
+                    return `El volumen no puede ser mayor al disponible (${product?.volumen})`
+                }
+                volumen = value
+            },
+
+            showCancelButton: true,
+            confirmButtonText: 'Comprar',
+            showLoaderOnConfirm: true,
+            confirmButtonColor: '#145388',
+            preConfirm(login) {
+                volumen = parseInt(login)
+            },
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: '¿Estás seguro de comprar este producto?',
+                    text: "No podrás revertir esta acción",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#145388',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, comprar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        buyProduct(product?.id, volumen)
+                    }
+                })
+            }
+        })
+    }
 
     return (
         <section className='container productId'>
@@ -108,7 +156,7 @@ export default function ProductById({ product, isUserProduct, deleteProduct }) {
                     </>)}
 
                     {!isUserProduct && (<>
-                        <button className="btn btn-primary mb-2">Comprar producto</button>
+                        <button onClick={handleBuy} className="btn btn-primary mb-2">Comprar producto</button>
                         <button onClick={detailsProduct} className="btn btn-success mb-2">Más información del producto</button>
                         <button className="btn btn-secondary">Chatear con el vendedor</button>
                     </>)}

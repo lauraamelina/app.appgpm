@@ -1,9 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-export default function TransactionById({ transaction }) {
-    console.log(transaction)
-
+export default function TransactionDemandById({ transaction }) {
     function formatedDate(date) {
         const dateFormated = new Date(date);
         const day = dateFormated.getDate();
@@ -14,14 +12,14 @@ export default function TransactionById({ transaction }) {
 
     function getTypes() {
         let types = [];
-        if (transaction?.product?.tipo1) {
-            types.push(transaction?.product?.tipo1)
+        if (transaction?.demand?.tipo1) {
+            types.push(transaction?.demand?.tipo1)
         }
-        if (transaction?.product?.tipo2) {
-            types.push(transaction?.product?.tipo2)
+        if (transaction?.demand?.tipo2) {
+            types.push(transaction?.demand?.tipo2)
         }
-        if (transaction?.product?.tipo3) {
-            types.push(transaction?.product?.tipo3)
+        if (transaction?.demand?.tipo3) {
+            types.push(transaction?.demand?.tipo3)
         }
         return types.join(', ')
     }
@@ -29,7 +27,7 @@ export default function TransactionById({ transaction }) {
     return (
         <section className='transactionId container'>
             <div className="row">
-                <div className="col-md-3 comprador">
+                <div className="col-md-6 comprador">
                     <section>
                         <h2>Comprador</h2>
                         <img src={`https://api.appgpm.com/files/img/${transaction?.buyer?.avatar}`} alt={transaction?.buyer?.name} />
@@ -52,7 +50,7 @@ export default function TransactionById({ transaction }) {
                     </section>
                 </div>
 
-                <div className="col-md-3 vendedor">
+                <div className="col-md-6 vendedor">
                     <section>
                         <h2>Vendedor</h2>
                         <img src={`https://api.appgpm.com/files/img/${transaction?.seller?.avatar}`} alt={transaction?.seller?.name} />
@@ -75,29 +73,21 @@ export default function TransactionById({ transaction }) {
                     </section>
                 </div>
 
-                <div className="col-md-3 producto">
+                <div className="col-md-6 producto">
                     <section>
                         <h2>Producto</h2>
                         <ul>
                             <li><strong>Nombre: </strong> {transaction?.nombre_producto?.nombre}</li>
                             <li><strong>Tipo: </strong> {getTypes()} </li>
-                            {transaction?.product?.dano_totales && 
-                                <li><strong>Daños Totales: </strong>{transaction?.product?.dano_totales} </li>}
-                            {transaction?.product?.blanqueados && 
-                                <li><strong>Blanqueados: </strong> {transaction?.product?.blanqueados} </li>}
-                            {transaction?.product?.granos_fuera_tipo && 
-                                <li><strong>Fuera tipo: </strong> {transaction?.product?.granos_fuera_tipo} </li>}
-                            {transaction?.product?.granos_partidos && 
-                                <li><strong>Granos partidos: </strong> {transaction?.product?.granos_partidos} </li>}
-                            {transaction?.product?.materias_extranos && 
-                                <li><strong>Materiales extraños: </strong> {transaction?.product?.materias_extranos} </li>}
-                            {transaction?.product?.ciudad && 
-                                <li><strong>Ciudad: </strong> {transaction?.product?.ciudad} </li>}
+                            {transaction?.demand?.ciudad && 
+                                <li><strong>Ciudad: </strong> {transaction?.demand?.ciudad} </li>}
+                            {transaction?.demand?.plazo_carga && 
+                                <li><strong>Plazo de carga: </strong>{transaction?.demand?.plazo_carga} </li>}
                         </ul>
                     </section>
                 </div>
 
-                <div className="col-md-3 transaccion">
+                <div className="col-md-6 transaccion">
                     <section>
                         <h2>Transacción</h2>
                         <ul>
@@ -106,10 +96,8 @@ export default function TransactionById({ transaction }) {
                             <li><strong>Estado: </strong> {transaction?.estado} </li>
                             <li><strong>Volumen: </strong> {transaction?.volumen} </li>
                             <li><strong>Peso: </strong> {transaction?.peso} </li>
-                            <li><strong>Incoterms: </strong> {transaction?.product?.incoterm?.nombre} </li>
-                            <li><strong>Puerto: </strong> {transaction?.product?.puerto} </li>
-                            <li><strong>Precio: </strong> {transaction?.product?.precio} </li>
-                            <li><strong>Valor Total: </strong> <span className='fw-bolder text-danger'> {transaction?.valor_total}</span> </li>
+                            <li><strong>Precio: </strong> {transaction?.demand?.precio} </li>
+                            <li><strong>Valor Total: </strong> {transaction?.valor_total} </li>
                         </ul>
                     </section>
                 </div>

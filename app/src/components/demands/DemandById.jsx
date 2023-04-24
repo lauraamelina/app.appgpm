@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 import '@sweetalert2/theme-bootstrap-4/bootstrap-4.scss';
 import * as ProductService from '../../services/products.service'
 
-export default function DemandById({ product, isUserProduct, deleteProduct }) {
+export default function DemandById({ product, isUserProduct, deleteProduct, sellProduct }) {
     const [country, setCountry] = useState([])
 
     useEffect(() => {
@@ -59,6 +59,84 @@ export default function DemandById({ product, isUserProduct, deleteProduct }) {
         })
     }
 
+    function handleSell() {
+        let volumen = 0;
+        let price = 0;
+        Swal.fire({
+            title: '¿Qué cantidad desea vender?',
+            input: 'number',
+            inputPlaceholder: 'Ingrese el volumen',
+            inputAttributes: {
+                min: 1,
+                max: parseInt(product?.volumen),
+                step: 1
+            },
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'Debes ingresar un volumen'
+                }
+                if (value > parseInt(product?.volumen)) {
+                    return `El volumen no puede ser mayor al disponible (${product?.volumen})`
+                }
+                volumen = value
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Vender',
+            showLoaderOnConfirm: true,
+            confirmButtonColor: '#145388',
+            preConfirm(login) {
+                volumen = parseInt(login)
+            },
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Precio / TN/TN',
+                    input: 'number',
+                    inputPlaceholder: 'Ingrese el precio',
+                    inputAttributes: {
+                        min: 1,
+                        step: 1
+                    },
+                    inputValidator: (value) => {
+                        if (!value) {
+                            return 'Debes ingresar un precio'
+                        }
+                        price = value
+                    },
+                    showCancelButton: true,
+                    confirmButtonText: 'Vender',
+                    showLoaderOnConfirm: true,
+                    confirmButtonColor: '#145388',
+                    preConfirm(login) {
+                        price = parseInt(login)
+                    },
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: '¿Estás seguro de vender?',
+                            html: `<p>Producto: ${product?.nombre_producto?.nombre}</p>
+                            <p>Volumen: ${volumen} TN</p>
+                            <p>Precio: ${price} / TN/TN</p>
+                            `
+                            ,
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#145388',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Sí, vender',
+                            cancelButtonText: 'Cancelar'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                sellProduct(product?.id, volumen, price)
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    }
+
+
     return (
         <section className='container demandId'>
             <div className="row">
@@ -81,11 +159,11 @@ export default function DemandById({ product, isUserProduct, deleteProduct }) {
                         </>)}
 
                         {!isUserProduct && (<>
-                            <button className="btn btn-primary mb-2">Comprar producto</button>
+                            <button onClick={handleSell} className="btn btn-primary mb-2">Vender producto</button>
                             <button className="btn btn-secondary">Chatear con el vendedor</button>
                         </>)}
                     </div>
-                </div>  
+                </div>
                 <div className="col-5 images">
                     <p className="precio"> {product?.precio} USD/TN</p>
                     <img src={getImage(product?.image)} alt={product?.nombre_producto?.nombre} />

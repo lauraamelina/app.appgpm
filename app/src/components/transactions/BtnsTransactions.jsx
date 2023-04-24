@@ -8,30 +8,33 @@ import SummarizeIcon from '@mui/icons-material/Summarize';
 
 export default function BtnTransactions() {
     return (
-        <div className="btns-transactions">
-            <button className='btn btn-primary'>
+        <>
+            <div className="btns-transactions">
+                <button className="btn">
+                    <TrendingUpIcon />
+                    <span>Estado de la operación</span>
+                </button>
+                <button className="btn">
+                    <FolderIcon />
+                    <span>Archivos</span>
+                </button>
+                <button className="btn">
+                    <UploadIcon />
+                    <span>Subir archivos</span>
+                </button>
+                <button className="btn">
+                    <EmailIcon />
+                    <span>Servicios</span>
+                </button>
+                <button className="btn">
+                    <SummarizeIcon />
+                    <span>Servicios Conectados</span>
+                </button>
+            </div>
+
+            <button className='btn btn-primary transaction'>
                 Agregar secuencia
             </button>
-            <button className="btn">
-                <TrendingUpIcon />
-                <span>Estado de la operación</span>
-            </button>
-            <button className="btn">
-                <FolderIcon />
-                <span>Archivos</span>
-            </button>
-            <button className="btn">
-                <UploadIcon />
-                <span>Subir archivos</span>
-            </button>
-            <button className="btn">
-                <EmailIcon />
-                <span>Servicios</span>
-            </button>
-            <button className="btn">
-                <SummarizeIcon />
-                <span>Servicios Conectados</span>
-            </button>
-        </div>
+        </>
     )
 }

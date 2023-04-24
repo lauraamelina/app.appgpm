@@ -38,11 +38,24 @@ async function deleteDemand(id) {
     }).then(response => response.json())
 }
 
+async function sellDemand(id, volumen, precio) {
+    return fetch(`${URL}/demands/${id}/sell`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ volumen, precio })
+    }).then(response => response.json())
+}
+
+
 
 export {
     getAllDemands,
     addDemand,
     getDemandById,
-    deleteDemand
+    deleteDemand,
+    sellDemand
 
 }

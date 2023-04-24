@@ -79,6 +79,7 @@ async function buyProduct(id, volumen) {
         method: 'POST',
         headers: {
             'Authorization': 'Bearer ' + authService.getToken(),
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({ volumen })
     }).then(response => response.json())
