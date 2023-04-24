@@ -28,10 +28,34 @@ async function getDemandsByUser(id) {
     }).then(response => response.json())
 }
 
+async function updateUser(id, user) {
+    return fetch(`${URL}/users/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    }).then(response => response.json())
+}
+
+async function updateAvatar(avatar) {
+    return fetch(`${URL}/users/avatar`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+        },
+        body: avatar
+    }).then(response => response.json())
+}
+
+
 
 export {
     getUserById,
     getProductsByUser,
-    getDemandsByUser
+    getDemandsByUser,
+    updateUser,
+    updateAvatar
 
 }

@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import * as authService from '../src/services/auth.service'
 
 import React,{useEffect} from 'react';
@@ -6,8 +6,6 @@ import React,{useEffect} from 'react';
 import Login from './pages/auth/PageLogin'
 import Register from './pages/auth/PageRegister'
 import RouteDashboard from '../src/components/routes/RouteDashboard'
-
-
 
 function App() {
 
@@ -40,6 +38,9 @@ function App() {
       <Route path='/login' element={<Login onLogin={onLogin}/>} />
       <Route path='/register' element={<Register/>} />
       <Route path='/dashboard/*' element={<RouteDashboard/>} />
+      <Route path="/" element={<Navigate to="/dashboard" />} />
+      <Route path="*" element={<Navigate to="/dashboard" />} />
+
     </Routes>
     </>
   );

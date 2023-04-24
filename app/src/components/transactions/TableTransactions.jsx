@@ -57,7 +57,7 @@ export default function TableTransactions({ transactions }) {
             }
         });
         setFiltered(transactions);
-
+    // eslint-disable-next-line
     }, [transactions]);
 
     useEffect(() => {
@@ -169,7 +169,7 @@ export default function TableTransactions({ transactions }) {
                                     <td>{transaction?.nombre_producto?.nombre}</td>
                                     <td>{formatedDate(transaction?.created_at)}</td>
                                     {transaction?.type === "Venta" ? (
-                                         <td className="green"><span>{transaction?.valor_total}</span></td>
+                                        <td className="green"><span>{transaction?.valor_total}</span></td>
                                     ) : (
                                         <td className="red"><span>{transaction?.valor_total}</span></td>
                                     )}

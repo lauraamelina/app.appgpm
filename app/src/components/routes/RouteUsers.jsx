@@ -1,12 +1,14 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import PageProfileUser from "../../pages/users/PageProfileUser";
+import PageProfileUsers from "../../pages/users/PageProfileUsers";
+import PageEditProfile from "../../pages/users/PageEditProfile";
 
 function RouteUsers() {
     return (
         <>
             <Routes>
-                <Route path='/profile/:id' element={<PageProfileUser />} />
+                <Route path='/profile/:id' element={<PageProfileUsers />} />
+                <Route path='/profile/edit' element={<PageEditProfile />} />
             </Routes>
         </>
     )
