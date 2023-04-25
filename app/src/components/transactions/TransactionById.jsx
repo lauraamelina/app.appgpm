@@ -27,7 +27,7 @@ export default function TransactionById({ transaction }) {
     return (
         <section className='transactionId container'>
             <div className="row">
-                <div className="col-md-3 comprador">
+                <div className="col-md-6 comprador">
                     <section>
                         <h2>Comprador</h2>
                         <img src={`https://api.appgpm.com/files/img/${transaction?.buyer?.avatar}`} alt={transaction?.buyer?.name} />
@@ -38,19 +38,13 @@ export default function TransactionById({ transaction }) {
                                 <li><strong>Empresa</strong>  {transaction?.buyer?.empresa}</li>}
                             {transaction?.buyer?.nit &&
                                 <li><strong>N.I.T</strong>  {transaction?.buyer?.nit}</li>}
-                            {transaction?.buyer?.email &&
-                                <li><strong>E-mail</strong>  {transaction?.buyer?.email}</li>}
-                            {transaction?.buyer?.telefono &&
-                                <li><strong>Teléfono</strong>  {transaction?.buyer?.telefono}</li>}
-                            {transaction?.buyer?.celular &&
-                                <li><strong>Celular</strong>  {transaction?.buyer?.celular}</li>}
                             {transaction?.buyer?.ciudad &&
                                 <li><strong>Ciudad</strong>  {transaction?.buyer?.ciudad}</li>}
                         </ul>
                     </section>
                 </div>
 
-                <div className="col-md-3 vendedor">
+                <div className="col-md-6 vendedor">
                     <section>
                         <h2>Vendedor</h2>
                         <img src={`https://api.appgpm.com/files/img/${transaction?.seller?.avatar}`} alt={transaction?.seller?.name} />
@@ -63,17 +57,13 @@ export default function TransactionById({ transaction }) {
                                 <li><strong>N.I.T</strong>  {transaction?.seller?.nit}</li>}
                             {transaction?.seller?.email &&
                                 <li><strong>E-mail</strong>  {transaction?.seller?.email}</li>}
-                            {transaction?.seller?.telefono &&
-                                <li><strong>Teléfono</strong>  {transaction?.seller?.telefono}</li>}
-                            {transaction?.seller?.celular &&
-                                <li><strong>Celular</strong>  {transaction?.seller?.celular}</li>}
                             {transaction?.seller?.ciudad &&
                                 <li><strong>Ciudad</strong>  {transaction?.seller?.ciudad}</li>}
                         </ul>
                     </section>
                 </div>
 
-                <div className="col-md-3 producto">
+                <div className="col-md-6 producto">
                     <section>
                         <h2>Producto</h2>
                         <ul>
@@ -95,15 +85,13 @@ export default function TransactionById({ transaction }) {
                     </section>
                 </div>
 
-                <div className="col-md-3 transaccion">
+                <div className="col-md-6 transaccion">
                     <section>
                         <h2>Transacción</h2>
                         <ul>
-                            <li><strong>ID: </strong> {transaction?.id} </li>
                             <li><strong>Fecha: </strong> {formatedDate(transaction?.created_at)} </li>
-                            <li><strong>Estado: </strong> {transaction?.estado} </li>
-                            <li><strong>Volumen: </strong> {transaction?.volumen} </li>
-                            <li><strong>Peso: </strong> {transaction?.peso} </li>
+                            <li><strong>Estado: </strong> {transaction?.estado === 1 ? 'Activa' : 'Finalizada'} </li>
+                            <li><strong>Volumen: </strong> {transaction?.volumen} {transaction?.peso}</li>
                             <li><strong>Incoterms: </strong> {transaction?.product?.incoterm?.nombre} </li>
                             <li><strong>Puerto: </strong> {transaction?.product?.puerto} </li>
                             <li><strong>Precio: </strong> {transaction?.product?.precio} </li>

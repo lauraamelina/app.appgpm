@@ -6,6 +6,7 @@
     "@amcharts/amcharts5": "^5.3.11",
     "@amcharts/amcharts5-geodata": "^5.1.0",
     "@mui/icons-material": "^5.10.16",
+    "@mui/lab": "^5.0.0-alpha.128",
     "@mui/material": "^5.10.17",
     "@sweetalert2/theme-bootstrap-4": "^5.0.15",
     "@testing-library/jest-dom": "^5.16.5",

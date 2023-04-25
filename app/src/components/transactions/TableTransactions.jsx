@@ -56,7 +56,7 @@ export default function TableTransactions({ transactions }) {
             }
         });
         setFiltered(transactions);
-    // eslint-disable-next-line
+        // eslint-disable-next-line
     }, [transactions]);
 
     useEffect(() => {
@@ -151,6 +151,7 @@ export default function TableTransactions({ transactions }) {
                                 <th>Producto</th>
                                 <th>Fecha</th>
                                 <th>Total</th>
+                                <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -163,14 +164,19 @@ export default function TableTransactions({ transactions }) {
                                     ) : (
                                         <td className="red"><span>{transaction?.type}</span></td>
                                     )}
-                                    <td>{transaction?.seller?.email}</td>
-                                    <td>{transaction?.buyer?.email}</td>
+                                    <td>{transaction?.seller?.name}</td>
+                                    <td>{transaction?.buyer?.name}</td>
                                     <td>{transaction?.nombre_producto?.nombre}</td>
                                     <td>{formatedDate(transaction?.created_at)}</td>
                                     {transaction?.type === "Venta" ? (
-                                        <td className="green"><span>{transaction?.valor_total}</span></td>
+                                        <td className="greenP"><span>{transaction?.valor_total}</span></td>
                                     ) : (
-                                        <td className="red"><span>{transaction?.valor_total}</span></td>
+                                        <td className="redP"><span>{transaction?.valor_total}</span></td>
+                                    )}
+                                   {transaction?.estado === 1 ? (
+                                        <td className="yellow"><span>Activa</span></td>
+                                    ) : (
+                                        <td className="blue"><span>Finalizada</span></td>
                                     )}
                                     <td>
                                         <Link to={`/dashboard/transactions/${transaction?.id}`} className='btn btn-primary'>Ver</Link>

@@ -40,12 +40,6 @@ export default function TransactionDemandById({ transaction }) {
                                 <li><strong>N.I.T</strong>  {transaction?.buyer?.nit}</li>}
                             {transaction?.buyer?.email &&
                                 <li><strong>E-mail</strong>  {transaction?.buyer?.email}</li>}
-                            {transaction?.buyer?.telefono &&
-                                <li><strong>Teléfono</strong>  {transaction?.buyer?.telefono}</li>}
-                            {transaction?.buyer?.celular &&
-                                <li><strong>Celular</strong>  {transaction?.buyer?.celular}</li>}
-                            {transaction?.buyer?.ciudad &&
-                                <li><strong>Ciudad</strong>  {transaction?.buyer?.ciudad}</li>}
                         </ul>
                     </section>
                 </div>
@@ -63,12 +57,6 @@ export default function TransactionDemandById({ transaction }) {
                                 <li><strong>N.I.T</strong>  {transaction?.seller?.nit}</li>}
                             {transaction?.seller?.email &&
                                 <li><strong>E-mail</strong>  {transaction?.seller?.email}</li>}
-                            {transaction?.seller?.telefono &&
-                                <li><strong>Teléfono</strong>  {transaction?.seller?.telefono}</li>}
-                            {transaction?.seller?.celular &&
-                                <li><strong>Celular</strong>  {transaction?.seller?.celular}</li>}
-                            {transaction?.seller?.ciudad &&
-                                <li><strong>Ciudad</strong>  {transaction?.seller?.ciudad}</li>}
                         </ul>
                     </section>
                 </div>
@@ -91,13 +79,11 @@ export default function TransactionDemandById({ transaction }) {
                     <section>
                         <h2>Transacción</h2>
                         <ul>
-                            <li><strong>ID: </strong> {transaction?.id} </li>
                             <li><strong>Fecha: </strong> {formatedDate(transaction?.created_at)} </li>
-                            <li><strong>Estado: </strong> {transaction?.estado} </li>
-                            <li><strong>Volumen: </strong> {transaction?.volumen} </li>
-                            <li><strong>Peso: </strong> {transaction?.peso} </li>
+                            <li><strong>Estado: </strong> {transaction?.estado === 1 ? 'Activa' : 'Finalizada'} </li>
+                            <li><strong>Volumen: </strong> {transaction?.volumen} {transaction?.peso}</li>
                             <li><strong>Precio: </strong> {transaction?.demand?.precio} </li>
-                            <li><strong>Valor Total: </strong> {transaction?.valor_total} </li>
+                            <li><strong>Valor Total: </strong> <span className='fw-bolder text-danger'> {transaction?.valor_total}</span>  </li>
                         </ul>
                     </section>
                 </div>
