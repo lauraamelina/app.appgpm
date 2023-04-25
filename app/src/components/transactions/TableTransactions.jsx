@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import * as AuthService from '../../services/auth.service'
 
 export default function TableTransactions({ transactions }) {
-    console.log(transactions)
     const [searchYear, setSearchYear] = useState("");
     const [searchProduct, setSearchProduct] = useState("");
     const [filtered, setFiltered] = useState(transactions);

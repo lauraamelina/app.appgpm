@@ -72,7 +72,6 @@ export default function PageProductById() {
             .then((res) => {
                 setLoading(false)
                 if (res.status === 200) {
-                    console.log(res)
                     Swal.fire({
                         icon: 'success',
                         title: 'El producto fue comprado correctamente.',

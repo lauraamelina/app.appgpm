@@ -2,8 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 export default function TransactionById({ transaction }) {
-    console.log(transaction)
-
     function formatedDate(date) {
         const dateFormated = new Date(date);
         const day = dateFormated.getDate();

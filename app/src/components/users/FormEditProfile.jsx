@@ -46,7 +46,6 @@ export default function FormEditProfile({ user, onSubmitUpdateUser, onSubmitUpda
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(name, nit, email, telefono, celular, direccion, ciudad, descripcion)
         if (name && nit && email && telefono && celular && direccion && ciudad) {
             const user = {
                 name,

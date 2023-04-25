@@ -51,7 +51,6 @@ export default function PageEditProfile() {
     function onSubmitUpdateAvatar(avatar) {
         UserService.updateAvatar(avatar)
             .then((res) => {
-                console.log(res)
                 if (res.status === 200) {
                     Swal.fire({
                         icon: 'success',
