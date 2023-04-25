@@ -92,9 +92,9 @@ a {
 
 .login section {
     width: 50em;
-    height: 33em;
+    height: fit-content;
     background-color: white;
-    margin: auto;
+    margin: 3em auto;
     border-radius: 10px;
 }
 

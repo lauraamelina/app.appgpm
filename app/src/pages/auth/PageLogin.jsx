@@ -1,9 +1,6 @@
 import React , {useState}from "react";
 import { Link } from "react-router-dom";
 import * as authService from '../../services/auth.service'
-
-// import {useNavigate} from "react-router-dom";
-
 import login from '../../assets/img/index.png'
 import logo from  '../../assets/img/logo-color.png'
 
@@ -58,7 +55,7 @@ function Login({onLogin}) {
 
                         <div className="text-center mt-0 botones-login">
                             <button className="btn btn-primary" type="submit">Ingresar</button>
-                            <Link className="btn-default fw-bold fs-6 mb-2" to={'/recuperacion'}> ¿Olvidaste tu contraseña?</Link>
+                            <Link className="btn-default fw-bold fs-6 mb-2" to={'/recuperation-password'}> ¿Olvidaste tu contraseña?</Link>
                             <Link className="btn btn-secondary" to={'/register'}> Registrate</Link>
                         </div>
                     </form>

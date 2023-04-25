@@ -36,6 +36,16 @@ async function register(email, password, type, name, nit, country) {
     }).then(response => response.json())
 }
 
+async function recuperationPassword(email) {
+    return fetch('https://api.appgpm.com/change_password', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email })
+    }).then(response => response.json())
+}
+
 
 
 
@@ -84,5 +94,6 @@ export {
     deleteUser,
     deleteToken,
     freeEmailRegister,
-    register
+    register,
+    recuperationPassword
 }

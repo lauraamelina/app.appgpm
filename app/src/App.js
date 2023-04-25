@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import * as authService from '../src/services/auth.service'
 import Login from './pages/auth/PageLogin'
 import Register from './pages/auth/PageRegister'
+import RecuperationPassword from './pages/auth/PageRecuperationPassword';
 import RouteDashboard from '../src/components/routes/RouteDashboard'
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
       <Routes>
         <Route path='/login' element={<Login onLogin={onLogin} />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/recuperation-password' element={<RecuperationPassword />} />
         <Route path='/dashboard/*' element={<RouteDashboard />} />
       </Routes>
     </>
