@@ -1,9 +1,6 @@
 import React from 'react'
-import { CircularProgress, Link } from '@mui/material'
 
 export default function Files({ files }) {
-    console.log(files)
-
     function formattedDate(date) {
         const newDate = new Date(date)
         return newDate.toLocaleDateString()

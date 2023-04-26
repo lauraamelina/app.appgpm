@@ -30,7 +30,7 @@ export default function PageProducts() {
     return (
         <main className="container productsByUser">
             <div className="header">
-                <h1>Mis productos</h1>
+                <h1 className="mb-md-0">Mis productos</h1>
                 <Link to='/dashboard/products/new' className="btn btn-primary">Agregar productos</Link>
             </div>
 

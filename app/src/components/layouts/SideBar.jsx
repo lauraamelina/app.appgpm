@@ -102,6 +102,7 @@ const Sidebar = () => {
         main.style.marginLeft = "80px !important";
       }
     }
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

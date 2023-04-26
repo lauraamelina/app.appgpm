@@ -1,50 +1,49 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import React, { useEffect, useState } from "react";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+} from "recharts";
 import ImgProducts from "./ImgProducts";
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function AverageChart({ items, loading }) {
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filtered, setFiltered] = useState([]);
 
   const getIntroOfPage = (label) => {
-    if (label === "1") {
-      return "Enero";
+    switch (label) {
+      case "1":
+        return "Enero";
+      case "2":
+        return "Febrero";
+      case "3":
+        return "Marzo";
+      case "4":
+        return "Abril";
+      case "5":
+        return "Mayo";
+      case "6":
+        return "Junio";
+      case "7":
+        return "Julio";
+      case "8":
+        return "Agosto";
+      case "9":
+        return "Septiembre";
+      case "10":
+        return "Octubre";
+      case "11":
+        return "Noviembre";
+      case "12":
+        return "Diciembre";
+      default:
+        return "";
     }
-    if (label === "2") {
-      return "Febrero";
-    }
-    if (label === "3") {
-      return "Marzo";
-    }
-    if (label === "4") {
-      return "Abril";
-    }
-    if (label === "5") {
-      return "Mayo";
-    }
-    if (label === "6") {
-      return "Junio";
-    }
-    if (label === "7") {
-      return "Julio";
-    }
-    if (label === "8") {
-      return "Agosto";
-    }
-    if (label === "9") {
-      return "Septiembre";
-    }
-    if (label === "10") {
-      return "Octubre";
-    }
-    if (label === "11") {
-      return "Noviembre";
-    }
-    if (label === "12") {
-      return "Diciembre";
-    }
-    return "";
   };
 
   const CustomTooltip = ({ active, payload, label }) => {
@@ -62,72 +61,105 @@ export default function AverageChart({ items, loading }) {
   useEffect(() => {
     if (Object.keys(items).length > 0) {
       for (let i = 0; i < Object.keys(items?.promedio).length; i++) {
-        let promedios = []
-        for (let j = 0; j < Object.keys(items?.promedio[i].promedios_venta).length; j++) {
+        let promedios = [];
+        for (
+          let j = 0;
+          j < Object.keys(items?.promedio[i].promedios_venta).length;
+          j++
+        ) {
           promedios = [
             ...promedios,
             {
               name: items?.promedio[i].promedios_venta[j].month,
-              uv: items?.promedio[i].promedios_venta[j].price
-            }
-          ]
+              uv: items?.promedio[i].promedios_venta[j].price,
+            },
+          ];
         }
 
-        setData(data => [
-          ...data,
-          {
-            nombre: items?.promedio[i].nombre,
-            id: items?.promedio[i].id,
-            promedios: promedios
-
-          }
-        ])
+        const existingProduct = data.find(
+          (product) => product.id === items?.promedio[i].id
+        );
+        if (!existingProduct) {
+          setData((data) => [
+            ...data,
+            {
+              nombre: items?.promedio[i].nombre,
+              id: items?.promedio[i].id,
+              promedios: promedios,
+              venta: items?.promedio[i].promedio_venta_actual?.price,
+            },
+          ]);
+        }
       }
     }
-    //eslint-disable-next-line
-  }, [items])
+    // eslint-disable-next-line
+  }, [items]);
+
+  useEffect(() => {
+    setSearch(data?.map((product) => product?.nombre)[0]);
+    setFiltered(data);
+  }, [data]);
+
+  useEffect(() => {
+    if (search?.length > 0) {
+      const filtered = data.filter((product) => product.nombre === search);
+      setFiltered(filtered);
+    } else {
+      setFiltered(data);
+    }
+  }, [search, data]);
 
 
   return (
     <section className="averageChart">
-      <h2>Precio Promedio (FOB) </h2>
+      <div className="header">
+        <h2>Precio Promedio (FOB) </h2>
+        <select className="form-control" name="search" id="search" value={search} onChange={(e) => setSearch(e.target.value)}>
+          <option value="">Selecciona un producto</option>
+          {data?.map((product, index) => {
+            return (
+              <option key={index} value={product.nombre}>
+                {product.nombre}
+              </option>
+            );
+          })}
+        </select>
+      </div>
 
-      {loading &&
+      {loading && (
         <div className="text-center">
           <CircularProgress />
         </div>
-      }
+      )}
 
-      {!loading && data.map((item, index) => (
-        <div key={index}>
-          <div>
-            <h3>{item.nombre}</h3>
-            <ImgProducts id={item.id} />
+      {!loading &&
+        filtered.map((item, index) => (
+          <div key={index}>
+            <div>
+              <h3>{item.nombre}</h3>
+              <ImgProducts id={item.id} />
+              <p>{item.venta}</p>
+            </div>
+            <AreaChart
+              width={750}
+              height={100}
+              data={item.promedios}
+              margin={{
+                top: 10,
+                right: 30,
+                left: 0,
+                bottom: 0
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip content={<CustomTooltip />} />
+
+              <Area type="monotone" dataKey="uv" fill="#28a745" stroke="#28a745" />
+            </AreaChart>
           </div>
-          <AreaChart
-            width={750}
-            height={100}
-            data={item.promedios}
-            margin={{
-              top: 10,
-              right: 30,
-              left: 0,
-              bottom: 0
-            }}
-
-          >
-
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip content={<CustomTooltip />} />
-
-            <Area type="monotone" dataKey="uv" fill="#28a745" stroke="#28a745" />
-          </AreaChart>
-        </div>
-      ))}
-
+        ))}
     </section>
-
   );
 }

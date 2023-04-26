@@ -35,7 +35,6 @@ export default function UploadFiles({ transaction }) {
 
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log(file, title, description)
                 const formData = new FormData();
                 formData.append('document', file);
                 formData.append('titulo', title);

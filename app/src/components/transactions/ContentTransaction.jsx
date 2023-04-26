@@ -42,7 +42,6 @@ export default function ContentTransaction({ transaction }) {
                 setLoading(false)
                 if (response.status === 200) {
                     setSequences(response.data)
-                    console.log(response.data)
                 }
             })
         SequencesService.getSequences()

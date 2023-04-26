@@ -48,7 +48,6 @@ export default function OperationStatus({ transaction, typeUser, sequences, data
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    console.log(result.value.sequence, result.value.ubication, result.value.description)
                     TransactionsService.addSequence(transaction.id, result.value.sequence, result.value.ubication, result.value.description)
                         .then(response => {
                             if (response.status === 200) {
