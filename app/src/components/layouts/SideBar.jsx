@@ -1,9 +1,8 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
-// import { tokens } from "./theme";
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
@@ -42,7 +41,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
           {title}
         </Typography>
       </Link>
-      
+
 
     </MenuItem>
   );
@@ -54,18 +53,29 @@ const Sidebar = () => {
 
   const handleMainStyle = () => {
     const main = document.getElementsByTagName("main")[0];
-    if (isCollapsed) {
-      main.style.marginLeft = "90px";
-      main.style.transition = "margin-left 0.5s";
-    }
-    if (!isCollapsed) {
-      main.style.marginLeft = "290px";
-      main.style.transition = "margin-left 0.5s";
+
+    if (window.screen.width > 991) {
+      if (isCollapsed) {
+        main.style.marginLeft = "90px";
+        main.style.transition = "margin-left 0.5s";
+      }
+      if (!isCollapsed) {
+        main.style.marginLeft = "290px";
+        main.style.transition = "margin-left 0.5s";
+      }
     }
 
+    if (window.screen.width < 991) {
+      if (isCollapsed) {
+        main.style.marginLeft = "80px !important";
+      }
+      if (!isCollapsed) {
+        main.style.marginLeft = "80px !important";
+      }
+    }
   };
 
-  useEffect (() => {
+  useEffect(() => {
     handleMainStyle();
     localStorage.setItem("isCollapsed", isCollapsed);
     // eslint-disable-next-line
@@ -73,15 +83,25 @@ const Sidebar = () => {
 
   useEffect(() => {
     const main = document.getElementsByTagName("main")[0];
-    if (isCollapsed) {
-      main.style.marginLeft = "90px";
-      main.style.transition = "margin-left 0.5s";
+    if (window.screen.width > 991) {
+      if (isCollapsed) {
+        main.style.marginLeft = "90px";
+        main.style.transition = "margin-left 0.5s";
+      }
+      if (!isCollapsed) {
+        main.style.marginLeft = "290px";
+        main.style.transition = "margin-left 0.5s";
+      }
     }
-    if (!isCollapsed) {
-      main.style.marginLeft = "290px";
-      main.style.transition = "margin-left 0.5s";
+    if (window.screen.width < 991) {
+
+      if (isCollapsed) {
+        main.style.marginLeft = "80px !important";
+      }
+      if (!isCollapsed) {
+        main.style.marginLeft = "80px !important";
+      }
     }
-    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -108,6 +128,13 @@ const Sidebar = () => {
         "& .pro-menu-item.active": {
           color: "white !important",
         },
+
+        "@media (max-width: 960px)": {
+          "& .pro-inner-item": {
+            padding: "15px 10px 15px 20px !important",
+          },
+        },
+
       }}
     >
       <ProSidebar collapsed={isCollapsed}>
@@ -122,9 +149,6 @@ const Sidebar = () => {
             }}
           >
           </MenuItem>
-
-        
-
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Tableros"
@@ -170,7 +194,7 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            
+
           </Box>
         </Menu>
       </ProSidebar>

@@ -362,57 +362,57 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                 {clasificacion === "milimetros" && (
                     <div className="container mm">
                         <div className="row">
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="tam_mil_menor_4 "> Menos de 4mm</label>
                                 <input type="number" className="form-control" id="tam_mil_menor_4" name="tam_mil_menor_4" value={tam_mil_menor_4} onChange={(e) => setMilMenor4mm(e.target.value)} />
                             </div>
 
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="tam_mil_4 ">4mm</label>
                                 <input type="number" className="form-control" id="tam_mil_4" name="tam_mil_4 " value={tam_mil_4} onChange={(e) => setMil4(e.target.value)} />
                             </div>
 
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="tam_mil_5">5mm</label>
                                 <input type="number" className="form-control" id="tam_mil_5" name="tam_mil_5" value={tam_mil_5} onChange={(e) => setMil5(e.target.value)} />
                             </div>
 
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="tam_mil_6">6mm</label>
                                 <input type="number" className="form-control" id="tam_mil_6" name="tam_mil_6" value={tam_mil_6} onChange={(e) => setMil6(e.target.value)} />
                             </div>
 
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="tam_mil_7">7mm</label>
                                 <input type="number" className="form-control" id="tam_mil_7" name="tam_mil_7" value={tam_mil_7} onChange={(e) => setMil7(e.target.value)} />
                             </div>
 
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="tam_mil_8">8mm</label>
                                 <input type="number" className="form-control" id="tam_mil_8" name="tam_mil_8" value={tam_mil_8} onChange={(e) => setMil8(e.target.value)} />
                             </div>
 
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="tam_mil_9">9mm</label>
                                 <input type="number" className="form-control" id="tam_mil_9" name="tam_mil_9" value={tam_mil_9} onChange={(e) => setMil9(e.target.value)} />
                             </div>
 
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="tam_mil_10">10mm</label>
                                 <input type="number" className="form-control" id="tam_mil_10" name="tam_mil_10" value={tam_mil_10} onChange={(e) => setMil10(e.target.value)} />
                             </div>
 
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="tam_mil_11">11mm</label>
                                 <input type="number" className="form-control" id="tam_mil_11" name="tam_mil_11" value={tam_mil_11} onChange={(e) => setMil11(e.target.value)} />
                             </div>
 
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="tam_mil_12">12mm</label>
                                 <input type="number" className="form-control" id="tam_mil_12" name="tam_mil_12" value={tam_mil_12} onChange={(e) => setMil12(e.target.value)} />
                             </div>
 
-                            <div className="col-4 mt-3">
+                            <div className="col-md-4 col-12 mt-3">
                                 <label htmlFor="total_milimetros">Total del porcentaje </label>
                                 <input type="number" className="form-control" id="total_milimetros" name="total_milimetros" value={total_milimetros} onChange={(e) => setTotalMilimetros(e.target.value)} />
                             </div>
@@ -423,48 +423,48 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                 {clasificacion === "calibres" && (
                     <div className="container mm">
                         <div className="row">
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="cal_menos160">{'< 160/100'}</label>
                                 <input type="number" className="form-control" id="cal_menos160" name="cal_menos160" value={cal_menos160} onChange={(e) => setCalMenos160(e.target.value)} />
                             </div>
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="cal_menos160_180">{'< 160-180/100'}</label>
                                 <input type="number" className="form-control" id="cal_menos160_180" name="cal_menos160_180" value={cal_menos160_180} onChange={(e) => setCalMenos160_180(e.target.value)} />
                             </div>
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="cal_menos180_190">{'< 180-190/100'}</label>
                                 <input type="number" className="form-control" id="cal_menos180_190" name="cal_menos180_190" value={cal_menos180_190} onChange={(e) => setCalMenos180_190(e.target.value)} />
                             </div>
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="cal_menos191_200">{'< 191-200/100'}</label>
                                 <input type="number" className="form-control" id="cal_menos191_200" name="cal_menos191_200" value={cal_menos191_200} onChange={(e) => setCalMenos191_200(e.target.value)} />
                             </div>
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="cal_menos201_210">{'< 201/210-100'}</label>
                                 <input type="number" className="form-control" id="cal_menos201_210" name="cal_menos201_210" value={cal_menos201_210} onChange={(e) => setCalMenos201_210(e.target.value)} />
                             </div>
 
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="cal_menos211_220">{'< 211/220-100'}</label>
                                 <input type="number" className="form-control" id="cal_menos211_220" name="cal_menos211_220" value={cal_menos211_220} onChange={(e) => setCalMenos211_220(e.target.value)} />
                             </div>
 
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="cal_menos221_230">{'< 211/230-100'}</label>
                                 <input type="number" className="form-control" id="cal_menos221_230" name="cal_menos221_230" value={cal_menos221_230} onChange={(e) => setCalMenos221_230(e.target.value)} />
                             </div>
 
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="cal_menos231_240">{'< 231/240-100'}</label>
                                 <input type="number" className="form-control" id="cal_menos231_240" name="cal_menos231_240" value={cal_menos231_240} onChange={(e) => setCalMenos231_240(e.target.value)} />
                             </div>
 
-                            <div className="col-2 mt-3">
+                            <div className="col-md-2 col-6 mt-3">
                                 <label htmlFor="cal_mayor240">{'> 240/100'} </label>
                                 <input type="number" className="form-control" id="cal_mayor240" name="cal_mayor240" value={cal_mayor240} onChange={(e) => setCalMayor240(e.target.value)} />
                             </div>
 
-                            <div className="col-6 mt-3">
+                            <div className="col-md-6 col-6 mt-3">
                                 <label htmlFor="total_calibres">Total del porcentaje </label>
                                 <input type="number" className="form-control" id="total_calibres" name="total_calibres" value={total_calibres} onChange={(e) => setTotalCalibre(e.target.value)} />
                             </div>
@@ -475,7 +475,7 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                 <div className="container caracteristicas">
                     <h2>Características del Producto</h2>
                     <div className="row justify-content-between">
-                        <div className="col-3 mt-3">
+                        <div className="col-md-3 col-6 mt-3">
                             <label htmlFor="danos_totales">Daños Totales</label>
                             <select className="form-select" id="danos_totales" name="danos_totales" value={danos_totales} onChange={(e) => setDanosTotales(e.target.value)}>
                                 <option value={""}>Seleccionar</option>
@@ -486,7 +486,7 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                                 ))}
                             </select>
                         </div>
-                        <div className="col-3 mt-3">
+                        <div className="col-md-3 col-6 mt-3">
                             <label htmlFor="blanqueados">Blanqueados</label>
                             <select className="form-select" id="blanqueados" name="blanqueados" value={blanqueados} onChange={(e) => setBlanqueados(e.target.value)}>
                                 <option value={""}>Seleccionar</option>
@@ -497,7 +497,7 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                                 ))}
                             </select>
                         </div>
-                        <div className="col-3 mt-3">
+                        <div className="col-md-3 col-6 mt-3">
                             <label htmlFor="granos_fuera_tipo">Granos fuera de tipo</label>
                             <select className="form-select" id="granos_fuera_tipo" name="granos_fuera_tipo" value={granos_fuera_tipo} onChange={(e) => setGranosFueraTipo(e.target.value)}>
                                 <option value={""}>Seleccionar</option>
@@ -508,7 +508,7 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                                 ))}
                             </select>
                         </div>
-                        <div className="col-3 mt-3">
+                        <div className="col-md-3 col-6 mt-3">
                             <label htmlFor="granos_partidos">Granos Partidos</label>
                             <select className="form-select" id="granos_partidos" name="granos_partidos" value={granos_partidos} onChange={(e) => setGranosPartidos(e.target.value)}>
                                 <option value={""}>Seleccionar</option>
@@ -519,7 +519,7 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                                 ))}
                             </select>
                         </div>
-                        <div className="col-3 mt-3">
+                        <div className="col-md-3 col-6 mt-3">
                             <label htmlFor="materias_extranos"> Materiales Extraños </label>
                             <select className="form-select" id="materias_extranos" name="materias_extranos" value={materias_extranos} onChange={(e) => setMateriasExtranos(e.target.value)}>
                                 <option value={""}>Seleccionar</option>
@@ -530,15 +530,14 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                                 ))}
                             </select>
                         </div>
-                        <div className="col-3 mt-3">
+                        <div className="col-md-3 col-6 mt-3">
                             <label htmlFor="insectos_vivos">Insectos Vivos</label>
                             <input type="number" className="form-control" id="insectos_vivos" name="insectos_vivos" value={insectos_vivos} onChange={(e) => setInsectosVivos(e.target.value)} />
                         </div>
-                        <div className="col-3 mt-3">
+                        <div className="col-md-3 col-6 mt-3">
                             <label htmlFor="humedad">Humedad</label>
                             <select className="form-select" id="humedad" name="humedad" value={humedad} onChange={(e) => setHumedad(e.target.value)}>
                                 <option value={""}>Seleccionar</option>
-                                {/* recorre datahumedad */}
                                 {datahumedad?.map((item) => (
                                     <option key={item.id} value={item.name}>
                                         {item.name}
@@ -546,7 +545,7 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                                 ))}
                             </select>
                         </div>
-                        <div className="col-3 mt-3">
+                        <div className="col-md-3 col-6 mt-3">
                             <label htmlFor="granos_decolorados">Granos Decolorados</label>
                             <select className="form-select" id="granos_decolorados" name="granos_decolorados" value={granos_decolorados} onChange={(e) => setGranosDecolorados(e.target.value)}>
                                 <option value={""}>Seleccionar</option>
@@ -557,7 +556,7 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                                 ))}
                             </select>
                         </div>
-                        <div className="col-auto mt-3">
+                        <div className="col-md-auto col-6 mt-3">
                             <label htmlFor="anos_produccion">Año de Producción</label>
                             <select className="form-select" id="anos_produccion" name="anos_produccion" value={anos_produccion} onChange={(e) => setAnosProduccion(e.target.value)}>
                                 <option value={""}>Seleccionar</option>
@@ -568,7 +567,7 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                                 ))}
                             </select>
                         </div>
-                        <div className="col-auto mt-3">
+                        <div className="col-md-auto col-6 mt-3">
                             <label htmlFor="country">País</label>
                             <input className="form-select" list="countryList" id="country" name="country" value={country} onChange={(e) => setCountry(e.target.value)} placeholder="Selecciona el país" />
                             <datalist id="countryList">
@@ -582,7 +581,7 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                                 </div>
                             )}
                         </div>
-                        <div className="col-auto mt-3">
+                        <div className="col-md-auto col-6 mt-3">
                             <label htmlFor="plazo_carga">Plazo de carga</label>
                             <select className="form-select" id="plazo_carga" name="plazo_carga" value={plazo_carga} onChange={(e) => setPlazoCarga(e.target.value)}>
                                 <option value={""}>Seleccionar</option>
@@ -593,7 +592,7 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                                 ))}
                             </select>
                         </div>
-                        <div className="col-auto mt-3">
+                        <div className="col-md-auto col-6 mt-3">
                             <label htmlFor="mercaderia">Mercadería</label>
                             <select className="form-select" id="mercaderia" name="mercaderia" value={mercaderia} onChange={(e) => setMercaderia(e.target.value)}>
                                 <option value={""}>Seleccionar</option>
@@ -604,7 +603,7 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                                 ))}
                             </select>
                         </div>
-                        <div className="col-auto mt-3">
+                        <div className="col-md-auto col-12 mt-3">
                             <label htmlFor="estado">Estado</label>
                             <select className="form-select" id="estado" name="estado" value={estado} onChange={(e) => setEstado(e.target.value)}>
                                 <option value={""}>Seleccionar</option>
@@ -621,7 +620,7 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                 <div className="container caracteristicas mt-5">
                     <h2>Precio del producto</h2>
                     <div className="row justify-content-between">
-                        <div className="col-auto mt-3">
+                        <div className="col-md-auto col-6 mt-3">
                             <label htmlFor="peso">Peso</label>
                             <select className="form-select" id="peso" name="peso" value={peso} onChange={(e) => setPeso(e.target.value)}>
                                 <option value={""}>Seleccionar</option>
@@ -633,12 +632,12 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                             </select>
                         </div>
 
-                        <div className="col-auto mt-3">
+                        <div className="col-md-auto col-6 mt-3">
                             <label htmlFor="volumen">Volumen</label>
                             <input type="number" className="form-control" id="volumen" name="volumen" value={volumen} onChange={(e) => setVolumen(e.target.value)} />
                         </div>
 
-                        <div className="col-auto mt-3">
+                        <div className="col-md-auto col-6 mt-3">
                             <label htmlFor="incoterm">Incoterms</label>
                             <select className="form-select" id="incoterm" name="incoterm" value={incoterm} onChange={(e) => setIncoterm(e.target.value)}>
                                 <option value={""}>Seleccionar</option>
@@ -649,12 +648,12 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
                             </select>
                         </div>
 
-                        <div className="col-auto mt-3">
+                        <div className="col-md-auto col-6 mt-3">
                             <label htmlFor="puerto">Puerto de carga</label>
                             <input type="text" className="form-control" id="puerto" name="puerto" value={puerto} onChange={(e) => setPuerto(e.target.value)} />
                         </div>
 
-                        <div className="col-auto mt-3">
+                        <div className="col-md-auto col-12 mt-3">
                             <label htmlFor="precio">Precio</label>
                             <input type="number" className="form-control" id="precio" name="precio" value={precio} onChange={(e) => setPrecio(e.target.value)} />
                         </div>
@@ -700,10 +699,10 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, dat
             </div>
             <div className="container">
                 <div className="row justify-content-around">
-                    <div className="col-3 align-self-center text-center">
+                    <div className="col-md-3 col-12 my-2 align-self-center text-center">
                         <Link className="btn btn-danger w-100" to={'dashboard/products/list'} >Cancelar</Link>
                     </div>
-                    <div className="col-3 align-self-center text-center">
+                    <div className="col-md-3 col-12 my-2 align-self-center text-center">
                         <button className="btn btn-primary w-100" type="submit">Agregar</button>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import * as AuthService from '../../services/auth.service'
 import Verification from '../../assets/img/verification.png'
 import logo from '../../assets/img/logo-color.png'
@@ -54,7 +54,8 @@ export default function PageRecuperationPassword() {
                         </div>
 
                         <div className="text-center mt-0 botones-login">
-                            <button className="btn btn-primary" type="submit">Recuperar</button>
+                            <button className="btn btn-primary mt-3" type="submit">Recuperar</button>
+                            <Link to='/login' className='btn btn-secondary mt-3'>Iniciar Sesión</Link>
                         </div>
                     </form>
                 </div>

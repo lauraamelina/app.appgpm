@@ -76,13 +76,14 @@ const Topbar = () => {
         {/* ICONS */}
         <Box display="flex">
 
-          <IconButton style={{ color: "white" }}>
+      
+          <IconButton style={{ color: "white" }} sx={{ display: { xs: 'none', md: 'block' } }}>
             <SellIcon />
           </IconButton>
-          <IconButton style={{ color: "white" }}>
+          <IconButton style={{ color: "white" }} sx={{ display: { xs: 'none', md: 'block' } }}>
             <StoreIcon />
           </IconButton>
-          <IconButton style={{ color: "white" }}>
+          <IconButton style={{ color: "white" }} sx={{ display: { xs: 'none', md: 'block' } }}>
             <NotificationsIcon />
           </IconButton>
 

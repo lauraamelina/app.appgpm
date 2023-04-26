@@ -91,43 +91,43 @@ export default function FormEditProfile({ user, onSubmitUpdateUser, onSubmitUpda
 
     return (
         <form className='container'>
-            <section className='row col-md-9'>
-                <div className="form-group col-6 mb-3">
+            <section className='row col-md-9 col-12'>
+                <div className="form-group col-md-6 col-12 mb-3">
                     <label htmlFor="name">Nombre</label>
                     <input className='form-control' type="text" name="name" id="name" defaultValue={name} onChange={e => setName(e.target.value)} />
                 </div>
 
-                <div className="form-group col-6 mb-3">
+                <div className="form-group col-md-6 col-12 mb-3">
                     <label htmlFor="descripcion">Descripción</label>
                     <input onChange={e => setDescripcion(e.target.value)} className='form-control' type="text" name="descripcion" id="descripcion" defaultValue={descripcion} />
                 </div>
 
-                <div className="form-group col-6 mb-3">
+                <div className="form-group col-md-6 col-12 mb-3">
                     <label htmlFor="nit">N.I.T.</label>
                     <input onChange={e => setNit(e.target.value)} className='form-control' type="text" name="nit" id="nit" defaultValue={nit} />
                 </div>
 
-                <div className="form-group col-6 mb-3">
+                <div className="form-group col-md-6 col-12 mb-3">
                     <label htmlFor="email">E-mail</label>
                     <input onChange={e => setEmail(e.target.value)} className='form-control' type="email" name="email" id="email" defaultValue={email} readOnly />
                 </div>
 
-                <div className="form-group col-6 mb-3">
+                <div className="form-group col-md-6 col-12 mb-3">
                     <label htmlFor="telefono">Teléfono</label>
                     <input onChange={e => setTelefono(e.target.value)} className='form-control' type="text" name="telefono" id="telefono" defaultValue={telefono} />
                 </div>
 
-                <div className="form-group col-6 mb-3">
+                <div className="form-group col-md-6 col-12 mb-3">
                     <label htmlFor="celular">Celular</label>
                     <input onChange={e => setCelular(e.target.value)} className='form-control' type="text" name="celular" id="celular" defaultValue={celular} />
                 </div>
 
-                <div className="form-group col-6 mb-3">
+                <div className="form-group col-md-6 col-12 mb-3">
                     <label htmlFor="direccion">Dirección</label>
                     <input onChange={e => setDireccion(e.target.value)} className='form-control' type="text" name="direccion" id="direccion" defaultValue={direccion} />
                 </div>
 
-                <div className="form-group col-6 mb-3">
+                <div className="form-group col-md-6 col-12 mb-3">
                     <label htmlFor="ciudad">Ciudad</label>
                     <input onChange={e => setCiudad(e.target.value)} className='form-control' type="text" name="ciudad" id="ciudad" defaultValue={ciudad} />
                 </div>

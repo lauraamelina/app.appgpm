@@ -142,6 +142,27 @@ a {
     display: block;
 }
 
+@media screen and (max-width:991px) {
+    .login {
+        height: 100vh;
+        align-items: center;
+    }
+    .login .row {
+        flex-direction: column-reverse;
+        width: 99%;
+        margin-left: 1em;
+        margin-right: 1em;
+
+
+        border-radius: 1em;
+    }
+    
+    .login .start {
+        border-radius: 1em;
+        padding: 2em;
+    }
+}
+
 /* REGISTER */
 
 
@@ -175,7 +196,7 @@ a {
     flex-direction: row;
     align-items: center;
     margin-bottom: 1em;
-    
+
 }
 
 .register .info h2 {
@@ -189,9 +210,9 @@ a {
 }
 
 .register .info img {
-   width: 5em;
-   height: 5em;
-   margin-right: 1em;
+    width: 5em;
+    height: 5em;
+    margin-right: 1em;
 }
 
 .register .start {
@@ -204,6 +225,34 @@ a {
 
 }
 
+
+
+@media screen and (max-width:991px) {
+    .register {
+        height: 100vh;
+        align-items: center;
+    }
+
+    .register section {
+        height: fit-content;
+    }
+    .register .row {
+        flex-direction: column-reverse;
+        width: 99%;
+        margin-left: 1em;
+        margin-right: 1em;
+        border-radius: 1em;
+    }
+    
+    .register .start {
+        border-radius: 1em;
+        padding: 2em;
+    }
+
+    .register .info {
+        display: none;
+    }
+}
 
 
 /* HEADER Y SIDEBAR */
@@ -225,7 +274,7 @@ header {
 }
 
 .pro-sidebar a {
-    color: white !important; 
+    color: white !important;
 }
 
 main {
@@ -234,6 +283,23 @@ main {
     margin-left: 90px;
 
 }
+
+@media (max-width: 991px) {
+    main {
+        padding: 2em .5em !important;
+        width: calc(100vw - 80px) !important;
+        /* alinea a la izquierda */
+        margin-left: 80px !important;
+
+    }
+
+    header {
+        max-width: 100vw;
+    }
+}
+
+
+
 
 /* DASHBOARD */
 
@@ -348,7 +414,7 @@ main {
     margin-bottom: 0 !important;
 }
 
-.averageChart > .text-center {
+.averageChart>.text-center {
     display: block;
     margin: 3em auto;
 }
@@ -473,6 +539,31 @@ main {
     height: 3em !important
 }
 
+@media (max-width: 991px) {
+    .infoMonthChart .row div {
+        margin: 1em 0;
+    }
+
+    .infoStats .row div {
+        margin: .5em 0;
+    }
+
+    .world .row .col-md-4 {
+        justify-content: center;
+    }
+
+    .world .header {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .world .map-img {
+        margin-top: -5em !important;
+        margin-bottom: -3em !important;
+    }
+
+}
+
 /* PAGE MARKET  */
 
 .market div {
@@ -521,9 +612,20 @@ main {
     border-radius: 50%;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
     .market div {
-        max-width: 100% !important;
+        max-width: 90% !important;
+        margin: 1em 0;
+    }
+
+    .market-publicar {
+        max-height: fit-content;
+        padding: 2em 0;
+    }
+
+    .market-publicar .img {
+        margin: 1em auto;
+        max-width: 80%;
     }
 }
 
@@ -581,6 +683,23 @@ main {
     width: 100%;
     height: 8em;
     border-radius: 1em 1em 0 0;
+}
+
+@media screen and (max-width: 991px) {
+    .product {
+        width: 100%;
+    }
+
+    .productsByUser .header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 2em;
+    }
+
+    .productsByUser .header .btn {
+        align-self: center;
+
+    }
 }
 
 
@@ -674,6 +793,30 @@ main {
     border-radius: 10px;
     font-weight: bolder;
     font-size: 1.5em;
+}
+
+@media screen and (max-width:991px) {
+    .productId {
+        flex-direction: column;
+    }
+
+    .productId .images {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 3em;
+        margin-left: 0;
+        flex-direction: column;
+    }
+
+    .productId .images .images_list {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 1em;
+    }
+
+    .productId .images .images_list img {
+        width: 100%;
+    }
 }
 
 .not-exist {
@@ -803,6 +946,14 @@ main {
     border-color: var(--azul) !important;
 }
 
+@media screen and (max-width: 991px) {
+    .formNewProduct .clasificacion .form-check {
+        padding: 0 3em;
+        flex-direction: column;
+    }
+
+}
+
 
 /* TRANSACTIONS */
 
@@ -849,14 +1000,16 @@ main {
     color: white;
     border-radius: 1em;
     padding: .5em;
-    
+
 }
+
 .table-transactions .table tbody .green span {
     background-color: #28A745;
     color: white;
     border-radius: 1em;
     padding: .5em;
 }
+
 .table-transactions .table tbody .greenP span {
     color: #28A745;
     border-radius: 1em;
@@ -904,6 +1057,25 @@ main {
     font-size: 1.5em;
 }
 
+@media (max-width: 991px) {
+    .table-transactions .table{
+        max-width: 100% !important;
+        display: block;
+        overflow-x: auto;
+
+    }
+    .table-transactions .header {
+        flex-direction: column;
+    }
+
+    .table-transactions .header div {
+        width: 100%;
+        margin: .5em 0;
+    }
+
+    
+}
+
 /* ALL PRODUCTS */
 .allProducts .header {
     justify-content: space-between;
@@ -914,6 +1086,43 @@ main {
     margin-bottom: 2em;
 }
 
+.header-bids {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3em;
+}
+
+@media (max-width: 991px) {
+    .allProducts .header div {
+        margin: 1em 0 .5em 0;
+    }
+
+
+
+    .allProducts .header {
+        margin: 0 !important;
+    }
+
+    .allProducts .row {
+        width: 100% !important;
+        margin: 1em 0;
+    }
+
+    .header-bids {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .header-bids h1{ 
+        margin-bottom: 1em;
+    }
+
+    .header-bids .btn {
+        align-self: center;
+    }
+
+}
 
 /* TRANSACTION BY ID */
 
@@ -1064,7 +1273,7 @@ main {
     margin-bottom: 1em;
 }
 
-.content-transactions .table-files  {
+.content-transactions .table-files {
     background-color: white;
     border-radius: 1em;
     padding: 2em 3em;
@@ -1092,6 +1301,18 @@ main {
 .content-transactions .table-files .btn:hover {
     color: white !important;
     text-decoration: none !important;
+}
+
+@media screen and (max-width:991px) {
+    .btns-transactions {
+        flex-direction: column;
+
+    }
+
+    .btns-transactions .btn {
+        width: 50%;
+    }
+    
 }
 
 
@@ -1166,6 +1387,14 @@ main {
     font-size: 1.5em;
 }
 
+@media screen and (max-width:991px) {
+    .demandId .images{ 
+        margin-top: 3em;
+
+    }
+    
+}
+
 /* USER PROFILE */
 
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
@@ -1193,7 +1422,7 @@ main {
 .userProfile .card .img img {
     width: 8em;
     height: 8em;
-    object-fit: cover;  
+    object-fit: cover;
     object-position: center;
     border-radius: 50%;
     position: absolute;
@@ -1226,7 +1455,7 @@ main {
 .marketByUser .card .img-user img {
     width: 3em;
     height: 3em;
-    object-fit: cover;  
+    object-fit: cover;
     object-position: center;
     border-radius: 50%;
     position: absolute;
@@ -1257,7 +1486,7 @@ main {
 .marketByUser .card .img-product img {
     width: 10em;
     height: 100%;
-    object-fit: cover;  
+    object-fit: cover;
     object-position: center;
     border-radius: 1em;
     position: absolute;
@@ -1271,6 +1500,24 @@ main {
 
 .css-19kzrtu {
     padding: 1.5em 0 !important;
+}
+
+@media screen and (max-width: 991px) {
+    .userProfile .col-md-8 {
+        margin-top: 2em;
+    }
+
+    .css-1gsv261 {
+        max-width: 100% !important;
+    }
+    
+    .marketByUser .card .img-product img {
+        position: relative;
+        width: 100%;
+        height: 10em;
+        object-fit: cover;
+        margin-top: 1em;
+    }
 }
 
 
@@ -1302,9 +1549,33 @@ main {
 .edit-profile form .avatar img {
     width: 10em;
     height: 10em;
-    object-fit: cover;  
+    object-fit: cover;
     object-position: center;
     border-radius: 50%;
+}
+
+@media screen and (max-width:991px) {
+    .edit-profile form .avatar {
+        width: 100%;
+    }
+
+    .edit-profile form .avatar label{
+        display: block;
+    }
+
+
+    .edit-profile .row {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .edit-profile .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
 }
 
 
@@ -1313,6 +1584,7 @@ main {
 .editPassword {
     width: 70%;
 }
+
 .editPassword form {
     background-color: white;
     border-radius: 1em;
@@ -1359,4 +1631,34 @@ footer ul li a,
 footer ul li a:hover,
 footer ul li a:active {
     color: #145388;
+}
+
+@media (max-width: 991px) {
+    html {
+        position: relative;
+    }
+
+    footer {
+        padding: 1em .5em 1em 6em !important;
+        max-width: 100% !important;
+    }
+
+
+    footer ul {
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 3em !important;
+    }
+
+    footer ul li {
+        border: none;
+        text-align: center;
+        font-size: 1.2em;
+    }
+
+    footer p.text-center {
+        max-width: 100%;
+        font-size: .9em;
+
+    }
 }

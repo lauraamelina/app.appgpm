@@ -140,7 +140,7 @@ export default function DemandById({ product, isUserProduct, deleteProduct, sell
     return (
         <section className='container demandId'>
             <div className="row">
-                <div className='col-6'>
+                <div className='col-md-6 col-12'>
                     <div className="product">
                         <h2>{product?.nombre_producto?.nombre}</h2>
                         <ul>
@@ -164,7 +164,7 @@ export default function DemandById({ product, isUserProduct, deleteProduct, sell
                         </>)}
                     </div>
                 </div>
-                <div className="col-5 images">
+                <div className="col-md-5 col-12 images">
                     <p className="precio"> {product?.precio} USD/TN</p>
                     <img src={getImage(product?.image)} alt={product?.nombre_producto?.nombre} />
                 </div>

@@ -90,7 +90,7 @@ export default function Register() {
         <section className="register">
             <h1 className="visually-hidden">Registro</h1>
             <section className="row ">
-                <div className="col-md-6 info">
+                <div className="col-md-6  col-12 info">
                     <div>
                         <img src={uso} alt="Facil uso" />
                         <div>
@@ -117,7 +117,7 @@ export default function Register() {
 
                 </div>
 
-                <div className="col-md-6 start">
+                <div className="col-md-6  col-12 start">
                     <img src={logo} alt="Logo APP GPM" />
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">

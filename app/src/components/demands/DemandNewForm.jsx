@@ -149,7 +149,7 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, onS
                 <div className="container caracteristicas mt-5">
                     <h2>Precio del producto</h2>
                     <div className="row justify-content-between">
-                        <div className="col-4 mt-3">
+                        <div className="col-md-4 col-6 mt-3">
                             <label htmlFor="peso">Peso</label>
                             <select className="form-select" id="peso" name="peso" value={peso} onChange={(e) => setPeso(e.target.value)}>
                                 <option value={""}>Seleccionar</option>
@@ -161,17 +161,17 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, onS
                             </select>
                         </div>
 
-                        <div className="col-4 mt-3">
+                        <div className="col-md-4 col-6 mt-3">
                             <label htmlFor="volumen">Volumen</label>
                             <input type="number" className="form-control" id="volumen" name="volumen" value={volumen} onChange={(e) => setVolumen(e.target.value)} />
                         </div>
 
-                        <div className="col-4 mt-3">
+                        <div className="col-md-4 col-6 mt-3">
                             <label htmlFor="precio">Precio</label>
                             <input type="number" className="form-control" id="precio" name="precio" value={precio} onChange={(e) => setPrecio(e.target.value)} />
                         </div>
 
-                        <div className="col-4 mt-3">
+                        <div className="col-md-4 col-6 mt-3">
                             <label htmlFor="country">País</label>
                             <input className="form-select" list="countryList" id="country" name="country" value={country} onChange={(e) => setCountry(e.target.value)} placeholder="Selecciona el país" autoComplete="off" />
                             <datalist id="countryList">
@@ -185,11 +185,11 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, onS
                                 </div>
                             )}
                         </div>
-                        <div className="col-4 mt-3">
+                        <div className="col-md-4 col-6 mt-3">
                             <label htmlFor="ciudad">Ciudad</label>
                             <input type="text" className="form-control" id="ciudad" name="ciudad" value={ciudad} onChange={(e) => setCiudad(e.target.value)} />
                         </div>
-                        <div className="col-4 mt-3">
+                        <div className="col-md-4 col-6 mt-3">
                             <label htmlFor="plazo_carga">Plazo de carga</label>
                             <select className="form-select" id="plazo_carga" name="plazo_carga" value={plazo_carga} onChange={(e) => setPlazoCarga(e.target.value)}>
                                 <option value={""}>Seleccionar</option>
@@ -222,10 +222,10 @@ export default function ProductNewForm({ dataNombreProductos, dataCountries, onS
             </div>
             <div className="container">
                 <div className="row justify-content-around">
-                    <div className="col-3 align-self-center text-center">
+                    <div className="col-md-3 col-12 my-2 align-self-center text-center">
                         <Link className="btn btn-danger w-100" to={'dashboard/products/list'} >Cancelar</Link>
                     </div>
-                    <div className="col-3 align-self-center text-center">
+                    <div className="col-md-3 col-12 my-2 align-self-center text-center">
                         <button className="btn btn-primary w-100" type="submit">Agregar</button>
                     </div>
                 </div>

@@ -19,8 +19,8 @@ export default function PageAllBids() {
 
     return (
         <main className="container">
-            <div className="d-flex justify-content-between align-items-center mb-5">
-                <h1 className="mb-0">Market Bids</h1>
+            <div className="header-bids">
+                <h1 className="mb-md-0">Market Bids</h1>
                 <Link to="/dashboard/demands/new" className="btn btn-primary">Agregar nuevo Bid</Link>
             </div>
             {loading &&

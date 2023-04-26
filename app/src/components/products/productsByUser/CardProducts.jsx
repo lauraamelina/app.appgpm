@@ -23,7 +23,7 @@ export default function CardProducts({ products }) {
     return (
         <div className="row">
             {currentProducts?.map((product) => (
-                <div className="col-md-3 col-2" key={product?.id}>
+                <div className="col-md-3 col-12" key={product?.id}>
                     <CardProduct product={product} />
                 </div>
             ))}
