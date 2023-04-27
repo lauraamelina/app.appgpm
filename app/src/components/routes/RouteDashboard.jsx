@@ -11,7 +11,6 @@ import Footer from "../layouts/Footer";
 
 //PAGES
 import Dashboard from "../../pages/PageDashboard"
-import PageNews from "../../pages/PageNews"
 import PageServices from "../../pages/PageServices"
 
 //ROUTES
@@ -20,8 +19,7 @@ import RouteTransactions from "./RouteTransactions"
 import RouteOperations from "./RouteOperations";
 import RouteDemands from './RouteDemands'
 import RouteUsers from "./RouteUsers";
-
-
+import RouteNews from "./RouteNews";
 
 
 function RouteDashboard() {
@@ -45,7 +43,7 @@ function RouteDashboard() {
                 <Route path="/products/*" element={<RouteProducts />} />
                 <Route path="/demands/*" element={<RouteDemands />} />
                 <Route path="/users/*" element={<RouteUsers />} />
-                <Route path="/news/list" element={<PageNews />} />
+                <Route path="/news/*" element={<RouteNews />} />
                 <Route path="/services/list" element={<PageServices />} />
                 <Route path="*" element={<Navigate to="/dashboard" />} />
             </Routes>
