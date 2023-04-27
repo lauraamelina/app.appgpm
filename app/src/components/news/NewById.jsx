@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ForumIcon from '@mui/icons-material/Forum';
@@ -75,7 +76,7 @@ export default function NewById({ newById }) {
                 </div>}
                 <div className="header">
                     <h2>{newById?.title ? newById?.title : newById.nombre_producto?.nombre}</h2>
-                    <p className="autor">Publicado por {newById?.author?.name}</p>
+                    <p className="autor">Publicado por <Link to={`/dashboard/users/profile/${newById?.author?.id}`}> {newById?.author?.name} </Link></p>
                     <p className="date">Publicado el {formattedDate(newById?.created_at)}</p>
                 </div>
                 <div className="content">

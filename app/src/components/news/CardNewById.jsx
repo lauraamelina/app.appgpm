@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import AspectRatio from '@mui/joy/AspectRatio';
 import Box from '@mui/joy/Box';
 import Button from '@mui/joy/Button';
 import Card from '@mui/joy/Card';
-import IconButton from '@mui/joy/IconButton';
 import Typography from '@mui/joy/Typography';
-import BookmarkAdd from '@mui/icons-material/BookmarkAddOutlined';
 import ImgGenerica from '../../assets/img/img_generica.png'
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 
 
 export default function CardNewById({ item }) {
@@ -39,7 +37,7 @@ export default function CardNewById({ item }) {
     return (
         <Card className="card" key={item?.id} variant="outlined" sx={{ width: 320 }}>
             <Typography level="h2" fontSize="md" sx={{ mb: 0.5 }}>
-                {item?.author?.name}
+                <Link to={`/dashboard/users/profile/${item?.author?.id}`}> {item?.author?.name} </Link>
             </Typography>
             <Typography level="body2">Publicado el: {formattedDate(item?.created_at)}</Typography>
 
@@ -50,7 +48,7 @@ export default function CardNewById({ item }) {
             <Box sx={{ display: 'flex' }}>
                 <div>
                     <Typography className="icons" level="body3">
-                        <span><FavoriteIcon sx={{ mr: 0.5 }} /> {likes}</span>  
+                        <span><FavoriteIcon sx={{ mr: 0.5 }} /> {likes}</span>
                     </Typography>
                     <Typography fontSize="lg" fontWeight="lg">
                         {item?.nombre_producto?.nombre}

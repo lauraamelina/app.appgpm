@@ -51,10 +51,17 @@ async function addLike(id) {
             type: 1
         })
     }).then(response => response.json())
-
 }
 
-    
+async function createNew(formData) {
+    return fetch(`${URL}/news`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+        },
+        body: formData
+    }).then(response => response.json())
+}
 
 
 export {
@@ -62,5 +69,6 @@ export {
     getNewById,
     addComment,
     deleteLike,
-    addLike
+    addLike,
+    createNew,
 }

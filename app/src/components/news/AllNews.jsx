@@ -10,7 +10,7 @@ export default function AllNews({ news }) {
     const [newsPerPage] = useState(6);
     const indexOfLastNew = currentPage * newsPerPage;
     const indexOfFirstNew = indexOfLastNew - newsPerPage;
-    const currentNews = filtered?.sort((a, b) => a.id - b.id).slice(indexOfFirstNew, indexOfLastNew);
+    const currentNews = filtered?.sort((a, b) => a.created_at - b.created_at).slice(indexOfFirstNew, indexOfLastNew);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     function filterNews() {
@@ -56,7 +56,7 @@ export default function AllNews({ news }) {
         <div className='row allNews'>
             <div className='col-md-12'>
                 <div>
-                    <Link to={'/'} className='btn btn-primary'>Agregar nuevo artículo</Link>
+                    <Link to={'/dashboard/news/new'} className='btn btn-primary'>Agregar nuevo artículo</Link>
                 </div>
                 <div className='form-group'>
                     <label htmlFor="search" className='visually-hidden'>Buscar por producto</label>
