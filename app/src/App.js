@@ -1,52 +1,29 @@
-import React, { useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import * as authService from '../src/services/auth.service'
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/auth/PageLogin'
 import Register from './pages/auth/PageRegister'
 import RecuperationPassword from './pages/auth/PageRecuperationPassword';
 import RouteDashboard from '../src/components/routes/RouteDashboard'
+import PageVerification from './pages/auth/PageVerification';
+import * as AuthService from '../src/services/auth.service'
+import AuthWrapper from './components/auth/AuthWrapper';
 
 function App() {
-  let navigate = useNavigate()
-  const user = authService.getUser();
-  function onLogin(data, token) {
-    authService.setUser(data)
-    authService.setToken(token)
-
-    if (data.rol === 1) {
-      navigate('/dashboard/admin')
-    } else if (data.rol === 2) {
-      navigate('/dashboard')
-    }
-  }
-
-  useEffect(() => {
-    if (user) {
-      if (window.location.pathname === '/') {
-        if (user.rol === 1) {
-          navigate('/dashboard/admin')
-        } else if (user.rol === 2) {
-          navigate('/dashboard')
-        }
-      }
-    } else {
-      if (window.location.pathname === '/dashboard') {
-        navigate('/login')
-      }
-    }
-  }, [user, navigate])
+  const user = AuthService.getUser()
 
 
 
   return (
-    <>
+    <AuthWrapper>
       <Routes>
-        <Route path='/login' element={<Login onLogin={onLogin} />} />
+        <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/recuperation-password' element={<RecuperationPassword />} />
-        <Route path='/dashboard/*' element={<RouteDashboard />} />
+        <Route path='/verification' element={<PageVerification />} />
+        {user && <Route path='/dashboard/*' element={<RouteDashboard />} />}
+        {!user && <Route path='/dashboard/*' element={<Navigate to='/login' />} />}
       </Routes>
-    </>
+    </AuthWrapper>
   );
 }
 

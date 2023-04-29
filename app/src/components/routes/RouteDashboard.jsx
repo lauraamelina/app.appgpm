@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 
 // SERVICES
@@ -11,7 +11,6 @@ import Footer from "../layouts/Footer";
 
 //PAGES
 import Dashboard from "../../pages/PageDashboard"
-import PageServices from "../../pages/PageServices"
 
 //ROUTES
 import RouteProducts from "./RouteProducts"
@@ -20,6 +19,7 @@ import RouteOperations from "./RouteOperations";
 import RouteDemands from './RouteDemands'
 import RouteUsers from "./RouteUsers";
 import RouteNews from "./RouteNews";
+import RouteServices from './RouteServices'
 
 
 function RouteDashboard() {
@@ -29,8 +29,19 @@ function RouteDashboard() {
     useEffect(() => {
         if (!user) {
             navigate('/login')
+        } else if (user) {
+            if (user?.email_verified_at === null) {
+                navigate('/verification')
+            } else if (window.location.pathname === '/') {
+                if (user.rol === 1) {
+                    navigate('/dashboard/admin')
+                } else if (user.rol === 2) {
+                    navigate('/dashboard')
+                }
+            }
         }
-    }, [user, navigate])
+        // eslint-disable-next-line 
+    }, [])
 
     return (
         <>
@@ -44,7 +55,7 @@ function RouteDashboard() {
                 <Route path="/demands/*" element={<RouteDemands />} />
                 <Route path="/users/*" element={<RouteUsers />} />
                 <Route path="/news/*" element={<RouteNews />} />
-                <Route path="/services/list" element={<PageServices />} />
+                <Route path="/services/*" element={<RouteServices />} />
                 <Route path="*" element={<Navigate to="/dashboard" />} />
             </Routes>
             <Footer />

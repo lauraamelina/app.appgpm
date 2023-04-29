@@ -46,6 +46,15 @@ async function recuperationPassword(email) {
     }).then(response => response.json())
 }
 
+async function sendEmailVerification(id) {
+    return fetch(`https://api.appgpm.com/verify/${id}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + getToken(),
+        },
+    }).then(response => response.json())
+}
+
 
 
 
@@ -82,6 +91,10 @@ function deleteToken() {
     localStorage.removeItem('token')
 }
 
+function isAuthenticated() {
+    return !!localStorage.getItem('token')
+}
+
 
 export {
     login,
@@ -95,5 +108,7 @@ export {
     deleteToken,
     freeEmailRegister,
     register,
-    recuperationPassword
+    recuperationPassword,
+    sendEmailVerification,
+    isAuthenticated
 }

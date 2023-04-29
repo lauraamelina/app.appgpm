@@ -1986,3 +1986,44 @@ footer ul li a:active {
         margin-top: 1em;
     }
 }
+
+/* LIST SERVICES */
+
+.listServices .row {
+    margin: 1em 0;
+    justify-content: flex-start;
+    align-items: center;
+}
+.listServices .card h2 {
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 1em;
+    color: #3A3A3A;
+}
+
+.listServices .card {
+    margin: 1em 0;
+    position: relative;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.18);
+}
+
+.listServices .card img {
+    width: 5em;
+    height: 5em;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1em;
+    margin: 1em auto;
+}
+
+.listServices .card p.count {
+    position: absolute;
+    right: 0;
+    top: -1em;
+    font-size: 1em;
+    font-weight: bolder;
+    padding: .5em 1em;
+    border-radius: 1em;
+    color: white;
+    background-color: var(--azul);
+}
