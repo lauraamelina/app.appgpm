@@ -2035,6 +2035,19 @@ footer ul li a:active {
     background-color: #3A3A3A;
     padding: 1em;
     max-width: fit-content;
+    position: relative;
+}
+
+.modalChats p.count {
+    position: absolute;
+    right: 0;
+    top: -1em;
+    font-size: .8em;
+    font-weight: bolder;
+    padding: .5em 1em;
+    border-radius: 50%;
+    color: white;
+    background-color: var(--naranja);
 }
 
 .modalChats .icon svg {

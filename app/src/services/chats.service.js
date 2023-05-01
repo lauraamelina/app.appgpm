@@ -40,10 +40,20 @@ async function viewed(id) {
     })
 }
 
+async function getChatsCount() {
+    return fetch(`${URL}/chats/count`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+        },
+    }).then(response => response.json())
+}
+
 
 export {
     getChats,
     getChat,
     sendMessage,
-    viewed
+    viewed,
+    getChatsCount
 }

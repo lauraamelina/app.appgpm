@@ -8,7 +8,8 @@ import { CircularProgress } from "@mui/material";
 export default function ChatsModal() {
     const [isCollapsed, setIsCollapsed] = useState(true);
     const [chats, setChats] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
+    const [count, setCount] = useState(0)
 
     const getImage = (avatar) => {
         if (avatar) {
@@ -25,6 +26,11 @@ export default function ChatsModal() {
             .then(res => {
                 setChats(res.data)
                 setLoading(false)
+            })
+
+        ChatsService.getChatsCount()
+            .then(res => {
+                setCount(res.data)
             })
     }, [])
 
@@ -55,6 +61,9 @@ export default function ChatsModal() {
 
             <div className="icon" onClick={() => setIsCollapsed(!isCollapsed)}>
                 <ForumIcon />
+                {count !== 0 &&
+                    <p className="count">{count}</p>
+                }
             </div>
         </div>
     )
