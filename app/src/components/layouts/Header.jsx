@@ -10,18 +10,40 @@ import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-
+import Badge from '@mui/material/Badge';
 import * as AuthService from '../../services/auth.service'
+import * as NotificationsService from '../../services/notification.service'
+import * as SocketService from '../../services/socket.service'
 
 
 const Topbar = () => {
   let navigate = useNavigate();
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [anchorElNotification, setAnchorElNotification] = useState(null);
   const [user, setUser] = useState(AuthService.getUser() || null)
+  const [notifications, setNotifications] = useState([]);
+  const [views, setViews] = useState(0)
 
   useEffect(() => {
     setUser(AuthService.getUser() || null)
+
+    NotificationsService.getNotifications()
+      .then(res => {
+        setNotifications(res.data)
+        setViews(res.views)
+        console.log(res)
+      })
   }, [])
+
+  useEffect(() => {
+    const subscription = SocketService.listen('notification-event').subscribe((data) => {
+      setNotifications(data.notifications);
+      setViews(data.views);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
 
   const styles = {
     backgroundColor: "#43454d",
@@ -38,6 +60,16 @@ const Topbar = () => {
     marginBottom: "0px"
 
   }
+  const handleCloseNotifications = () => {
+    setAnchorElNotification(false);
+
+    SocketService.emit('view-notification', { user_id: user?.id });
+    setViews(0)
+  }
+
+  const handleOpenNotifications = (event) => {
+    setAnchorElNotification(event.currentTarget);
+  };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -57,6 +89,17 @@ const Topbar = () => {
     navigate('/login')
   }
 
+  const typeNotifications = {
+    1: "Te han comprado el producto.",
+    2: "Tiene una solicitud para finalizar la transacción.",
+    3: "Añadida una nueva secuencia en la transacción.",
+    4: "Se ha subido un nuevo archivo a la transacción.",
+    5: "La operación se ha cerrado con éxito.",
+    6: "La operación ha sido calificada con éxito.",
+    7: "Han rechazado el final de la operación.",
+    8: "Se ha subido un archivo para su validación.",
+    9: "Le han hecho una oferta en la operación."
+  }
 
   return (
     <header>
@@ -75,17 +118,56 @@ const Topbar = () => {
 
         {/* ICONS */}
         <Box display="flex">
-
-      
-          <IconButton style={{ color: "white" }} sx={{ display: { xs: 'none', md: 'block' } }}>
+          <IconButton onClick={() => navigate('/dashboard/operations/bids')} style={{ color: "white" }} sx={{ display: { xs: 'none', md: 'block' } }}>
             <SellIcon />
           </IconButton>
-          <IconButton style={{ color: "white" }} sx={{ display: { xs: 'none', md: 'block' } }}>
+          <IconButton onClick={() => navigate('/dashboard/operations/buy')} style={{ color: "white" }} sx={{ display: { xs: 'none', md: 'block' } }}>
             <StoreIcon />
           </IconButton>
-          <IconButton style={{ color: "white" }} sx={{ display: { xs: 'none', md: 'block' } }}>
-            <NotificationsIcon />
-          </IconButton>
+          <Box p={0} >
+            <Tooltip title="Notificaciones">
+              <IconButton onClick={handleOpenNotifications} style={{ color: "white" }} sx={{ display: { xs: 'none', md: 'block' } }}>
+                <Badge badgeContent={views !== 0 ? views : ''} color="success">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbarNotifications"
+              anchorEl={anchorElNotification}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElNotification)}
+              onClose={handleCloseNotifications}
+            >
+              {notifications ? notifications?.map((notification, index) => (
+                <Link to={`/dashboard/transactions/${notification.transaction_id}`} key={index} >
+                  <MenuItem onClick={handleCloseNotifications}>
+                    <Typography variant="body2" sx={{ color: '#3A3A3A' }} fontFamily={'Nunito, sans-serif '}>
+                      {typeNotifications[notification.type]} <br />
+                      <span className="text-muted">Transacción {notification.transaction_id}</span>
+                    </Typography>
+                  </MenuItem>
+                </Link>
+              ))
+                :
+                <MenuItem onClick={handleCloseNotifications}>
+                  <Typography variant="body2" sx={{ color: '#3A3A3A' }} fontFamily={'Nunito, sans-serif '}>
+                    No tienes notificaciones
+                  </Typography>
+                </MenuItem>
+
+              }
+            </Menu>
+          </Box>
 
           <Box marginTop={'.5em'} marginLeft={'1em'} sx={{ flexGrow: 0 }}>
             <Tooltip title="Mi cuenta">

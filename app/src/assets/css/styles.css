@@ -2047,7 +2047,7 @@ footer ul li a:active {
     padding: .5em 1em;
     border-radius: 50%;
     color: white;
-    background-color: var(--naranja);
+    background-color: #2e7d32;
 }
 
 .modalChats .icon svg {
