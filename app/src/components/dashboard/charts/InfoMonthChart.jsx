@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 
-
-
 export default function InfoMonthChart({ items }) {
     const [toneladas, setToneladas] = useState([]);
     const [usd, setUsd] = useState([]);
@@ -177,7 +175,7 @@ export default function InfoMonthChart({ items }) {
         <section className="infoMonthChart">
             <div className="row">
                 <div className="col-md-4 col-12 ton">
-                    <section>
+                    <section className="position-relative">
                         <h3 className="h5">Toneladas por mes</h3>
                         <BarChart
                             width={200}
@@ -192,13 +190,13 @@ export default function InfoMonthChart({ items }) {
                             <CartesianGrid strokeDasharray="1 1" stroke="white" />
                             <XAxis dataKey="name" fontSize={".6em"} stroke='white' />
                             <YAxis fontSize={".7em"} stroke='white' />
-                            <Tooltip content={"name"} />
+                            <Tooltip content={"name: pv"} fill='#6A6A6A' />
                             <Bar dataKey="pv" barSize={10} fill="white" />
                         </BarChart>
                     </section>
                 </div>
                 <div className="col-md-4 col-12 usd">
-                    <section>
+                    <section className="position-relative">
                         <h3 className="h5">Usd por mes</h3>
                         <BarChart
                             width={200}
@@ -219,7 +217,7 @@ export default function InfoMonthChart({ items }) {
                     </section>
                 </div>
                 <div className="col-md-4 col-12 ope">
-                    <section>
+                    <section className="position-relative">
                         <h3 className="h5">Operaciones por mes</h3>
                         <BarChart
                             width={200}
@@ -234,7 +232,7 @@ export default function InfoMonthChart({ items }) {
                             <CartesianGrid strokeDasharray="1 1" stroke='white' />
                             <XAxis dataKey="name" fontSize={".6em"} stroke='white' />
                             <YAxis fontSize={".7em"} stroke='white' />
-                            <Tooltip content={"name"} />
+                            <Tooltip content={"name: pv"} fill='#6A6A6A' />
                             <Bar dataKey="pv" barSize={10} fill="white" />
                         </BarChart>
                     </section>

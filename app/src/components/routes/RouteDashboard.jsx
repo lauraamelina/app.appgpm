@@ -8,6 +8,7 @@ import * as AuthService from "../../services/auth.service"
 import Header from "../layouts/Header";
 import SideBar from "../layouts/SideBar";
 import Footer from "../layouts/Footer";
+import ChatsModal from "../chats/ChatsModal";
 
 //PAGES
 import Dashboard from "../../pages/PageDashboard"
@@ -20,6 +21,7 @@ import RouteDemands from './RouteDemands'
 import RouteUsers from "./RouteUsers";
 import RouteNews from "./RouteNews";
 import RouteServices from './RouteServices'
+import RouteChat from './RouteChat'
 
 
 function RouteDashboard() {
@@ -47,6 +49,7 @@ function RouteDashboard() {
         <>
             <SideBar />
             <Header />
+            <ChatsModal/>
             <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/operations/*" element={<RouteOperations />} />
@@ -56,6 +59,7 @@ function RouteDashboard() {
                 <Route path="/users/*" element={<RouteUsers />} />
                 <Route path="/news/*" element={<RouteNews />} />
                 <Route path="/services/*" element={<RouteServices />} />
+                <Route path="/chats/*" element={<RouteChat />} />
                 <Route path="*" element={<Navigate to="/dashboard" />} />
             </Routes>
             <Footer />
