@@ -95,6 +95,16 @@ function isAuthenticated() {
     return !!localStorage.getItem('token')
 }
 
+async function uploadFileVerification(formData) {
+    return fetch(`https://api.appgpm.com/verification`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + getToken(),
+        },
+        body: formData
+    }).then(response => response.json())
+}
+
 
 export {
     login,
@@ -110,5 +120,6 @@ export {
     register,
     recuperationPassword,
     sendEmailVerification,
-    isAuthenticated
+    isAuthenticated,
+    uploadFileVerification
 }
