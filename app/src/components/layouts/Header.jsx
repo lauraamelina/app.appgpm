@@ -31,7 +31,6 @@ const Topbar = () => {
       .then(res => {
         setNotifications(res.data)
         setViews(res.views)
-        console.log(res)
       })
   }, [])
 

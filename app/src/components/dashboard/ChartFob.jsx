@@ -4,6 +4,8 @@ import AverageChart from './charts/AverageChart'
 import InfoMonthChart from "./charts/InfoMonthChart";
 import InfoStats from "./charts/InfoStats";
 import WorldMapChart from "./charts/WorldMapChart";
+import Ads from "./ads/Ads";
+import VerificationAccount from "./VerificationAccount";
 
 export default function ChartFob() {
     const [dataFob, setDataFob] = useState([]);
@@ -46,17 +48,18 @@ export default function ChartFob() {
 
 
     return (
-        <section className="chartFOB container-fluid">
-            <div className="row">
-                <div className="col-md-10">
-                    <AverageChart items={dataFob} loading={loading}/>
-                    <InfoMonthChart items={dataPerMonth} />
-                    <InfoStats items={dataStats} />
-                    <WorldMapChart itemsContinents={dataContinents} itemsCountries={dataCountries} />
-                </div>
+        <section className="row">
+            <div className="col-md-9">
+                <VerificationAccount />
+                <AverageChart items={dataFob} loading={loading} />
+                <InfoMonthChart items={dataPerMonth} />
+                <InfoStats items={dataStats} />
+                <WorldMapChart itemsContinents={dataContinents} itemsCountries={dataCountries} />
+            </div>
 
+            <div className="col-md-3 ads">
+                <Ads />
             </div>
         </section>
-
     )
 }
