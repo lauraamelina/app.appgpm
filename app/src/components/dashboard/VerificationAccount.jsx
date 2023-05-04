@@ -4,8 +4,8 @@ import Alert from '@mui/material/Alert';
 import Swal from 'sweetalert2'
 
 export default function VerificationAccount() {
-    const [user, setUser] = useState([])
-    const [verified, setVerified] = useState(0);
+    const [user, setUser] = useState(AuthService.getUser() || [])
+    const [verified, setVerified] = useState(user.verificado || 0);
 
     useEffect(() => {
         setUser(AuthService.getUser())
