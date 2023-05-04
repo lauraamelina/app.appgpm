@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Navigate, useLocation } from "react-router-dom";
 
 // SERVICES
 import * as AuthService from "../../services/auth.service"
@@ -27,6 +27,7 @@ import RouteChat from './RouteChat'
 function RouteDashboard() {
     let navigate = useNavigate()
     const user = AuthService.getUser();
+    const location = useLocation();
 
     useEffect(() => {
         if (!user) {
@@ -34,7 +35,7 @@ function RouteDashboard() {
         } else if (user) {
             if (user?.email_verified_at === null) {
                 navigate('/verification')
-            } else if (window.location.pathname === '/') {
+            } else if (location.pathname === '/') {
                 if (user.rol === 1) {
                     navigate('/dashboard/admin')
                 } else if (user.rol === 2) {

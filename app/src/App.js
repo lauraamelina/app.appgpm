@@ -11,8 +11,6 @@ import AuthWrapper from './components/auth/AuthWrapper';
 function App() {
   const user = AuthService.getUser()
 
-
-
   return (
     <AuthWrapper>
       <Routes>
