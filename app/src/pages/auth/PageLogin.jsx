@@ -31,10 +31,7 @@ function Login() {
 
         if (data.email_verified_at === null) {
             navigate('/verification')
-        }
-        if (data.rol === 1) {
-            navigate('/dashboard/admin')
-        } else if (data.rol === 2) {
+        } else {
             navigate('/dashboard')
         }
     }
