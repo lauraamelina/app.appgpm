@@ -19,6 +19,7 @@ function App() {
         <Route path='/recuperation-password' element={<RecuperationPassword />} />
         <Route path='/verification' element={<PageVerification />} />
         {user && <Route path='/dashboard/*' element={<RouteDashboard />} />}
+        {user && <Route path='/' element={<Navigate to='/dashboard' />} />}
         {!user && <Route path='/dashboard/*' element={<Navigate to='/login' />} />}
       </Routes>
     </AuthWrapper>

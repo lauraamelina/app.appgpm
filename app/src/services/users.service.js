@@ -64,6 +64,23 @@ async function changePassword(antPassword, password, repeatPassword) {
     }).then(response => response.json())
 }
 
+async function getAllUsers() {
+    return fetch(`${URL}/users`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+        },
+    }).then(response => response.json())
+}
+
+async function deleteUser(id) {
+    return fetch(`${URL}/users/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+        },
+    }).then(response => response.json())
+}
 
 
 export {
@@ -72,6 +89,8 @@ export {
     getDemandsByUser,
     updateUser,
     updateAvatar,
-    changePassword
+    changePassword,
+    getAllUsers,
+    deleteUser,
 
 }

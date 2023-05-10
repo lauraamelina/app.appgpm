@@ -274,6 +274,8 @@ header {
     top: 90px;
     left: 0;
     color: white;
+    overflow-y: auto;
+    max-height: calc(100vh - 90px); 
 }
 
 .pro-sidebar a {
@@ -2381,4 +2383,111 @@ footer ul li a:active {
     .welcome__chat {
         text-align: center;
     }
+}
+
+/* ADMIN */
+
+/* listUser */
+
+.listUser > .row > .header {
+    background-color: white;
+    border-radius: 1em;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.18);
+    padding: 1em;
+    margin-bottom: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.listUser .header .search {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.listUser .header label {
+    margin-right: 1em;
+}
+
+.listUser .card {
+    border-radius: 1em;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.18);
+    margin-bottom: 2em;
+    background-color: white;
+    border-radius: 1em;
+}
+
+.listUser .card .header {
+    position: relative;
+    padding: 2em 1em;
+    border-radius: 1em 1em 0 0;
+}
+
+.listUser .card .header h2 {
+    margin-bottom: 0;
+    font-size: 1.1em;
+    font-weight: bolder;
+    text-align: left;
+}
+
+.listUser .card .header img {
+    position: absolute;
+    top: .2em;
+    right: -.7em;
+    width: 4em;
+    height: 4em;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    margin-right: 1em;
+}
+
+.listUser .card .info {
+    padding: 0 1em;
+}
+
+.listUser .card .info p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    font-size: .85em;
+}
+
+.listUser .card .info p strong {
+    font-weight: bold;
+    font-size: .9em;
+}
+
+.listUser .card .buttons {
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
+}
+
+.listUser .card .buttons .btn {
+    margin: 0 .5em;
+}
+
+@media screen and (max-width: 991px) {
+    .listUser {
+        width: 100%;
+    }
+    .listUser .header {
+        flex-direction: column;
+    }
+    .listUser .header .search {
+        width: 100%;
+    }
+    .listUser .header button {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+    .listUser .card .info p {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    
 }

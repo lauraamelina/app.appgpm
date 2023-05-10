@@ -10,6 +10,13 @@ import PaidIcon from '@mui/icons-material/Paid';
 import DiamondIcon from '@mui/icons-material/Diamond';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import PeopleIcon from '@mui/icons-material/People';
+import CampaignIcon from '@mui/icons-material/Campaign';
+import HubIcon from '@mui/icons-material/Hub';
+import VerifiedIcon from '@mui/icons-material/Verified';
+import BusinessIcon from '@mui/icons-material/Business';
+
+import * as AuthService from '../../services/auth.service';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   return (
@@ -50,6 +57,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [selected, setSelected] = useState("Dashboard");
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const handleMainStyle = () => {
     const main = document.getElementsByTagName("main")[0];
@@ -94,13 +102,19 @@ const Sidebar = () => {
       }
     }
     if (window.screen.width < 991) {
-
       if (isCollapsed) {
         main.style.marginLeft = "80px !important";
       }
       if (!isCollapsed) {
         main.style.marginLeft = "80px !important";
       }
+    }
+
+    const user = AuthService.getUser();
+    if (user.rol === 1) {
+      setIsAdmin(true);
+    } else {
+      setIsAdmin(false);
     }
     // eslint-disable-next-line
   }, []);
@@ -109,7 +123,6 @@ const Sidebar = () => {
     setIsCollapsed(true);
     // eslint-disable-next-line
   }, [selected]);
-
 
   return (
     <Box
@@ -157,7 +170,6 @@ const Sidebar = () => {
               icon={<AddBusinessIcon />}
               selected={selected}
               setSelected={setSelected}
-
             />
             <Item
               title="Market"
@@ -165,6 +177,7 @@ const Sidebar = () => {
               icon={<ShoppingBagIcon />}
               selected={selected}
               setSelected={setSelected}
+
             />
             <Item
               title="Mis productos"
@@ -196,6 +209,52 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
 
+            {isAdmin && (
+              <>
+                <Item
+                  title="Usuarios"
+                  to="/dashboard/users/list"
+                  icon={<PeopleIcon />}
+                  selected={selected}
+                  setSelected={setSelected}
+                />
+                <Item
+                  title="Campañas"
+                  to="/"
+                  icon={<CampaignIcon />}
+                  selected={selected}
+                  setSelected={setSelected}
+                />
+
+                <Item
+                  title="Lista de anuncios"
+                  to="/"
+                  icon={<HubIcon />}
+                  selected={selected}
+                  setSelected={setSelected}
+                />
+
+                <Item
+                  title="Documentos"
+                  to="/"
+                  icon={<VerifiedIcon />}
+                  selected={selected}
+                  setSelected={setSelected}
+                />
+
+                <Item
+                  title="Empresas"
+                  to="/"
+                  icon={<BusinessIcon />}
+                  selected={selected}
+                  setSelected={setSelected}
+                />
+
+              </>
+
+
+
+            )}
           </Box>
         </Menu>
       </ProSidebar>
