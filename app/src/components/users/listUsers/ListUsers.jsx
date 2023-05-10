@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as CountriesService from '../../../services/countries.service'
 import CardUser from './CardUser'
+import { Link } from 'react-router-dom';
 
 export default function ListUsers({ users, deleteUser }) {
     const [search, setSearch] = useState('')
@@ -66,7 +67,7 @@ export default function ListUsers({ users, deleteUser }) {
         <div className='container listUser'>
             <div className='row'>
                 <div className='col-md-12 header'>
-                    <button className='btn btn-primary'> Agregar nuevo usuario</button>
+                    <Link to={'/dashboard/users/new'} className='btn btn-primary'> Agregar nuevo usuario</Link>
                     <div className="search">
 
                         <label htmlFor="search">Buscar </label>

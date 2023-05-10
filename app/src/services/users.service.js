@@ -82,6 +82,18 @@ async function deleteUser(id) {
     }).then(response => response.json())
 }
 
+async function register(type, nit, name, rol, country, email, password) {
+    return fetch(`${URL}/users`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ type, nit, name, rol, country, email, password })
+    }).then(response => response.json())
+}
+
+
 
 export {
     getUserById,
@@ -92,5 +104,6 @@ export {
     changePassword,
     getAllUsers,
     deleteUser,
+    register
 
 }
