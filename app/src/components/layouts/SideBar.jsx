@@ -12,7 +12,7 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import PeopleIcon from '@mui/icons-material/People';
 import CampaignIcon from '@mui/icons-material/Campaign';
-import HubIcon from '@mui/icons-material/Hub';
+import AdsClickIcon from '@mui/icons-material/AdsClick';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import BusinessIcon from '@mui/icons-material/Business';
 
@@ -228,8 +228,8 @@ const Sidebar = () => {
 
                 <Item
                   title="Lista de anuncios"
-                  to="/"
-                  icon={<HubIcon />}
+                  to="/dashboard/campaigns/ads/list"
+                  icon={<AdsClickIcon />}
                   selected={selected}
                   setSelected={setSelected}
                 />

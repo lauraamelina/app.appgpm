@@ -11,7 +11,7 @@ export default function Ads() {
 
     useEffect(() => {
         setAdsLoaded(true)
-        AdsService.getAds()
+        AdsService.getAdsRandom()
             .then((data) => {
                 setAds(data.data)
                 setAdsLoaded(false)

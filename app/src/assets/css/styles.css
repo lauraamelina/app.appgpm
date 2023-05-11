@@ -2525,11 +2525,117 @@ footer ul li a:active {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2em;
-    
+}
+
+.campaigns .header h1 {
+    margin-bottom: 0;
 }
 
 .campaigns > .table {
     background-color: white;
     border-radius: 1em;
     padding: 1em;
+}
+
+
+.cardsAds > .row > .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2em;
+    background-color: white;
+    border-radius: 1em;
+    padding: 2em 1em;
+}
+
+.cardsAds > .row > .header .input-group {
+    width: 95% !important;
+}
+
+.cardsAds .card {
+    background-color: white;
+    border-radius: 1em;
+    padding: 1em;
+    margin-bottom: 2em;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.18);
+}
+
+.cardsAds .card h2 {
+    font-size: 1.1em;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.cardsAds .card p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 1em;
+}
+
+.cardsAds .card p svg {
+    margin-right: .5em;
+}
+
+.cardsAds .card img {
+    width: 20em;
+    height: 20em;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1em;
+    margin-bottom: 1em;
+}
+
+.cardsAds .card .icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cardsAds .card .icons p{
+    margin-bottom: 0;
+}
+
+.cardsAds .card .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+.cardsAds .card .buttons .btn-success {
+    color: white !important;
+}
+
+/* ADMIN - AD BY ID  */
+
+.adById h1 {
+    position: relative;
+}
+
+.adById .state {
+    position: absolute;
+    top: 2.5em;
+    right: 8em;
+}
+
+.adById .state .approved {
+    background-color: #198754;
+    color: white;
+    padding: .5em 1em;
+    border-radius: 1em;
+}
+
+.adById .state .not_approved {
+    background-color: #dc3545;
+    color: white;
+    padding: .5em 1em;
+    border-radius: 1em;
+}
+
+.adById img {
+    width: 20em;
+    height: 20em;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1em;
 }
