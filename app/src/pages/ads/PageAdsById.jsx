@@ -4,6 +4,8 @@ import * as AdsService from '../../services/ads.service'
 import { CircularProgress } from "@mui/material";
 import AdsClickIcon from '@mui/icons-material/AdsClick';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import ImgGenerica from '../../../src/assets/img/img_generica.png'
+
 
 export default function PageAdsById() {
     let { idCampaign } = useParams();
@@ -33,6 +35,8 @@ export default function PageAdsById() {
     function getImage(image) {
         if (image) {
             return `https://api.appgpm.com/files/banners/${image}`
+        } else {
+            return ImgGenerica
         }
     }
 
@@ -57,7 +61,7 @@ export default function PageAdsById() {
                                 <p> <strong>Fecha de creación: </strong> {formattedDate(ad?.campaign?.created_at)}</p>
                             </div>
 
-                            <div className="d-flex justify-content-between pe-4">
+                            <div className="d-flex justify-content-between pe-4 mb-4">
                                 <p><span className='visually-hidden'>Clicks:</span> <AdsClickIcon /> {ad.clicks}</p>
                                 <p><span className='visually-hidden'>Vistas:</span> <VisibilityIcon /> {ad.views}</p>
                             </div>

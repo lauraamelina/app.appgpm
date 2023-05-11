@@ -65,7 +65,7 @@ export default function PageListAds() {
         <main className="campaigns">
             <div className="header">
                 <h1>Lista de anuncios</h1>
-                <Link className="btn btn-primary">Agregar nuevo anuncio</Link>
+                <Link to={'/dashboard/campaigns/ads/new'} className="btn btn-primary">Agregar nuevo anuncio</Link>
             </div>
 
             {!isLoaded && ads.length === 0 &&

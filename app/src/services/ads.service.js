@@ -37,10 +37,30 @@ async function approveAd(id) {
     }).then(response => response.json())
 }
 
+async function deleteAd(idCampaign, idAd) {
+    return fetch(`${URL}/campaigns/${idCampaign}/ads/${idAd}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+        },
+    }).then(response => response.json())
+}
+
+async function createAd(idCampaign, data) {
+    return fetch(`${URL}/campaigns/${idCampaign}/ads`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+        },
+        body: data
+    }).then(response => response.json())
+}
+
 export {
     getAdsRandom,
     getAds,
     getAdById,
     approveAd,
-
+    deleteAd, 
+    createAd,
 }

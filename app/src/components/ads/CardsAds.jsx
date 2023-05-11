@@ -27,7 +27,7 @@ export default function CardsAds({ ads, updateAds }) {
 
     useEffect(() => {
         let adsFiltered = ads.filter(ad => {
-            return ad.name.toLowerCase().includes(search.toLowerCase()) || ad.description.toLowerCase().includes(search.toLowerCase())
+            return ad?.name?.toLowerCase().includes(search.toLowerCase()) || ad?.description?.toLowerCase().includes(search.toLowerCase())
         })
 
         if (state === 'approved') {

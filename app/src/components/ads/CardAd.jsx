@@ -7,12 +7,15 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import UnpublishedIcon from '@mui/icons-material/Unpublished';
 import Swal from 'sweetalert2'
+import ImgGenerica from '../../../src/assets/img/img_generica.png'
 
 export default function CardAd({ ad, updateAds }) {
 
     function getImage(image) {
         if (image) {
             return `https://api.appgpm.com/files/banners/${image}`
+        } else {
+            return ImgGenerica
         }
     }
 
@@ -58,6 +61,41 @@ export default function CardAd({ ad, updateAds }) {
         })
     }
 
+    function deleteAd(idCampaign, idAd) {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: `Eliminarás el anuncio ${ad.name}`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: `Sí, eliminar`,
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#145388',
+            cancelButtonColor: '#d33',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                AdsService.deleteAd(idCampaign, idAd)
+                    .then(response => {
+                        if (response.status === 200) {
+                            Swal.fire({
+                                title: `Eliminado`,
+                                text: `El anuncio ${ad.name} ha sido eliminado`,
+                                icon: 'success',
+                                confirmButtonColor: '#145388',
+                            })
+                            updateAds()
+                        } else {
+                            Swal.fire({
+                                title: 'Error',
+                                text: 'No se pudo realizar la acción',
+                                icon: 'error',
+                                confirmButtonColor: '#145388',
+                            })
+                        }
+                    })
+            }
+        })
+    }
+
     return (
         <div className="card">
             <img src={getImage(ad?.banner?.filename)} alt={ad.name} />
@@ -79,8 +117,8 @@ export default function CardAd({ ad, updateAds }) {
                         <button className="btn btn-danger" onClick={() => approveAd(ad.id)}>{ad.is_approved ? 'Desaprobar' : 'Aprobar'}</button>
                         :
                         <>
-                            <button className="btn btn-success" onClick={() => approveAd(ad.id)}>Aprobar</button>                            
-                            <Link to={'/'} className="btn btn-danger">Eliminar</Link>
+                            <button className="btn btn-success" onClick={() => approveAd(ad.id)}>Aprobar</button>
+                            <button className="btn btn-danger" onClick={() => deleteAd(ad.campaign_id, ad.id)}>Eliminar</button>
                         </>
 
                     }
