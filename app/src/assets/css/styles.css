@@ -286,7 +286,7 @@ main {
     margin-top: 5em;
     padding: 2em 3em !important;
     margin-left: 90px;
-    width: calc(100vw - 80px) !important;
+    width: calc(100vw - 90px) !important;
 
 
 }
@@ -2517,4 +2517,19 @@ footer ul li a:active {
     .adminRegister form > .d-flex > div {
         width: 100%;
     }
+}
+
+/* ADMIN - Campaigns */
+.campaigns .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2em;
+    
+}
+
+.campaigns > .table {
+    background-color: white;
+    border-radius: 1em;
+    padding: 1em;
 }

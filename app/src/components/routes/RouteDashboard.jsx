@@ -22,6 +22,7 @@ import RouteUsers from "./RouteUsers";
 import RouteNews from "./RouteNews";
 import RouteServices from './RouteServices'
 import RouteChat from './RouteChat'
+import RouteCampaigns from "./RouteCampaigns";
 
 
 function RouteDashboard() {
@@ -56,6 +57,7 @@ function RouteDashboard() {
                 <Route path="/news/*" element={<RouteNews />} />
                 <Route path="/services/*" element={<RouteServices />} />
                 <Route path="/chats/*" element={<RouteChat />} />
+                <Route path="/campaigns/*" element={<RouteCampaigns />} />
                 <Route path="*" element={<Navigate to="/dashboard" />} />
             </Routes>
             <Footer />

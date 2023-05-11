@@ -6,7 +6,7 @@ import PageNewById from '../../pages/news/PageNewById'
 import PageNew from '../../pages/news/PageNew'
 
 
-function RouteDashboard() {
+function RouteNews() {
     return (
         <Routes>
             <Route path="/list" element={<PageNews />} />
@@ -16,4 +16,4 @@ function RouteDashboard() {
     )
 }
 
-export default RouteDashboard
+export default RouteNews

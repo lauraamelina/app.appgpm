@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import PageChats from '../../pages/chats/PageChats.jsx'
 
 
-function RouteDashboard() {
+function RouteChat() {
     return (
         <Routes>
             <Route path="/" element={<PageChats />} />
@@ -12,4 +12,4 @@ function RouteDashboard() {
     )
 }
 
-export default RouteDashboard
+export default RouteChat

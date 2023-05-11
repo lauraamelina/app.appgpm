@@ -220,7 +220,7 @@ const Sidebar = () => {
                 />
                 <Item
                   title="Campañas"
-                  to="/"
+                  to="/dashboard/campaigns/list"
                   icon={<CampaignIcon />}
                   selected={selected}
                   setSelected={setSelected}
