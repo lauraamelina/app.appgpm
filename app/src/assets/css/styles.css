@@ -2677,3 +2677,34 @@ footer ul li a:active {
 .newAd form .btn-dark {
     color: white !important;
 }
+
+/* ADMIN - TABLE  DOCUMENTS */
+
+.tableDocuments {
+    background-color: white;
+    border-radius: 1em;
+    padding: 2em !important;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.tableDocuments tbody tr {
+    vertical-align: middle;
+    
+}
+
+.listDocuments > .row > .header {
+    background-color: white;
+    border-radius: 1em;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.18);
+    padding: 1em;
+    margin-bottom: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.listDocuments > .row > .header .state,
+.listDocuments > .row > .header .search {
+    width: 49%;
+}

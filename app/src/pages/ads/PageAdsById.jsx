@@ -19,7 +19,6 @@ export default function PageAdsById() {
             .then(response => {
                 setAd(response.data);
                 setLoading(false);
-                console.log(response.data)
             })
         //eslint-disable-next-line
     }, [])

@@ -236,7 +236,7 @@ const Sidebar = () => {
 
                 <Item
                   title="Documentos"
-                  to="/"
+                  to="/dashboard/documents/list"
                   icon={<VerifiedIcon />}
                   selected={selected}
                   setSelected={setSelected}
@@ -244,7 +244,7 @@ const Sidebar = () => {
 
                 <Item
                   title="Empresas"
-                  to="/"
+                  to="/dashboard/enterprises/list"
                   icon={<BusinessIcon />}
                   selected={selected}
                   setSelected={setSelected}
