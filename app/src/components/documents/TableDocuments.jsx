@@ -4,8 +4,6 @@ import UnpublishedIcon from '@mui/icons-material/Unpublished';
 import Swal from "sweetalert2";
 import * as DocumentsService from '../../services/documents.service'
 
-// https://api.appgpm.com/public/files/documents/ee2c2fa7-d02c-4ce0-b877-10912371ecba.jpeg
-
 export default function TableDocuments({ documents, updateDocuments }) {
 
     function getDate(date) {
