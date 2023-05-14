@@ -122,7 +122,7 @@ export default function TableCampaigns({ campaigns, updateCampaigns }) {
 
 
     return (
-        <table className="table table-striped">
+        <table className="table table-striped table-responsive">
             <thead>
                 <tr>
                     <th scope="col">ID</th>

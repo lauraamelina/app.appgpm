@@ -275,7 +275,7 @@ header {
     left: 0;
     color: white;
     overflow-y: auto;
-    max-height: calc(100vh - 90px); 
+    max-height: calc(100vh - 90px);
 }
 
 .pro-sidebar a {
@@ -622,7 +622,7 @@ main {
 
 
 @media (max-width: 991px) {
-    .chartFOB  .ads {
+    .chartFOB .ads {
         display: none;
     }
 
@@ -2121,7 +2121,7 @@ footer ul li a:active {
     border-bottom: 2px solid #dee2e6;
     padding-bottom: .2em;
     margin-bottom: 1em;
-    
+
 }
 
 .modalChats .content {
@@ -2285,7 +2285,7 @@ footer ul li a:active {
     margin-right: auto;
 }
 
-.chatById .chat .date  {
+.chatById .chat .date {
     font-size: .7em;
     margin-bottom: .1em;
     margin-top: -.5em;
@@ -2362,7 +2362,8 @@ footer ul li a:active {
         min-width: calc(100vw - 110px);
         max-width: calc(100vw - 110px);
     }
-    .chats > .row > .col-12 {
+
+    .chats>.row>.col-12 {
         margin-bottom: 1em;
     }
 
@@ -2389,7 +2390,7 @@ footer ul li a:active {
 
 /* listUser */
 
-.listUser > .row > .header {
+.listUser>.row>.header {
     background-color: white;
     border-radius: 1em;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.18);
@@ -2478,13 +2479,13 @@ footer ul li a:active {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.18);
 }
 
-.adminRegister form > .d-flex {
+.adminRegister form>.d-flex {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1em;
 }
 
-.adminRegister form > .d-flex > div {
+.adminRegister form>.d-flex>div {
     width: 49%;
 }
 
@@ -2493,15 +2494,18 @@ footer ul li a:active {
     .listUser {
         width: 100%;
     }
+
     .listUser .header {
         flex-direction: column;
     }
+
     .listUser .header .search {
         width: 100%;
+        margin-top: 1em;
     }
-    .listUser .header button {
-        width: 100%;
-        margin-bottom: 1em;
+
+    .listUser .header .btn {
+        width: 100% !important;
     }
 
     .listUser .card .info p {
@@ -2509,12 +2513,12 @@ footer ul li a:active {
         text-align: center;
     }
 
-    .adminRegister form > .d-flex {
+    .adminRegister form>.d-flex {
         display: flex;
         flex-direction: column;
     }
-    
-    .adminRegister form > .d-flex > div {
+
+    .adminRegister form>.d-flex>div {
         width: 100%;
     }
 }
@@ -2531,14 +2535,14 @@ footer ul li a:active {
     margin-bottom: 0;
 }
 
-.campaigns > .table {
+.campaigns>.table {
     background-color: white;
     border-radius: 1em;
     padding: 1em;
 }
 
 
-.cardsAds > .row > .header {
+.cardsAds>.row>.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -2548,7 +2552,7 @@ footer ul li a:active {
     padding: 2em 1em;
 }
 
-.cardsAds > .row > .header .input-group {
+.cardsAds>.row>.header .input-group {
     width: 95% !important;
 }
 
@@ -2593,7 +2597,7 @@ footer ul li a:active {
     justify-content: space-between;
 }
 
-.cardsAds .card .icons p{
+.cardsAds .card .icons p {
     margin-bottom: 0;
 }
 
@@ -2602,6 +2606,7 @@ footer ul li a:active {
     justify-content: space-between;
     margin-top: 1em;
 }
+
 .cardsAds .card .buttons .btn-success {
     color: white !important;
 }
@@ -2670,7 +2675,7 @@ footer ul li a:active {
     align-items: flex-start;
 }
 
-.newAd form .banner > * {
+.newAd form .banner>* {
     width: 50%;
 }
 
@@ -2690,10 +2695,10 @@ footer ul li a:active {
 
 .tableDocuments tbody tr {
     vertical-align: middle;
-    
+
 }
 
-.listDocuments > .row > .header {
+.listDocuments>.row>.header {
     background-color: white;
     border-radius: 1em;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.18);
@@ -2704,10 +2709,11 @@ footer ul li a:active {
     align-items: center;
 }
 
-.listDocuments > .row > .header .state,
-.listDocuments > .row > .header .search {
+.listDocuments>.row>.header .state,
+.listDocuments>.row>.header .search {
     width: 49%;
 }
+
 /* PAGE LIST ENTEPRISES */
 
 .pageListEnterprises .header {
@@ -2758,4 +2764,136 @@ footer ul li a:active {
     text-align: center !important;
     margin: 0 auto !important;
     display: block !important;
+}
+
+
+@media screen and (max-width: 991px) {
+    .campaigns .header {
+        flex-direction: column;
+
+    }
+
+    .campaigns .header button {
+        text-align: center;
+        margin-top: 1em;
+    }
+
+    .campaigns .table,
+    .tableDocuments {
+        max-width: 100% !important;
+        display: block;
+        overflow-x: auto;
+    }
+
+   .campaigns .table,
+   .campaigns .table thead,
+   .campaigns .table tbody,
+   .campaigns .table th,
+   .campaigns .table td,
+   .campaigns .table tr {
+        display: block;
+    }
+
+   .campaigns .table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+   .campaigns .table tr {
+        border: 1px solid #ccc;
+    }
+
+   .campaigns .table td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        text-align: center;
+
+    }
+
+   .campaigns .table td:before {
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        white-space: nowrap;
+    }
+
+   .campaigns .table td:before {
+        content: attr(data-label);
+    }
+
+    .campaigns .header .btn {
+        margin-top: 1em;
+    }
+
+    .cardsAds>.row>.header>.me-md-3 {
+        margin-bottom: 1em;
+    }
+
+    .cardsAds .card img {
+        width: 15em;
+        height: 15em;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 1em;
+    }
+
+    .cardsAds .card .icons.mb-3 {
+        flex-direction: column;
+    }
+
+    .cardsAds .card .icons.mb-3 p {
+        margin-bottom: 1em;
+    }
+
+    .cardsAds .card .buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cardsAds .card .buttons > * {
+        margin-bottom: 1em;
+    }
+
+    .adById .btn {
+        margin: 1em auto;
+        text-align: center;
+        display: block;
+    }
+
+    .adById .state {
+        top: 10em;
+        right: 0;
+    }
+
+    .listDocuments>.row>.header {
+        flex-direction: column;
+    }
+
+    .listDocuments>.row>.header .state, .listDocuments>.row>.header .search {
+        width: 100%;
+        margin-bottom: 1em; 
+    }
+
+    .pageListEnterprises .header {
+        flex-direction: column;
+    }
+
+    .pageListEnterprises .header .btn {
+        margin-top:1em;
+    }
+
+    .pageListEnterprises .listUser .card .header {
+        padding: 1.5em 1em;
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1em;
+
+    }
+
+    .pageListEnterprises .listUser .card .header h2 {
+        text-align: left !important;
+    }
+
 }
