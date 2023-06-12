@@ -592,15 +592,15 @@ main {
     margin-bottom: 1em;
 }
 
-.verification-account .css-1pxa9xg-MuiAlert-message {
+.verification-account .MuiAlert-message {
     font-family: 'Nunito', sans-serif !important;
 }
 
-.verification-account .css-1ytlwq5-MuiAlert-icon {
+.verification-account .MuiAlert-icon {
     font-size: 2em;
 }
 
-.verification-account .css-1c3trtb-MuiPaper-root-MuiAlert-root {
+.verification-account .MuiPaper-root-MuiAlert-root {
     border-radius: 1em !important;
 }
 
@@ -1349,27 +1349,29 @@ main {
     margin: 2em auto !important;
 }
 
-.content-transactions .css-55vwbm-MuiTimeline-root .css-ahj2mt-MuiTypography-root,
-.content-transactions .css-55vwbm-MuiTimeline-root .css-n2itgq-MuiTypography-root-MuiTimelineOppositeContent-root,
-.content-transactions .css-55vwbm-MuiTimeline-root .css-2ulfj5-MuiTypography-root {
+.MuiTypography-root,
+.MuiTimeline-root .MuiTypography-root-MuiTimelineOppositeContent-root,
+.MuiTimeline-root .MuiTypography-root {
     font-family: 'Nunito', sans-serif !important;
 }
 
-.content-transactions .css-55vwbm-MuiTimeline-root .css-ahj2mt-MuiTypography-root svg {
+
+
+.MuiTimeline-root .MuiTypography-root svg {
     width: .8em;
     color: #3A3A3A;
 }
 
-.content-transactions .css-55vwbm-MuiTimeline-root .css-ahj2mt-MuiTypography-root {
+.MuiTimeline-root .MuiTypography-root {
     color: #a09e9e !important;
     font-size: .9em !important;
 }
 
-.content-transactions .css-7kp53o-MuiTimelineDot-root {
+.MuiTimelineDot-root {
     background-color: #145388 !important;
 }
 
-.content-transactions .css-18y2uza-MuiTypography-root-MuiTimelineContent-root {
+.MuiTypography-root-MuiTimelineContent-root {
     padding-top: 0 !important;
 }
 
@@ -1510,7 +1512,7 @@ main {
 
 /* USER PROFILE */
 
-.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+.MuiButtonBase-root-MuiTab-root {
     font-family: 'Nunito', sans-serif !important;
 }
 

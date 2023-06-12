@@ -24,7 +24,7 @@
     "react-pro-sidebar": "^0.7.1",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.4.3",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-svg-worldmap": "^2.0.0-alpha.16",
     "recharts": "^2.3.2",
     "rxjs": "^7.8.1",
@@ -55,5 +55,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.22.1",
+    "@babel/plugin-syntax-jsx": "^7.21.4",
+    "@babel/preset-env": "^7.22.4",
+    "@babel/preset-react": "^7.22.3"
   }
 }
