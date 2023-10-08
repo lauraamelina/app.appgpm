@@ -374,7 +374,8 @@ main {
 .averageChart {
     background-color: white;
     border-radius: 1em;
-    height: 18em;
+    height: auto;
+    max-height: 28em;
     overflow-y: scroll;
     width: 100%;
 }
@@ -2038,6 +2039,18 @@ footer ul li a:active {
 
 /* LIST SERVICES */
 
+.listServices .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.listServices .header h1 {
+    margin-bottom: 0;
+}
+
+
 .listServices .row {
     margin: 1em 0;
     justify-content: flex-start;
@@ -2078,6 +2091,14 @@ footer ul li a:active {
     background-color: var(--azul);
 }
 
+.imgService {
+    width: 4em;
+    height: 4em;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1em;
+    box-shadow: inset 10px 7px 158px 200px rgba(0, 0, 0, 0.75);
+}
 
 /* CHATS */
 
@@ -2897,5 +2918,16 @@ footer ul li a:active {
     .pageListEnterprises .listUser .card .header h2 {
         text-align: left !important;
     }
+
+}
+
+/* CALIFICATION */
+
+.calification .group {
+    background-color: white;
+    border-radius: 1em;
+    padding: 1em;
+    width: auto;
+    margin: 2em;
 
 }
