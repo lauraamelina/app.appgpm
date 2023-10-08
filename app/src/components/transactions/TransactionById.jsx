@@ -69,17 +69,17 @@ export default function TransactionById({ transaction }) {
                         <ul>
                             <li><strong>Nombre: </strong> {transaction?.nombre_producto?.nombre}</li>
                             <li><strong>Tipo: </strong> {getTypes()} </li>
-                            {transaction?.product?.dano_totales && 
+                            {transaction?.product?.dano_totales &&
                                 <li><strong>Daños Totales: </strong>{transaction?.product?.dano_totales} </li>}
-                            {transaction?.product?.blanqueados && 
+                            {transaction?.product?.blanqueados &&
                                 <li><strong>Blanqueados: </strong> {transaction?.product?.blanqueados} </li>}
-                            {transaction?.product?.granos_fuera_tipo && 
+                            {transaction?.product?.granos_fuera_tipo &&
                                 <li><strong>Fuera tipo: </strong> {transaction?.product?.granos_fuera_tipo} </li>}
-                            {transaction?.product?.granos_partidos && 
+                            {transaction?.product?.granos_partidos &&
                                 <li><strong>Granos partidos: </strong> {transaction?.product?.granos_partidos} </li>}
-                            {transaction?.product?.materias_extranos && 
+                            {transaction?.product?.materias_extranos &&
                                 <li><strong>Materiales extraños: </strong> {transaction?.product?.materias_extranos} </li>}
-                            {transaction?.product?.ciudad && 
+                            {transaction?.product?.ciudad &&
                                 <li><strong>Ciudad: </strong> {transaction?.product?.ciudad} </li>}
                         </ul>
                     </section>

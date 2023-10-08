@@ -8,14 +8,12 @@ import UploadIcon from '@mui/icons-material/Upload';
 import EmailIcon from '@mui/icons-material/Email';
 import SummarizeIcon from '@mui/icons-material/Summarize';
 import Swal from 'sweetalert2'
-
 import OperationStatus from './OperationStatus'
 import Files from './Files'
 import UploadFiles from './UploadFiles'
 import Services from './Services'
 import ConnectedServices from './ConnectedServices'
-
-
+import { Link } from 'react-router-dom';
 
 export default function ContentTransaction({ transaction }) {
     const user = AuthService.getUserId()
@@ -131,7 +129,7 @@ export default function ContentTransaction({ transaction }) {
             </div>
 
             <div className="content-transactions">
-                {index === 0 && <OperationStatus transaction={transaction} typeUser={typeUser} sequences={sequences} dataSequences={dataSequences} loading={loading} />}
+                {index === 0 && <OperationStatus transaction={transaction} typeUser={typeUser} setSequences={setSequences} sequences={sequences} dataSequences={dataSequences} loading={loading} />}
                 {index === 1 && <Files files={files} />}
                 {index === 2 && <UploadFiles transaction={transaction} />}
                 {index === 3 && <Services transaction={transaction} typeUser={typeUser} />}
@@ -140,12 +138,26 @@ export default function ContentTransaction({ transaction }) {
 
             {typeUser === 1 && state === 1 && (
                 <div className='finalizar-operacion text-center'>
-                    <h3>La operación está activa</h3>
+                    <h3>La transacción está activa</h3>
                     <p>Confirma que has recibido el producto y finaliza la operación</p>
                     <button onClick={finishOparationBuyer} className="btn btn-primary">Finalizar operación</button>
                 </div>
             )}
 
+            {state === 2 && transaction?.calification === null && (
+                <div className='finalizar-operacion text-center'>
+                    <h3>La transacción está finalizada</h3>
+                    <p>Puntúa al {typeUser === 1 ? 'vendedor' : 'comprador'}</p>
+                    <Link to={`/dashboard/transactions/${transaction?.id}/calification`} className="btn btn-primary">Puntuar</Link>
+                </div>
+            )}
+
+            {state === 2 && transaction?.calification !== null && (
+                <div className='finalizar-operacion text-center'>
+                    <h3>La transacción está finalizada</h3>
+                    <Link to={`/dashboard/transactions/${transaction?.id}/calification`} className="btn btn-primary">Ver calificación</Link>
+                </div>
+            )}
         </div>
     )
 }

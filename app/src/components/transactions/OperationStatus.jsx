@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 import TimelineSequences from './TimelineSequences'
 import { CircularProgress } from '@mui/material'
 
-export default function OperationStatus({ transaction, typeUser, sequences, dataSequences, loading }) {
+export default function OperationStatus({ transaction, typeUser, setSequences, sequences, dataSequences, loading }) {
     const htmlAddSequence = `
             <div>
                 <label style="display: block; text-align: left;margin-bottom: .5em;">Estado</label>
@@ -56,10 +56,11 @@ export default function OperationStatus({ transaction, typeUser, sequences, data
                                     icon: 'success',
                                     confirmButtonText: 'Aceptar',
                                     confirmButtonColor: '#145388',
-                                }).then((response) => {
-                                    window.location.reload()
                                 })
-                               
+                                TransactionsService.getSequences(transaction.id)
+                                    .then(response => {
+                                        setSequences(response.data)
+                                    })
                             } else {
                                 Swal.fire({
                                     title: 'Error al agregar secuencia',
