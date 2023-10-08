@@ -19,7 +19,30 @@ async function getEnterprises(id) {
     }).then(response => response.json())
 }
 
+async function createService(formData) {
+    return fetch(`${URL}/services`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+        },
+        body: formData
+    }).then(response => response.json())
+
+}
+
+async function contactEnterpriseByService(id, formData) {
+    return fetch(`${URL}/services/contact/${id}`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+        },
+        body: formData
+    }).then(response => response.json())
+}
+
 export {
     getStatsServices,
-    getEnterprises  
+    getEnterprises,
+    createService,
+    contactEnterpriseByService
 }

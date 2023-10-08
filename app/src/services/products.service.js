@@ -19,6 +19,12 @@ async function getProductById(id) {
     }).then(response => response.json())
 }
 
+async function getProductByIdShare(id) {
+    return fetch(`${URL}/products/share/${id}`, {
+        method: 'GET',
+    }).then(response => response.json())
+}
+
 async function getProductsName() {
     return fetch(`${URL}/products_name`, {
         method: 'GET',
@@ -79,6 +85,7 @@ async function buyProduct(id, volumen) {
 export {
     getProductsByUser,
     getProductById,
+    getProductByIdShare,
     getProductsName,
     getIncoterms,
     addProduct,

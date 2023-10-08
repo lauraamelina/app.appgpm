@@ -71,6 +71,16 @@ async function getFiles(id) {
     }).then(response => response.json())
 }
 
+async function calificateTransaction(id,fd) {
+    return fetch(`${URL}/transactions/${id}/calificacion`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + authService.getToken(),
+        },
+        body: fd
+    }).then(response => response.json())
+}
+
 export {
     getTransactionsByUser,
     getTransactionById,
@@ -79,4 +89,5 @@ export {
     addSequence,
     uploadFile,
     getFiles,
+    calificateTransaction
 }

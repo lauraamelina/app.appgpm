@@ -1,53 +1,59 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import * as ServicesService from '../../services/services.service'
-import { CircularProgress } from "@mui/material";
-import { Link } from 'react-router-dom'
+import TableServices from "../../components/services/TableServices";
+import Swal from "sweetalert2";
 
-export default function PageServices() {
+export default function PageListService() {
+    const { id } = useParams();
     const [services, setServices] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [stat, setStat] = useState([])
 
     useEffect(() => {
-        setLoading(true)
-        ServicesService.getStatsServices()
+        ServicesService.getEnterprises(id)
             .then(response => {
                 setServices(response.data)
-                setLoading(false)
             })
-            .catch(error => {
-                console.log(error)
-                setLoading(false)
+        ServicesService.getStatsServices()
+            .then(response => {
+                response?.data?.forEach(stat => {
+                    if (stat.id === parseInt(id)) {
+                        setStat(stat)
+                    }
+                })
             })
-    }, [])
+
+    }, [id])
+
+    function onSubmit(id, fd) {
+        ServicesService.contactEnterpriseByService(id, fd)
+            .then(response => {
+                if (response.status === 200) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Mensaje enviado',
+                        text: 'El mensaje fue enviado correctamente',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Aceptar',
+                        confirmButtonColor: '#145388',
+                    })
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Hubo un error al enviar el mensaje',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Aceptar',
+                        confirmButtonColor: '#145388',
+                    })
+                }
+            })
+    }
 
     return (
-        <main className="container listServices">
-            <h1>Lista de servicios</h1>
-
-            {loading &&
-                <div className="text-center my-5">
-                    <CircularProgress />
-                </div>
-            }
-
-            {!loading && services !== [] &&
-                <div className="row">
-                    {services.map((service, index) => (
-                        <div className="col-2 col-md-3" key={index}>
-                            <Link to={`/dashboard/services/${service.id}`}>
-                                <div className="card">
-                                    <img src={require(`../../assets/img/services/${index}.png`)} className="card-img-top" alt={service.name} />
-                                    <h2>{service.name}</h2>
-                                    <p className="count"> {service.count} </p>
-                                </div>
-                            </Link>
-                        </div>
-                    ))}
-                </div>
-            }
-
-
-
+        <main>
+            <h1>Servicios {stat.name}</h1>
+            <TableServices services={services} onSubmit={onSubmit} />
         </main>
-    );
+    )
 }

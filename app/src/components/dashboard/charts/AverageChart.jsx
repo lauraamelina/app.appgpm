@@ -96,7 +96,7 @@ export default function AverageChart({ items, loading }) {
   }, [items]);
 
   useEffect(() => {
-    setSearch(data?.map((product) => product?.nombre)[0]);
+    setSearch("");
     setFiltered(data);
   }, [data]);
 
@@ -113,17 +113,21 @@ export default function AverageChart({ items, loading }) {
   return (
     <section className="averageChart">
       <div className="header">
-        <h2>Precio Promedio (FOB) </h2>
-        <select className="form-control" name="search" id="search" value={search} onChange={(e) => setSearch(e.target.value)}>
-          <option value="">Selecciona un producto</option>
-          {data?.map((product, index) => {
-            return (
-              <option key={index} value={product.nombre}>
-                {product.nombre}
-              </option>
-            );
-          })}
-        </select>
+        <h2>Precio Promedio (CFS) </h2>
+        {/* Label */}
+        <div className="d-flex flex-column align-items-start">
+          <label htmlFor="search" className="col-form-label-sm">Buscar producto</label>
+          <select className="form-control" name="search" id="search" value={search} onChange={(e) => setSearch(e.target.value)}>
+            <option value="">Selecciona un producto</option>
+            {data?.map((product, index) => {
+              return (
+                <option key={index} value={product.nombre}>
+                  {product.nombre}
+                </option>
+              );
+            })}
+          </select>
+        </div>
       </div>
 
       {loading && (
@@ -141,7 +145,7 @@ export default function AverageChart({ items, loading }) {
               <p>{item.venta}</p>
             </div>
             <AreaChart
-              width={750}
+              width={800}
               height={100}
               data={item.promedios}
               margin={{

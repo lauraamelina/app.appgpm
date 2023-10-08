@@ -1,14 +1,15 @@
 import React from "react";
 import { Routes, Route} from "react-router-dom";
-import PageListServices from "../../pages/services/PageListServices"
-import PageListEnterprises from '../../pages/services/PageListEnterprises'
-
+import PageAllServices from "../../pages/services/PageAllServices"
+import PageNewService from '../../pages/services/PageNewService'
+import PageListService from "../../pages/services/PageListServices";
 
 function RouteServices() {
     return (
         <Routes>
-            <Route path="/list" element={<PageListServices />} />
-            <Route path="/:id" element={<PageListEnterprises />} />
+            <Route path="/list" element={<PageAllServices />} />
+            <Route path="/new" element={<PageNewService />} />
+            <Route path="/:id" element={<PageListService />} />
         </Routes>
     )
 }

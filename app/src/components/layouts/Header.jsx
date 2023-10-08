@@ -84,8 +84,8 @@ const Topbar = () => {
   ]
 
   const onLogout = () => {
-    AuthService.logout()
-    navigate('/login')
+    AuthService.logout();
+    navigate('/login'); 
   }
 
   const typeNotifications = {

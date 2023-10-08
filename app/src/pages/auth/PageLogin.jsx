@@ -4,39 +4,39 @@ import * as authService from '../../services/auth.service'
 import login from '../../assets/img/index.png'
 import logo from '../../assets/img/logo-color.png'
 
-function Login() {
+function Login({ updateUser }) {
     let navigate = useNavigate();
 
-    const [email, setEmail] = useState([]);
-    const [password, setPassword] = useState([])
-    const [error, setError] = useState('')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
+
         authService.login(email, password)
             .then((response) => {
                 if (response.status === 200) {
-                    setError("")
-                    onLogin(response.data, response.token)
+                    setError('');
+                    onLogin(response.data, response.token);
                 } else if (response.status === 500) {
-                    setError("Usuario o contraseña incorrectos")
+                    setError("Usuario o contraseña incorrectos");
                 }
-            })
-
+            });
     }
 
     function onLogin(data, token) {
-        authService.setUser(data)
-        authService.setToken(token)
+        authService.setUser(data);
+        authService.setToken(token);
 
         if (data.email_verified_at === null) {
-            navigate('/verification')
+            navigate('/verification');
         } else {
-            navigate('/dashboard')
+            // Llama a updateUser para actualizar el estado del usuario en el componente App
+            updateUser(data);
+            navigate('/dashboard');
         }
     }
-
-
     return (
         <section className="login">
             <section className="row">
