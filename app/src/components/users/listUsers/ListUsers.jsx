@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import * as CountriesService from '../../../services/countries.service'
 import CardUser from './CardUser'
 import { Link } from 'react-router-dom';
+import { utils, writeFile } from 'xlsx';
+
 
 export default function ListUsers({ users, deleteUser }) {
     const [search, setSearch] = useState('')
@@ -13,6 +15,23 @@ export default function ListUsers({ users, deleteUser }) {
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
     const currentUsers = usersFilter.slice(indexOfFirstUser, indexOfLastUser);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+    const exportToExcel = () => {
+        const data = usersFilter.map((user) => ({
+            ID: user.id,
+            Nombre: user.name,
+            Email: user.email,
+            País: user.country,
+            Rol: user.rol === 1 ? 'Administrador' : 'Vendedor/Comprador',
+            NIT: user.nit,
+            Direccion: user.direccion,
+            Verificado: user.verificado === 0 ? 'No verificado' : 'Verificado'
+        }));
+        const ws = utils.json_to_sheet(data);
+        const wb = utils.book_new();
+        utils.book_append_sheet(wb, ws, 'Usuarios');
+        writeFile(wb, 'usuarios.xlsx');
+    };
 
     const paginateNext = () => {
         if (currentPage < users?.length / usersPerPage) {
@@ -68,11 +87,13 @@ export default function ListUsers({ users, deleteUser }) {
             <div className='row'>
                 <div className='col-md-12 header'>
                     <Link to={'/dashboard/users/new'} className='btn btn-primary'> Agregar nuevo usuario</Link>
-                    <div className="search">
 
+                    <div className="search">
                         <label htmlFor="search">Buscar </label>
                         <input className='form-control' type="text" name="search" id="search" value={search} onChange={handleSearch} />
                     </div>
+                    <button className='btn btn-success' onClick={exportToExcel}>Exportar a Excel</button>
+
                 </div>
                 {currentUsers.length !== 0 && currentUsers.map((user) => (
                     <div className='col-md-4' key={user.id}>
