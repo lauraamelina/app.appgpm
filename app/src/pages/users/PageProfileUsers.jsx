@@ -6,7 +6,8 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import * as UserService from '../../services/users.service'
-
+import * as CalificationService from '../../services/calification.service'
+import CalificationByUser from '../../components/users/CalificationByUser';
 import InfoByUser from '../../components/users/InfoByUser';
 import MarketByUser from '../../components/users/MarketByUser';
 
@@ -50,6 +51,7 @@ export default function PageProfileUser() {
     const [user, setUser] = useState([])
     const [productsByUser, setProductsByUser] = useState([])
     const [demandsByUser, setDemandsByUser] = useState([])
+    const [califications, setCalifications] = useState([])
     const [loading, setLoading] = useState(true)
     const [value, setValue] = useState(0)
 
@@ -85,6 +87,11 @@ export default function PageProfileUser() {
             .catch((err) => {
                 setDemandsByUser([])
                 setLoading(false)
+            })
+
+        CalificationService.getCalificationByUser()
+            .then((res) => {
+                setCalifications(res.data)
             })
     }, [id])
 
@@ -123,6 +130,7 @@ export default function PageProfileUser() {
                                 <MarketByUser productsByUser={demandsByUser} isProduct={false} />
                             </TabPanel>
                             <TabPanel value={value} index={2}>
+                                <CalificationByUser califications={califications} />
                             </TabPanel>
                         </Box>
                     </div>

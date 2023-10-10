@@ -15,21 +15,21 @@ export default function PageTransactionCalification() {
     const [calification, setCalification] = useState([])
     const [rating, setRating] = useState(3)
     const [comment, setComment] = useState('')
-    const [typeUser] = useState(transaction?.vendedor_id === userId ? 'vendedor' : 'comprador')
+    const [typeUser, setTypeUser] = useState(transaction?.vendedor_id === userId ? 'vendedor' : 'comprador')
 
     useEffect(() => {
         TransactionService.getTransactionById(id)
             .then(response => {
                 setTransaction(response.data)
                 setCalification(response.data?.calification)
+                setTypeUser(response.data?.vendedor_id === userId ? 'vendedor' : 'comprador')
             })
             .catch(error => {
                 console.log(error)
             })
-    }, [id])
+    }, [id, userId])
 
     useEffect(() => {
-        console.log(transaction);
         if (transaction.length !== 0) {
             const isSeller = transaction?.vendedor_id === userId;
             const isBuyer = transaction?.comprador_id === userId;

@@ -2931,3 +2931,16 @@ footer ul li a:active {
     margin: 2em;
 
 }
+
+.calificationByUser .calification-card {
+    background-color: white;
+    border-radius: 1em;
+    padding: 1em;
+    width: auto;
+    margin: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
