@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import Img from '../../assets/img/img_generica.png'
 import Swal from 'sweetalert2'
 import '@sweetalert2/theme-bootstrap-4/bootstrap-4.scss';
@@ -69,39 +70,50 @@ export default function ProductByIdShare({ product }) {
     }
 
     return (
-        <section className='container productId'>
-            <div>
-                <div className="product">
-                    <h2>{product?.nombre_producto?.nombre}</h2>
-                    <ul>
-                        <li> <span>Vendedor: </span>
-                            <Link to={`/dashboard/users/profile/${product?.seller?.id}`}>{product?.seller?.slug}</Link> </li>
-                        <li> <span>Tipo de producto: </span>{getTypes()}</li>
-                        <li> <span>Año de Producción: </span>{product?.ano_produccion}</li>
-                        <li> <span>Volumen: </span>{product?.volumen}</li>
-                        <li> <span>País de Origen: </span>{product?.country?.nombre}</li>
-                        <li> <span>Incoterms: </span>{product?.incoterm?.nombre}</li>
-                    </ul>
+        <>
+            <Helmet>
+                <title>{product?.nombre_producto?.nombre}</title>
+                <meta property="og:title" content={product?.nombre_producto?.nombre} />
+                <meta property="og:description" content={`Vendedor: ${product?.seller?.slug}, Tipo de producto: ${getTypes()}, Año de Producción: ${product?.ano_produccion}, Volumen: ${product?.volumen}, País de Origen: ${product?.country?.nombre}, Incoterms: ${product?.incoterm?.nombre}`} />
+                <meta property="og:image" content={getImage(product?.image?.imagen)} />
+                <meta property="og:url" content={`https://app.appgpm.com//share/product/${product?.id}`} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:image:alt" content={product?.nombre_producto?.nombre} />
+            </Helmet>
+            <section className='container productId'>
+                <div>
+                    <div className="product">
+                        <h2>{product?.nombre_producto?.nombre}</h2>
+                        <ul>
+                            <li> <span>Vendedor: </span>
+                                <Link to={`/dashboard/users/profile/${product?.seller?.id}`}>{product?.seller?.slug}</Link> </li>
+                            <li> <span>Tipo de producto: </span>{getTypes()}</li>
+                            <li> <span>Año de Producción: </span>{product?.ano_produccion}</li>
+                            <li> <span>Volumen: </span>{product?.volumen}</li>
+                            <li> <span>País de Origen: </span>{product?.country?.nombre}</li>
+                            <li> <span>Incoterms: </span>{product?.incoterm?.nombre}</li>
+                        </ul>
+                    </div>
+
+                    <div className="buttons">
+                        <button onClick={detailsProduct} className="btn btn-success mb-2">Más información del producto</button>
+                    </div>
                 </div>
 
-                <div className="buttons">
-                    <button onClick={detailsProduct} className="btn btn-success mb-2">Más información del producto</button>
+                <div className="images">
+                    <p className="precio"> {product?.precio} USD/TN</p>
+                    <img src={getImage(product?.image?.imagen)} alt={product?.nombre_producto?.nombre} />
+                    <div className="images_list">
+                        {product?.images?.map((image, index) => {
+                            return (
+                                <img key={index} src={getImage(image?.imagen)} alt={product?.nombre_producto?.nombre} />
+                            )
+                        })}
+                    </div>
                 </div>
-            </div>
-
-            <div className="images">
-                <p className="precio"> {product?.precio} USD/TN</p>
-                <img src={getImage(product?.image?.imagen)} alt={product?.nombre_producto?.nombre} />
-                <div className="images_list">
-                    {product?.images?.map((image, index) => {
-                        return (
-                            <img key={index} src={getImage(image?.imagen)} alt={product?.nombre_producto?.nombre} />
-                        )
-                    })}
-                </div>
-            </div>
 
 
-        </section>
+            </section>
+        </>
     )
 }
