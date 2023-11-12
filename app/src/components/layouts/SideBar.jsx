@@ -18,17 +18,18 @@ import BusinessIcon from '@mui/icons-material/Business';
 
 import * as AuthService from '../../services/auth.service';
 
-const Item = ({ title, to, icon, selected, setSelected }) => {
+const Item = ({ title, to, icon, selected, setSelected, isCollapsed }) => {
   return (
     <MenuItem
       active={selected === title}
       style={{
         color: "white",
+        alignItems: 'center',
+        flexDirection: 'column', 
       }}
       onClick={() => setSelected(title)}
       icon={icon}
     >
-      {/* si esta colapsed igual mmuestra el titulo */}
       <Link
         to={to}
         style={{
@@ -38,18 +39,19 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
           alignItems: "center",
         }}
       >
-        <Typography
-
-          variant="body1"
-          style={{
-            marginLeft: "10px",
-          }}
-        >
-          {title}
-        </Typography>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          {isCollapsed && (
+            <Typography variant="caption">
+              {title}
+            </Typography>
+          )}
+          {!isCollapsed &&
+            <Typography variant="body1">
+              {title}
+            </Typography>
+          }
+        </div>
       </Link>
-
-
     </MenuItem>
   );
 };
@@ -170,14 +172,15 @@ const Sidebar = () => {
               icon={<AddBusinessIcon />}
               selected={selected}
               setSelected={setSelected}
+              isCollapsed={isCollapsed}
             />
             <Item
               title="Market"
-              to="/dashboard/operations/market"
+              to="/dashboard/operations/buy"
               icon={<ShoppingBagIcon />}
               selected={selected}
               setSelected={setSelected}
-
+              isCollapsed={isCollapsed}
             />
             <Item
               title="Mis productos"
@@ -185,6 +188,7 @@ const Sidebar = () => {
               icon={<RocketLaunchIcon />}
               selected={selected}
               setSelected={setSelected}
+              isCollapsed={isCollapsed}
             />
             <Item
               title="Transacciones"
@@ -192,6 +196,7 @@ const Sidebar = () => {
               icon={<PaidIcon />}
               selected={selected}
               setSelected={setSelected}
+              isCollapsed={isCollapsed}
             />
 
             <Item
@@ -200,6 +205,7 @@ const Sidebar = () => {
               icon={<DiamondIcon />}
               selected={selected}
               setSelected={setSelected}
+              isCollapsed={isCollapsed}
             />
             <Item
               title="Noticias"
@@ -207,6 +213,7 @@ const Sidebar = () => {
               icon={<MenuBookIcon />}
               selected={selected}
               setSelected={setSelected}
+              isCollapsed={isCollapsed}
             />
 
             {isAdmin && (
@@ -217,6 +224,7 @@ const Sidebar = () => {
                   icon={<PeopleIcon />}
                   selected={selected}
                   setSelected={setSelected}
+                  isCollapsed={isCollapsed}
                 />
                 <Item
                   title="Campañas"
@@ -224,6 +232,7 @@ const Sidebar = () => {
                   icon={<CampaignIcon />}
                   selected={selected}
                   setSelected={setSelected}
+                  isCollapsed={isCollapsed}
                 />
 
                 <Item
@@ -232,6 +241,7 @@ const Sidebar = () => {
                   icon={<AdsClickIcon />}
                   selected={selected}
                   setSelected={setSelected}
+                  isCollapsed={isCollapsed}
                 />
 
                 <Item
@@ -240,6 +250,7 @@ const Sidebar = () => {
                   icon={<VerifiedIcon />}
                   selected={selected}
                   setSelected={setSelected}
+                  isCollapsed={isCollapsed}
                 />
 
                 <Item
@@ -248,12 +259,9 @@ const Sidebar = () => {
                   icon={<BusinessIcon />}
                   selected={selected}
                   setSelected={setSelected}
+                  isCollapsed={isCollapsed}
                 />
-
               </>
-
-
-
             )}
           </Box>
         </Menu>

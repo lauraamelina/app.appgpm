@@ -85,7 +85,7 @@ const Topbar = () => {
 
   const onLogout = () => {
     AuthService.logout();
-    navigate('/login'); 
+    navigate('/login');
   }
 
   const typeNotifications = {
@@ -118,10 +118,16 @@ const Topbar = () => {
         {/* ICONS */}
         <Box display="flex">
           <IconButton onClick={() => navigate('/dashboard/operations/bids')} style={{ color: "white" }} sx={{ display: { xs: 'none', md: 'block' } }}>
-            <SellIcon />
+            <Box display="flex" flexDirection="column" alignItems="center">
+              <SellIcon />
+              <Typography variant="caption"> Vender</Typography>
+            </Box>
           </IconButton>
           <IconButton onClick={() => navigate('/dashboard/operations/buy')} style={{ color: "white" }} sx={{ display: { xs: 'none', md: 'block' } }}>
-            <StoreIcon />
+            <Box display="flex" flexDirection="column" alignItems="center">
+              <StoreIcon />
+              <Typography variant="caption"> Comprar</Typography>
+            </Box>
           </IconButton>
           <Box p={0} >
             <Tooltip title="Notificaciones">
