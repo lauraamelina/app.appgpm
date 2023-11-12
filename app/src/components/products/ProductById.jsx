@@ -3,6 +3,7 @@ import Img from '../../assets/img/img_generica.png'
 import Swal from 'sweetalert2'
 import '@sweetalert2/theme-bootstrap-4/bootstrap-4.scss';
 import { Link } from 'react-router-dom';
+import ShareIcon from '@mui/icons-material/Share';
 
 export default function ProductById({ product, isUserProduct, deleteProduct, buyProduct }) {
     function getTypes() {
@@ -139,7 +140,7 @@ export default function ProductById({ product, isUserProduct, deleteProduct, buy
                 <div className="product">
                     <h2>{product?.nombre_producto?.nombre}</h2>
                     <ul>
-                        <li> <span>Vendedor: </span> 
+                        <li> <span>Vendedor: </span>
                             <Link to={`/dashboard/users/profile/${product?.seller?.id}`}>{product?.seller?.slug}</Link> </li>
                         <li> <span>Tipo de producto: </span>{getTypes()}</li>
                         <li> <span>Año de Producción: </span>{product?.ano_produccion}</li>
@@ -173,6 +174,9 @@ export default function ProductById({ product, isUserProduct, deleteProduct, buy
                         )
                     })}
                 </div>
+                <Link className='share' to={`/share/product/${product?.id}`} target="_blank" rel="noopener noreferrer">
+                    <ShareIcon fontSize={'large'}></ShareIcon>
+                </Link>
             </div>
 
 
