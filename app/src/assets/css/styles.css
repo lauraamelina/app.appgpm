@@ -907,6 +907,18 @@ main {
     font-size: 1.5em;
 }
 
+.productId .share {
+    position: absolute;
+    bottom: -0.5em;
+    left: 14.5em;
+    background-color: white;
+    color: white;
+    padding: .5em 1em;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 1.5em;
+}
+
 @media screen and (max-width:991px) {
     .productId {
         flex-direction: column;
@@ -928,6 +940,18 @@ main {
 
     .productId .images .images_list img {
         width: 100%;
+    }
+
+    .productId .share {
+        position: absolute;
+        bottom: -0.5em;
+        left: 0em;
+        background-color: white;
+        color: white;
+        padding: .5em 1em;
+        border-radius: 10px;
+        font-weight: bolder;
+        font-size: 1.5em;
     }
 }
 
