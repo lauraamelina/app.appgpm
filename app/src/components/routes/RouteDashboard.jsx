@@ -25,6 +25,7 @@ import RouteChat from './RouteChat'
 import RouteCampaigns from "./RouteCampaigns";
 import RouteDocuments from "./RouteDocuments";
 import RouteEnterprises from './RouteEnterprises'
+import RoutePrices from './RoutePrices'
 
 
 function RouteDashboard() {
@@ -62,6 +63,7 @@ function RouteDashboard() {
                 <Route path="/campaigns/*" element={<RouteCampaigns />} />
                 <Route path="/documents/*" element={<RouteDocuments />} />
                 <Route path="/enterprises/*" element={<RouteEnterprises />} />
+                <Route path="/prices/*" element={<RoutePrices />} />
                 <Route path="*" element={<Navigate to="/dashboard" />} />
             </Routes>
             <Footer />
