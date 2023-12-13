@@ -9,12 +9,12 @@ import conexion from '../../assets/img/icono_conexion_inmediata.png'
 import Swal from "sweetalert2";
 
 export default function Register() {
-    const [email, setEmail] = useState([]);
-    const [password, setPassword] = useState([]);
-    const [type, setType] = useState([])
-    const [name, setName] = useState('')
-    const [nit, setNit] = useState('')
-    const [country, setCountry] = useState([])
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [type, setType] = useState([]);
+    const [name, setName] = useState('');
+    const [nit, setNit] = useState('');
+    const [country, setCountry] = useState([]);
     const [dataCountry, setDataCountry] = useState([])
 
 
@@ -31,9 +31,17 @@ export default function Register() {
         { id: 2, name: 'Personal' }
     ];
 
+    useEffect(()=>{
+       console.log(type)
+       console.log(country)
+
+    },[type, country])
 
     function handleSubmit(e) {
         e.preventDefault();
+        const selectedCountry = dataCountry.find(item => item.id === parseInt(country));
+        const selectedType = types.find(item => item.id === parseInt(type));
+
         if (email === '' || password === '' || type === '' || name === '' || nit === '' || country === '') {
             Swal.fire({
                 title: '¡Error!',
@@ -54,7 +62,7 @@ export default function Register() {
                     confirmButtonText: 'Aceptar'
                 })
             }else{
-                AuthService.register(email, password, type, name, nit, country)
+                AuthService.register(email, password, selectedType, name, nit, selectedCountry)
                 .then((response)=>{
                     if(response.status === 200){
                         Swal.fire({
@@ -125,7 +133,7 @@ export default function Register() {
                             <select className="form-select" id="type" onChange={e => setType(e.target.value)} required>
                                 <option value="">Seleccione el tipo de cuenta</option>
                                 {types?.map((type) => (
-                                    <option key={type.id} value={type}>{type.name}</option>
+                                    <option key={type.id} value={type.id}>{type.name}</option>
                                 ))}
                             </select>
                         </div>
@@ -145,7 +153,7 @@ export default function Register() {
                             <select className="form-select" id="country" onChange={e => setCountry(e.target.value)} required>
                                 <option value="">Seleccione su país</option>
                                 {dataCountry.map((country, index) => (
-                                    <option key={index} value={country}>{country.nombre}</option>
+                                    <option key={index} value={country.id}>{country.nombre}</option>
                                 ))}
                             </select>
                         </div>
