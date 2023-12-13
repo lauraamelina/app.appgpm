@@ -15,6 +15,7 @@ import CampaignIcon from '@mui/icons-material/Campaign';
 import AdsClickIcon from '@mui/icons-material/AdsClick';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import BusinessIcon from '@mui/icons-material/Business';
+import EqualizerIcon from '@mui/icons-material/Equalizer';
 
 import * as AuthService from '../../services/auth.service';
 
@@ -25,7 +26,7 @@ const Item = ({ title, to, icon, selected, setSelected, isCollapsed }) => {
       style={{
         color: "white",
         alignItems: 'center',
-        flexDirection: 'column', 
+        flexDirection: 'column',
       }}
       onClick={() => setSelected(title)}
       icon={icon}
@@ -257,6 +258,15 @@ const Sidebar = () => {
                   title="Empresas"
                   to="/dashboard/enterprises/list"
                   icon={<BusinessIcon />}
+                  selected={selected}
+                  setSelected={setSelected}
+                  isCollapsed={isCollapsed}
+                />
+
+                <Item
+                  title="Precios"
+                  to="/dashboard/prices"
+                  icon={<EqualizerIcon />}
                   selected={selected}
                   setSelected={setSelected}
                   isCollapsed={isCollapsed}
